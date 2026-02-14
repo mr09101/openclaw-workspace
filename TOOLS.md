@@ -1,40 +1,40 @@
-# TOOLS.md - Local Notes
+# TOOLS.md - 로컬 메모
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+스킬은 도구의 "사용법"을 정의한다.  
+이 파일은 네 환경에서만 유효한 "개인 설정 메모"를 적는 곳이다.
 
-## What Goes Here
+## 여기에 적을 것
 
-Things like:
+예시:
 
-- Camera names and locations
-- SSH hosts and aliases
-- Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
+- 카메라 이름/위치
+- SSH 호스트 별칭
+- 선호 TTS 목소리
+- 스피커/방 이름
+- 기기 닉네임
+- 기타 환경 의존 설정
 
-## Examples
+## 예시 형식
 
 ```markdown
 ### Cameras
-
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
+- living-room → 거실 메인, 180° 광각
+- front-door → 현관, 모션 트리거
 
 ### SSH
-
 - home-server → 192.168.1.100, user: admin
 
 ### TTS
-
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
+- 선호 보이스: Nova (따뜻하고 약간 영국식)
+- 기본 스피커: Kitchen HomePod
 ```
 
-## Why Separate?
+## 왜 분리하나?
 
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
+스킬은 공유 자산이고, 환경 설정은 개인 자산이다.  
+분리해두면 스킬 업데이트 시 로컬 설정이 날아가지 않고, 스킬을 공유해도 민감한 인프라 정보가 섞이지 않는다.
 
 ---
 
-Add whatever helps you do your job. This is your cheat sheet.
+작업에 도움이 되는 건 무엇이든 추가해라.  
+이 파일은 네 치트시트다.
