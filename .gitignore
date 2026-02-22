@@ -4,3 +4,14 @@ memory/
 USER.md
 IDENTITY.md
 LOCAL_AUTOMATION_POLICY.md
+
+# secrets / local env
+.env
+.env.*
+!.env.example
+secrets/
+.secrets/
+*.pem
+*.key
+*.p12
+*.pfx
