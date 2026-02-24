@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Secret scan for staged content (lightweight fallback scanner)
+# Blocks commit if likely credentials are found.
+
+staged_files=$(git diff --cached --name-only --diff-filter=ACMRT)
+[ -z "$staged_files" ] && exit 0
+
+# Allowlist paths/patterns (reduce false positives)
+allow_regex='(^|/)(\.env\.example|README|README\.md|SECURITY_RULES\.md)$'
+
+patterns=(
+  'AKIA[0-9A-Z]{16}'
+  'AIza[0-9A-Za-z_\-]{35}'
+  'xox[baprs]-[0-9A-Za-z-]{10,}'
+  'ghp_[0-9A-Za-z]{36}'
+  'github_pat_[0-9A-Za-z_]{20,}'
+  'sk-[A-Za-z0-9]{20,}'
+  '-----BEGIN (RSA|EC|OPENSSH|PGP|DSA) PRIVATE KEY-----'
+  '(?i)(api[_-]?key|secret|token|password|passwd)\s*[:=]\s*["'"'"']?[A-Za-z0-9_\-\./=+]{10,}'
+)
+
+fail=0
+for f in $staged_files; do
+  if [[ "$f" =~ $allow_regex ]]; then
+    continue
+  fi
+
+  # Only inspect added lines to avoid legacy noise
+  added=$(git diff --cached -- "$f" | sed -n 's/^+//p' | sed '/^+++/d')
+  [ -z "$added" ] && continue
+
+  for p in "${patterns[@]}"; do
+    if echo "$added" | grep -P -n "$p" >/dev/null 2>&1; then
+      echo "[secret-scan] Potential secret detected in staged file: $f"
+      echo "[secret-scan] Pattern: $p"
+      fail=1
+    fi
+  done
+done
+
+if [ "$fail" -ne 0 ]; then
+  cat <<'MSG'
+
+❌ Commit blocked by secret scan.
+
+What to do:
+1) Move secrets to local .env / .secrets (ignored by git)
+2) Replace committed value with placeholder
+3) Re-stage and commit again
+
+If this is a false positive, adjust .githooks/pre-commit allowlist intentionally.
+MSG
+  exit 1
+fi
+
+exit 0
