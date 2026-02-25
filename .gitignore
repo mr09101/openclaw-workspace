@@ -17,3 +17,7 @@ secrets/
 *.pfx
 .clawhub/
 transcripts/
+
+# local ACP workspace artifacts
+skills/openclaw-acp/
+tmp/openclaw-acp/
