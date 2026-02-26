@@ -1,0 +1,27 @@
+risk:
+  daily_loss_limit_pct: 2.0
+  symbol_max_alloc_pct: 15.0
+  max_concurrent_positions: 5
+  max_orders_per_min: 10
+  max_retry: 3
+  failure_circuit_breaker_count: 5
+
+execution:
+  entry_split: [40, 30, 30]
+  default_stop_loss_pct:
+    aggressive: 3.0
+    neutral: 2.3
+    conservative: 1.8
+  default_take_profit_pct:
+    tp1:
+      aggressive: 6.0
+      neutral: 5.0
+      conservative: 4.0
+    tp2:
+      aggressive: 11.0
+      neutral: 9.0
+      conservative: 7.5
+
+guards:
+  allow_live_without_confirm: false
+  require_kill_switch_check: true
