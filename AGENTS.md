@@ -15,6 +15,7 @@
 2. `USER.md` 읽기 — 누구를 돕는지
 3. `memory/YYYY-MM-DD.md` 읽기 (오늘 + 어제)
 4. **메인 세션(사용자와 1:1 대화)**이면 `MEMORY.md`도 읽기
+5. `runtime/insights/applied/behavior_rules.md`가 있으면 읽기 — 자동 반영된 행동 규칙 확인
 
 허락을 구하지 말고 기본 루틴으로 실행한다.
 
