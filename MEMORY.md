@@ -35,6 +35,8 @@
 - 설정 꼬임/모델 연동 이슈 시에는 백업 설정 복원 후 `openclaw gateway restart`가 표준 복구 루트.
 - X(트위터) 링크 조회는 `api.fxtwitter.com` 경유 방식이 실사용 가능하며, 본문/메타/이미지 확인까지 가능함.
 - 텔레그램 체감형 스트리밍 이슈 점검 시 `draft 경로 설정`만 보지 말고 `sendMessage 400(message is too long)` 로그를 함께 확인해야 하며, 장문 실패 재발 시 `textChunkLimit`/`chunkMode` 튜닝을 우선 검토함.
+- 텔레그램 direct 메인 세션은 컨텍스트가 약 90%대까지 비대해지면 `embedded run timeout`, `timed out during compaction`, `prompt-error: aborted`가 연쇄 발생할 수 있으므로, 채널 장애로 단정하지 말고 **해당 DM 세션 과포화**를 먼저 의심한다.
+- `runtime/insights/state.json` 기준 인사이트 자동반영 크론이 예정 주기(매시 17분 KST) 대비 멈춰 있으면, 단순 보고 누락이 아니라 **수집→반영→개선효과 보고 루프 전체 중단**으로 간주하고 blocker로 취급한다.
 - cron 세션에서 `EXEC_BLOCKED`가 보이면 gateway 재시작보다 먼저 에이전트 tool allowlist 누락 여부(`exec/read/write`)를 우선 점검한다.
 - `cron status`에서 jobs=0이면 `~/.openclaw/cron/jobs.json.bak` 복원 가능성을 우선 확인하고, 복원 후 재기동으로 신속 복구한다.
 - `cron list`의 `error`는 "마지막 실행 결과"가 남아 보이는 상태일 수 있으므로, 일간 잡은 `cron runs --id <job>`로 최신 실패 원인(server_error/timeout 등)을 함께 확인해 실제 막힘 여부를 판단한다.
