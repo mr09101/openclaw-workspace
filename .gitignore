@@ -29,3 +29,6 @@ tmp/openclaw-acp/
 logs/
 tmp/
 *.pyc
+
+# runtime-generated harness state
+runtime/assistant_structure/background_jobs.json
