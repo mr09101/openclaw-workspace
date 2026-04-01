@@ -118,5 +118,17 @@
     "responsibility": "turn-loop 세션과 checkpoint 이력을 조회",
     "source_hint": "scripts/sonic_runtime_structure.py sessions / session-show",
     "keywords": ["session", "history", "checkpoint", "이력", "세션"]
+  },
+  {
+    "name": "execution-plan",
+    "responsibility": "작업의 실행 방식(직접 수정/코딩 에이전트/테스트)을 결정하고 실행 계획을 생성",
+    "source_hint": "scripts/sonic_runtime_structure.py execution-plan",
+    "keywords": ["execution", "execute", "실행", "수정", "코딩", "테스트", "agent"]
+  },
+  {
+    "name": "completion-first-runner",
+    "responsibility": "배경 작업 종료 후 자동으로 완료 보고를 보내는 래퍼 실행",
+    "source_hint": "scripts/completion_first_runner.py",
+    "keywords": ["completion", "report", "background", "runner", "완료", "보고", "자동"]
   }
 ]

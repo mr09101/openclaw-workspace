@@ -27,7 +27,12 @@
   {
     "title": "undercover-guard-policy",
     "status": "done",
-    "notes": "공개 repo용 문구 노출 방지 가드 문서화"
+    "notes": "초기 공개 repo용 문구 노출 방지 가드 문서화 후, 사용자 지시에 따라 현재 비활성화"
+  },
+  {
+    "title": "telemetry-off-policy",
+    "status": "done",
+    "notes": "로컬 하니스 레이어 telemetry 없음 상태 명시"
   },
   {
     "title": "feature-registry-surface",
@@ -48,6 +53,11 @@
     "title": "harness-turn-loop",
     "status": "done",
     "notes": "turn-loop + session/checkpoint 저장층 추가"
+  },
+  {
+    "title": "harness-execution-loop",
+    "status": "done",
+    "notes": "execution plan과 execution 단계가 turn-loop에 결합됨"
   },
   {
     "title": "last30days-reddit-comment-enrich",

@@ -6,8 +6,8 @@
 - **KAIROS**: always-on proactive tick + brief mode + blocking budget
 - **Dream**: 메모리 정리용 3-gate / 4-phase 패스
 - **Coordinator**: research → synthesis → implementation → verification
-- **Turn Loop**: route → coordinator → verification → token-budget → task/checkpoint 세션 루프
-- **Undercover**: 공개 저장소 작업 시 민감/내부 문구 노출 방지
+- **Turn Loop**: route → coordinator → execution → verification → token-budget → task/checkpoint 세션 루프
+- **Undercover**: 현재 비활성화됨 (free-code 방향 반영)
 - **Ultraplan**: 복잡한 문제를 장기 계획 작업으로 승격하는 게이트
 - **Feature Registry**: 활성/보류 기능 표면 관리
 - **Verification / Token Budget / Compaction**: 구현 검증 + 컨텍스트 관리
@@ -32,6 +32,7 @@
 - `python3 scripts/sonic_runtime_structure.py dream-plan`
 - `python3 scripts/sonic_runtime_structure.py coordinator-plan "작업 설명"`
 - `python3 scripts/sonic_runtime_structure.py verify-plan "작업 설명"`
+- `python3 scripts/sonic_runtime_structure.py execution-plan "작업 설명"`
 - `python3 scripts/sonic_runtime_structure.py token-budget`
 - `python3 scripts/sonic_runtime_structure.py compaction-reminder`
 - `python3 scripts/sonic_runtime_structure.py bridge-status`
@@ -41,9 +42,13 @@
 - `python3 scripts/sonic_runtime_structure.py turn-loop "작업 설명" --max-turns 6`
 - `python3 scripts/sonic_runtime_structure.py sessions`
 - `python3 scripts/sonic_runtime_structure.py session-show <session_id>`
+- `python3 scripts/completion_first_runner.py --label "작업명" --workdir ./project --command "codex exec --full-auto '...'" --summary-file ./project/.openclaw-job-report.md --verify-command "node --check app.js"`
 
 ## 원칙
 - 구조는 제 기본 작업방식에 흡수해서 사용한다.
 - 외부 repo를 그대로 복사하는 게 아니라, 우리 런타임/메모리/메시징에 맞게 재정의한다.
 - route → backlog/state → coordinator → execution → verification → summary 흐름을 기본 개발 루프로 삼는다.
-- 안전장치를 빼는 방향이 아니라, 하니스 구조와 기능 표면만 선택적으로 이식한다.
+- 배경/개발 작업 완료 시에는 검증 상세보다 먼저 `끝났습니다 / 뭐가 바뀌었습니다 / 링크·결과` 3요소를 즉시 보고한다.
+- 이를 위해 배경 코딩/쉘 작업은 가능하면 `scripts/completion_first_runner.py` 래퍼로 실행해, 종료 직후 OpenClaw system event로 1차 완료 보고를 보내게 한다.
+- 로컬 하니스 레이어에서는 telemetry 없음 / prompt-level undercover guard 비활성 상태로 운용한다.
+- 다만 OpenClaw 자체의 상위 시스템 안전장치와 도구 정책은 이 README 범위 밖이며 유지된다.

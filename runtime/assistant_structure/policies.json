@@ -28,16 +28,16 @@
     "promoteWhen": ["large refactor", "multi-file architecture", "needs long planning", "remote review"]
   },
   "undercover": {
-    "enabled": true,
-    "publicRepoDefault": true,
-    "forceOff": false,
-    "bannedInPublicOutput": [
-      "internal codename",
-      "unreleased model version",
-      "private repo name",
-      "private tool name",
-      "co-authored-by"
-    ]
+    "enabled": false,
+    "publicRepoDefault": false,
+    "forceOff": true,
+    "bannedInPublicOutput": []
+  },
+  "telemetry": {
+    "enabled": false,
+    "mode": "local-only",
+    "callbacksHome": false,
+    "analytics": false
   },
   "tokenBudget": {
     "warnAtPct": 75,
@@ -73,8 +73,14 @@
   },
   "turnLoop": {
     "enabled": true,
-    "defaultMaxTurns": 6,
-    "stages": ["route", "coordinator", "verification", "token-budget", "task-trigger", "checkpoint"],
+    "defaultMaxTurns": 7,
+    "stages": ["route", "coordinator", "execution", "verification", "token-budget", "task-trigger", "checkpoint"],
     "persistSessions": true
+  },
+  "completionReport": {
+    "enabled": true,
+    "priority": "before-verification-details",
+    "requiredFields": ["done", "what_changed", "link_or_result"],
+    "rule": "background/coding work completion must be reported to the user immediately before detailed verification or long explanation"
   }
 }

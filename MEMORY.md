@@ -124,6 +124,8 @@
 - 질문 의도가 애매하면 추측해서 옆길로 답하지 말고, 1문장으로 정확히 무엇을 이어갈지 확인한다.
 - 사용자가 번호만 언급하는 후속 질문을 하면, 먼저 같은 대화의 바로 직전 목록/요약/최근 메시지를 읽어 기준 대상을 추론한 뒤 답하고, 그래도 불충분할 때만 짧게 되묻는다.
 - GitHub 상위 repo/외부 오픈소스를 운영에 반영할 때는 GitHub를 설치·채굴·검증 출처로만 쓰고, 실제 운영은 가능한 한 로컬 문서/스크립트/스킬로 이식해 원본 repo 업데이트에 종속되지 않는 방식(로컬화/cherry-pick)을 기본으로 유지한다.
+- 큰 작업/배경 작업/개발에이전트 작업이 끝나면, 검증·로그정리·상세설명보다 먼저 사용자에게 `끝남/핵심 변경/링크 또는 결과` 3요소로 1차 완료 보고를 즉시 보내는 것을 기본 상식으로 유지한다. 사용자가 다시 `다 됐어?`, `왜 보고 안 해?`라고 묻게 만들면 실패로 간주한다.
+- 배경 코딩/쉘 작업은 가능하면 `scripts/completion_first_runner.py` 래퍼로 실행해, 종료 직후 OpenClaw system event로 1차 완료 보고가 자동 발화되게 운용한다.
 
 ## 운영 프로토콜(신규)
 - `COGNITIVE_PROTOCOL.md`(Slim 1.1)를 운영 기준으로 채택: 실행 결과 파일 기록, 자동화 우선, "실행 먼저·결과만 보고" 유지.
@@ -151,3 +153,5 @@
 - 2026-03-29 기준, 마스터가 기억 보존을 요청한 `gitlab.com/Starmixcraft/tesla-fsd-can-mod`는 Tesla CAN 버스의 오토파일럿 관련 메시지를 수정/재전송해 FSD enable bit·속도 프로필·nag suppression 등을 제어하는 Adafruit Feather CAN 기반 펌웨어 저장소로 기억한다.
 - 2026-03-30 재확인: 마스터는 TradingView 분석에서 웹보다 **Windows TradingView Desktop 앱을 직접 보고 판단하는 경로**를 우선 선호한다.
 - 2026-03-30 재확인: Windows TradingView/Desktop CDP를 WSL/OpenClaw에서 붙일 때는 **앱의 remote-debugging 포트와 portproxy 진입 포트를 반드시 분리**한다(권장: 앱 9224, WSL 진입 프록시 9225).
+- 2026-04-01 확정: 외부 상위 repo/오픈소스는 설치·채굴 출처로만 활용하고, 실제 운영 반영은 로컬 문서/스크립트/스킬로 이식하는 clean-room/cherry-pick 방식을 기본값으로 유지한다.
+- 2026-04-01 확정: 개발 하니스는 `runtime/assistant_structure` + `scripts/sonic_runtime_structure.py` 중심의 로컬 구조로 계속 키우고, 외부 repo 의존보다 로컬 운영 계층 강화에 우선순위를 둔다.

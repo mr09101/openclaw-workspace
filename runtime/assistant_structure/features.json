@@ -54,6 +54,12 @@
     "notes": "브리지/원격 연동 상태층"
   },
   {
+    "name": "TELEMETRY",
+    "status": "disabled",
+    "kind": "observability",
+    "notes": "로컬 하니스 레이어에서 telemetry/callback home 없음"
+  },
+  {
     "name": "EXTRACT_MEMORIES",
     "status": "enabled",
     "kind": "memory",
@@ -76,6 +82,24 @@
     "status": "enabled",
     "kind": "state",
     "notes": "turn-loop 결과와 checkpoint를 세션 파일에 저장"
+  },
+  {
+    "name": "EXECUTION_LOOP",
+    "status": "enabled",
+    "kind": "execution",
+    "notes": "execution plan 생성과 turn-loop 내부 execution 단계 추가"
+  },
+  {
+    "name": "COMPLETION_REPORT_FIRST",
+    "status": "enabled",
+    "kind": "communication",
+    "notes": "배경/개발 작업 완료 시 검증보다 먼저 끝남/핵심변경/링크를 즉시 보고"
+  },
+  {
+    "name": "BACKGROUND_JOB_RUNNER",
+    "status": "enabled",
+    "kind": "automation",
+    "notes": "background job 종료 시 자동 완료 보고를 보내는 실행 래퍼"
   },
   {
     "name": "VOICE_MODE",

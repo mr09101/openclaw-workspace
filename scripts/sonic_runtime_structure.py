@@ -424,6 +424,53 @@ def render_verify_plan(task: str) -> str:
     return '\n'.join(lines)
 
 
+def choose_execution_mode(task: str) -> tuple[str, list[str]]:
+    prompt = task.lower()
+    direct_markers = ['문구', '한줄', 'one-liner', 'small fix', '오타', '간단']
+    agent_markers = ['기능', '로그인', '리팩토링', '대규모', 'multi-file', '아키텍처', '개발', 'build', '구현']
+    if any(marker in prompt for marker in direct_markers):
+        return 'direct-edit', ['read', 'edit', 'write', 'exec']
+    if any(marker in prompt for marker in agent_markers):
+        return 'coding-agent', ['sessions_spawn', 'exec', 'process']
+    return 'hybrid', ['read', 'edit', 'exec', 'sessions_spawn']
+
+
+def render_execution_plan(task: str) -> str:
+    mode, tools = choose_execution_mode(task)
+    lines = [
+        '# Execution Plan',
+        f'- task: {task}',
+        f'- mode: {mode}',
+        f'- recommended_tools: {", ".join(tools)}',
+        '- steps:',
+    ]
+    if mode == 'direct-edit':
+        lines += [
+            '  - 관련 파일 read',
+            '  - 직접 edit/write로 수정',
+            '  - exec로 최소 테스트 실행',
+        ]
+    elif mode == 'coding-agent':
+        lines += [
+            '  - 요구사항을 handoff로 정리',
+            '  - sessions_spawn 또는 코딩 에이전트 실행 경로 선택',
+            '  - exec/process로 테스트와 진행상황 확인',
+        ]
+    else:
+        lines += [
+            '  - 작은 수정은 직접 처리',
+            '  - 큰 범위/반복 작업은 코딩 에이전트로 위임',
+            '  - 마지막에 exec로 테스트 및 검증',
+        ]
+    lines += [
+        '- outputs:',
+        '  - 변경 파일 목록',
+        '  - 실행/테스트 명령',
+        '  - 리스크/롤백 메모',
+    ]
+    return '\n'.join(lines)
+
+
 def render_bridge_status() -> str:
     state = load_json(STATE, {})
     bridge = state.get('bridgeMode', {})
@@ -569,6 +616,15 @@ def run_turn_loop(prompt: str, max_turns: int) -> str:
         stage_index += 1
 
     if stage_index < max_turns:
+        output = render_execution_plan(prompt)
+        mode, _tools = choose_execution_mode(prompt)
+        state = load_json(STATE, {})
+        state['currentTaskStatus'] = 'execution-planned'
+        save_json(STATE, state)
+        add_turn(stage_index + 1, 'execution', f'mode={mode}', output)
+        stage_index += 1
+
+    if stage_index < max_turns:
         output = render_verify_plan(prompt)
         add_turn(stage_index + 1, 'verification', '검증 단계와 체크리스트 생성', output)
         state = load_json(STATE, {})
@@ -666,6 +722,8 @@ def main() -> int:
     coord.add_argument('task')
     verify = sub.add_parser('verify-plan')
     verify.add_argument('task')
+    execute = sub.add_parser('execution-plan')
+    execute.add_argument('task')
     task = sub.add_parser('set-task')
     task.add_argument('task', nargs='?')
     task.add_argument('--status')
@@ -736,6 +794,9 @@ def main() -> int:
         return 0
     if args.command == 'verify-plan':
         print(render_verify_plan(args.task))
+        return 0
+    if args.command == 'execution-plan':
+        print(render_execution_plan(args.task))
         return 0
     if args.command == 'set-task':
         print(set_current_task(args.task, args.status))

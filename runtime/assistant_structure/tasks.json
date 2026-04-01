@@ -19,5 +19,12 @@
     "status": "queued",
     "trigger": "turn-loop",
     "notes": ""
+  },
+  {
+    "id": "task-openclaw에-로그인-기능-추가하고-테스트까지-해줘-f89f17",
+    "title": "OpenClaw에 로그인 기능 추가하고 테스트까지 해줘",
+    "status": "queued",
+    "trigger": "turn-loop",
+    "notes": ""
   }
 ]

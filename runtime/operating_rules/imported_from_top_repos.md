@@ -100,13 +100,13 @@
 출처 성격: 실행 가능한 포크 관점의 feature surface / state / tasks / bridge / verification 구조
 
 ### 즉시 채택
-- feature registry(enabled/deferred)로 하니스 기능 표면 관리
+- feature registry(enabled/deferred/disabled)로 하니스 기능 표면 관리
 - verification/token-budget/compaction reminder 축 추가
 - bridge/task-trigger/state 계층을 별도 파일로 분리
 - query engine 주변의 stateful control plane 관점 반영
+- 로컬 하니스 레이어에서 telemetry 없음 상태와 prompt-level undercover guard 비활성 상태 명시
 
 ### 보류
-- guardrail 제거/telemetry 제거를 가치로 삼는 방향
 - 외부 포크 자체를 실행 전제로 한 build/install 경로 채택
 
 ## 로컬 적용 규칙

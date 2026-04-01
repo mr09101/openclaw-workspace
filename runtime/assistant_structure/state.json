@@ -5,19 +5,21 @@
   "lastDreamAt": null,
   "sessionCountSinceDream": 0,
   "dreamLock": false,
-  "currentTask": "Claude Code 스타일 하니스 개선 작업",
+  "currentTask": "OpenClaw에 로그인 기능 추가하고 테스트까지 해줘",
   "currentTaskStatus": "planned",
-  "currentSessionId": "loop-24cdfb3798",
+  "currentSessionId": "loop-f7d9198ec3",
   "lastRoute": {
-    "at": "2026-04-01T14:46:24+09:00",
-    "prompt": "Claude Code 스타일 하니스 개선 작업",
+    "at": "2026-04-01T14:51:17+09:00",
+    "prompt": "OpenClaw에 로그인 기능 추가하고 테스트까지 해줘",
     "commands": [
-      "task-trigger",
-      "kairos-tick",
-      "undercover-guard"
+      "team-handoff",
+      "coordinator-plan",
+      "feature-registry",
+      "verification-plan",
+      "execution-plan"
     ],
     "tools": [
-      "sessions_spawn"
+      "exec"
     ]
   },
   "quietHours": {
@@ -25,14 +27,12 @@
     "end": "08:00"
   },
   "publicRepoGuard": {
-    "enabled": true,
-    "bannedTerms": [
-      "internal codename",
-      "unreleased model",
-      "secret link",
-      "private slack",
-      "co-authored-by"
-    ]
+    "enabled": false,
+    "bannedTerms": []
+  },
+  "telemetry": {
+    "enabled": false,
+    "lastEventAt": null
   },
   "tokenBudget": {
     "maxTokens": 120000,
@@ -47,7 +47,7 @@
     "lastBridgeAt": null
   },
   "triggersEnabled": true,
-  "lastVerificationAt": "2026-04-01T14:46:24+09:00",
+  "lastVerificationAt": "2026-04-01T14:51:17+09:00",
   "lastMemoryExtractAt": null,
-  "lastCheckpointAt": "2026-04-01T14:46:24+09:00"
+  "lastCheckpointAt": "2026-04-01T14:51:17+09:00"
 }
