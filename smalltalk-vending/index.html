@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스몰토크 자판기</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="machine-stage" aria-label="스몰토크 자판기">
+        <div class="vending-machine">
+          <header class="machine-header">
+            <div class="header-copy">
+              <p class="header-kicker">대화 한 문장</p>
+              <h1>스몰토크 자판기</h1>
+            </div>
+            <div class="header-lamps" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </header>
+
+          <div class="machine-core">
+            <section class="product-window" aria-labelledby="window-title">
+              <div class="window-frame">
+                <div class="window-topline">
+                  <div>
+                    <p class="window-note">진열창</p>
+                    <h2 id="window-title">오늘 꺼낼 수 있는 이야기</h2>
+                  </div>
+                  <p id="machine-status" class="machine-status" role="status" aria-live="polite">대기 중</p>
+                </div>
+                <div id="topic-grid" class="topic-grid" aria-label="주제 진열 목록"></div>
+                <div class="glass-glare" aria-hidden="true"></div>
+              </div>
+            </section>
+
+            <aside class="control-panel" aria-label="제어 및 결제 영역">
+              <section class="panel-block display-block">
+                <p class="panel-title">상태 표시</p>
+                <div class="status-screen">
+                  <div class="status-line">
+                    <span>선택</span>
+                    <strong id="selection-readout">없음</strong>
+                  </div>
+                  <strong id="active-topic-label" class="active-topic-label">상품을 골라 주세요</strong>
+                  <p id="status-detail">진열창을 누르거나 번호를 선택한 뒤, 동전을 넣고 확인을 눌러 주세요.</p>
+                </div>
+              </section>
+
+              <section class="panel-block payment-block">
+                <p class="panel-title">결제부</p>
+                <div class="payment-stack">
+                  <div class="payment-readout">
+                    <span>투입 금액</span>
+                    <strong id="payment-amount">0원</strong>
+                  </div>
+                  <div class="coin-bank">
+                    <div id="coin-slot" class="coin-slot" aria-hidden="true">
+                      <span class="coin-slot-label">동전 투입구</span>
+                      <span id="coin-token" class="coin-token">100</span>
+                    </div>
+                    <button id="coin-button" class="coin-button" type="button">100원 넣기</button>
+                  </div>
+                  <p id="payment-note" class="payment-note">확인 전에 동전을 먼저 넣어 주세요.</p>
+                </div>
+              </section>
+
+              <section class="panel-block keypad-block">
+                <p class="panel-title">상품 번호</p>
+                <div id="selection-pad" class="selection-pad"></div>
+                <div class="action-row">
+                  <button id="cancel-button" class="secondary-button" type="button">선택 취소</button>
+                  <button id="confirm-button" class="confirm-button" type="button">확인</button>
+                </div>
+              </section>
+            </aside>
+          </div>
+
+          <section class="pickup-section">
+            <div class="pickup-door">
+              <div class="pickup-topline">
+                <div>
+                  <p class="window-note">배출구</p>
+                  <h2>꺼내는 곳</h2>
+                </div>
+                <button id="pickup-toggle" class="door-tab" type="button">문 열기</button>
+              </div>
+
+              <div id="dispense-slot" class="dispense-slot" aria-hidden="true">
+                <div id="dispense-can" class="dispense-can">
+                  <span id="dispense-can-label" class="dispense-can-label">커피 수다</span>
+                </div>
+              </div>
+
+              <div class="prompt-panel">
+                <div class="prompt-topline">
+                  <span class="output-mark"></span>
+                  <p>방금 나온 문장</p>
+                </div>
+                <div id="prompt-window" class="prompt-window"></div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <section class="history-panel" aria-labelledby="history-title">
+          <div class="history-head">
+            <div>
+              <p class="window-note">기록</p>
+              <h2 id="history-title">최근 꺼낸 문장</h2>
+            </div>
+            <button id="clear-button" type="button" class="clear-button">비우기</button>
+          </div>
+          <p class="history-caption">현재 브라우저에만 저장됩니다.</p>
+          <div id="history-list" class="history-list"></div>
+        </section>
+      </section>
+
+      <script src="./app.js"></script>
+    </main>
+  </body>
+</html>
