@@ -1,0 +1,62 @@
+[
+  {
+    "name": "read",
+    "responsibility": "파일/이미지 읽기",
+    "source_hint": "OpenClaw developer tool",
+    "keywords": ["read", "보기", "열기", "파일"]
+  },
+  {
+    "name": "write",
+    "responsibility": "파일 생성/덮어쓰기",
+    "source_hint": "OpenClaw developer tool",
+    "keywords": ["write", "저장", "생성", "파일"]
+  },
+  {
+    "name": "edit",
+    "responsibility": "정밀 문자열 치환 편집",
+    "source_hint": "OpenClaw developer tool",
+    "keywords": ["edit", "수정", "치환", "patch"]
+  },
+  {
+    "name": "exec",
+    "responsibility": "쉘 명령 실행 및 백그라운드 프로세스 시작",
+    "source_hint": "OpenClaw developer tool",
+    "keywords": ["exec", "shell", "run", "command", "테스트", "빌드"]
+  },
+  {
+    "name": "process",
+    "responsibility": "백그라운드 exec 세션 추적/로그/종료",
+    "source_hint": "OpenClaw developer tool",
+    "keywords": ["process", "background", "poll", "log", "세션"]
+  },
+  {
+    "name": "web_fetch",
+    "responsibility": "URL 본문 추출 및 문서 fetch",
+    "source_hint": "OpenClaw developer tool",
+    "keywords": ["fetch", "url", "본문", "문서", "웹"]
+  },
+  {
+    "name": "web_search",
+    "responsibility": "웹 검색",
+    "source_hint": "OpenClaw developer tool",
+    "keywords": ["search", "검색", "웹", "브라우징"]
+  },
+  {
+    "name": "browser",
+    "responsibility": "브라우저 자동화 및 스냅샷",
+    "source_hint": "OpenClaw developer tool",
+    "keywords": ["browser", "click", "type", "automation", "사이트", "bridge"]
+  },
+  {
+    "name": "sessions_spawn",
+    "responsibility": "서브에이전트/ACP 세션 생성",
+    "source_hint": "OpenClaw developer tool",
+    "keywords": ["spawn", "subagent", "codex", "claude", "agent", "parallel", "verification"]
+  },
+  {
+    "name": "memory_search",
+    "responsibility": "메모리 검색",
+    "source_hint": "OpenClaw developer tool",
+    "keywords": ["memory", "recall", "기억", "search", "extract"]
+  }
+]

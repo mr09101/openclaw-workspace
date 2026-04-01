@@ -21,3 +21,11 @@ transcripts/
 # local ACP workspace artifacts
 skills/openclaw-acp/
 tmp/openclaw-acp/
+
+# local temp / caches
+.venv/
+.venv-scrapling/
+**/__pycache__/
+logs/
+tmp/
+*.pyc

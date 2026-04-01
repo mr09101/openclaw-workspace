@@ -1,0 +1,72 @@
+[
+  {
+    "title": "runtime-manifest",
+    "status": "done",
+    "notes": "로컬 구조 manifest/summary 뷰 추가"
+  },
+  {
+    "title": "last30days-reddit-hn-upgrade",
+    "status": "done",
+    "notes": "Reddit/HN 전용 수집과 점수화 반영"
+  },
+  {
+    "title": "harness-kairos-policy",
+    "status": "done",
+    "notes": "KAIROS proactive tick/brief/blocking budget 정책 이식"
+  },
+  {
+    "title": "harness-dream-policy",
+    "status": "done",
+    "notes": "Dream 3-gate/4-phase 메모리 정리 정책 이식"
+  },
+  {
+    "title": "harness-coordinator-route-state",
+    "status": "done",
+    "notes": "Coordinator 단계계획 + route/state 뷰 추가"
+  },
+  {
+    "title": "undercover-guard-policy",
+    "status": "done",
+    "notes": "공개 repo용 문구 노출 방지 가드 문서화"
+  },
+  {
+    "title": "feature-registry-surface",
+    "status": "done",
+    "notes": "free-code식 feature surface와 enabled/deferred 상태 추가"
+  },
+  {
+    "title": "verification-token-compaction",
+    "status": "done",
+    "notes": "verification/token-budget/compaction reminder 축 추가"
+  },
+  {
+    "title": "bridge-task-trigger-state",
+    "status": "done",
+    "notes": "bridge status와 task queue/trigger 상태층 추가"
+  },
+  {
+    "title": "harness-turn-loop",
+    "status": "done",
+    "notes": "turn-loop + session/checkpoint 저장층 추가"
+  },
+  {
+    "title": "last30days-reddit-comment-enrich",
+    "status": "planned",
+    "notes": "Reddit 상위 댓글 enrichment 추가"
+  },
+  {
+    "title": "last30days-hn-comment-enrich",
+    "status": "planned",
+    "notes": "Hacker News top comments enrichment 추가"
+  },
+  {
+    "title": "last30days-youtube-source",
+    "status": "planned",
+    "notes": "YouTube 전용 수집 추가"
+  },
+  {
+    "title": "last30days-x-source",
+    "status": "planned",
+    "notes": "X 전용 경로 추가"
+  }
+]

@@ -1,0 +1,80 @@
+{
+  "kairos": {
+    "mode": "always-on",
+    "brief": true,
+    "tickPrompt": "정기 tick 때 가치 있는 것만 짧게 알리고, 없으면 조용히 지나간다.",
+    "blockingBudgetSec": 15,
+    "exclusiveActions": ["notify-user", "push-summary", "monitor-pr"]
+  },
+  "dream": {
+    "timeGateHours": 24,
+    "sessionGate": 5,
+    "lockGate": true,
+    "phases": ["orient", "gather_recent_signal", "consolidate", "prune_and_index"],
+    "memoryTarget": {
+      "maxLines": 200,
+      "maxBytesApprox": 25000
+    }
+  },
+  "coordinator": {
+    "phases": ["research", "synthesis", "implementation", "verification"],
+    "parallelism": "independent workers run concurrently whenever possible",
+    "banLazyDelegation": true
+  },
+  "ultraplan": {
+    "remotePlanningMinutes": 30,
+    "pollSeconds": 3,
+    "teleportSentinel": "__ULTRAPLAN_TELEPORT_LOCAL__",
+    "promoteWhen": ["large refactor", "multi-file architecture", "needs long planning", "remote review"]
+  },
+  "undercover": {
+    "enabled": true,
+    "publicRepoDefault": true,
+    "forceOff": false,
+    "bannedInPublicOutput": [
+      "internal codename",
+      "unreleased model version",
+      "private repo name",
+      "private tool name",
+      "co-authored-by"
+    ]
+  },
+  "tokenBudget": {
+    "warnAtPct": 75,
+    "hardAtPct": 90,
+    "actionAtWarn": "emit reminder and prefer concise replies",
+    "actionAtHard": "force compaction reminder and avoid large detours"
+  },
+  "compaction": {
+    "enabled": true,
+    "remindAbovePct": 75,
+    "hardAbovePct": 90,
+    "strategy": ["summarize", "checkpoint", "prune repetition"]
+  },
+  "verification": {
+    "enabled": true,
+    "stages": ["build", "test", "smoke", "review"],
+    "requireEvidence": true
+  },
+  "bridge": {
+    "enabled": true,
+    "targets": ["browser", "desktop-app", "remote-session"],
+    "default": "browser"
+  },
+  "triggers": {
+    "enabled": true,
+    "sources": ["manual", "cron", "post-task", "heartbeat", "turn-loop"],
+    "queueFile": "runtime/assistant_structure/tasks.json"
+  },
+  "memoryExtract": {
+    "enabled": true,
+    "afterMeaningfulTurns": true,
+    "targetFiles": ["MEMORY.md", "memory/YYYY-MM-DD.md"]
+  },
+  "turnLoop": {
+    "enabled": true,
+    "defaultMaxTurns": 6,
+    "stages": ["route", "coordinator", "verification", "token-budget", "task-trigger", "checkpoint"],
+    "persistSessions": true
+  }
+}

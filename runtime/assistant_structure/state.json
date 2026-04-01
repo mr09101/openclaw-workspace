@@ -1,0 +1,53 @@
+{
+  "activeMode": "brief",
+  "blockingBudgetSec": 15,
+  "lastTickAt": null,
+  "lastDreamAt": null,
+  "sessionCountSinceDream": 0,
+  "dreamLock": false,
+  "currentTask": "Claude Code 스타일 하니스 개선 작업",
+  "currentTaskStatus": "planned",
+  "currentSessionId": "loop-24cdfb3798",
+  "lastRoute": {
+    "at": "2026-04-01T14:46:24+09:00",
+    "prompt": "Claude Code 스타일 하니스 개선 작업",
+    "commands": [
+      "task-trigger",
+      "kairos-tick",
+      "undercover-guard"
+    ],
+    "tools": [
+      "sessions_spawn"
+    ]
+  },
+  "quietHours": {
+    "start": "23:00",
+    "end": "08:00"
+  },
+  "publicRepoGuard": {
+    "enabled": true,
+    "bannedTerms": [
+      "internal codename",
+      "unreleased model",
+      "secret link",
+      "private slack",
+      "co-authored-by"
+    ]
+  },
+  "tokenBudget": {
+    "maxTokens": 120000,
+    "warnAtPct": 75,
+    "hardAtPct": 90,
+    "currentEstimate": 18000
+  },
+  "contextUtilizationPct": 15.0,
+  "bridgeMode": {
+    "enabled": false,
+    "target": null,
+    "lastBridgeAt": null
+  },
+  "triggersEnabled": true,
+  "lastVerificationAt": "2026-04-01T14:46:24+09:00",
+  "lastMemoryExtractAt": null,
+  "lastCheckpointAt": "2026-04-01T14:46:24+09:00"
+}

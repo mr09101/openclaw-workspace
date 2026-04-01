@@ -1,0 +1,86 @@
+[
+  {
+    "name": "KAIROS",
+    "status": "enabled",
+    "kind": "assistant-mode",
+    "notes": "always-on proactive tick + brief mode + blocking budget"
+  },
+  {
+    "name": "DREAM",
+    "status": "enabled",
+    "kind": "memory",
+    "notes": "3-gate / 4-phase memory consolidation plan"
+  },
+  {
+    "name": "COORDINATOR_MODE",
+    "status": "enabled",
+    "kind": "orchestration",
+    "notes": "research → synthesis → implementation → verification"
+  },
+  {
+    "name": "ULTRAPLAN_GATE",
+    "status": "enabled",
+    "kind": "planning",
+    "notes": "깊은 작업을 장기 planning 후보로 판정"
+  },
+  {
+    "name": "TOKEN_BUDGET",
+    "status": "enabled",
+    "kind": "context-control",
+    "notes": "토큰/컨텍스트 사용량 상태 추적 및 경고"
+  },
+  {
+    "name": "COMPACTION_REMINDERS",
+    "status": "enabled",
+    "kind": "context-control",
+    "notes": "컨텍스트 사용량이 높을 때 정리 리마인더"
+  },
+  {
+    "name": "VERIFICATION_AGENT",
+    "status": "enabled",
+    "kind": "verification",
+    "notes": "구현 후 테스트/검증 체크리스트 생성"
+  },
+  {
+    "name": "AGENT_TRIGGERS",
+    "status": "enabled",
+    "kind": "automation",
+    "notes": "task trigger/queue 기반 후속 실행 후보 관리"
+  },
+  {
+    "name": "BRIDGE_MODE",
+    "status": "enabled",
+    "kind": "integration",
+    "notes": "브리지/원격 연동 상태층"
+  },
+  {
+    "name": "EXTRACT_MEMORIES",
+    "status": "enabled",
+    "kind": "memory",
+    "notes": "대화 후 메모리 추출 후보 표시"
+  },
+  {
+    "name": "BUILTIN_EXPLORE_PLAN_AGENTS",
+    "status": "enabled",
+    "kind": "orchestration",
+    "notes": "explore/plan 역할을 coordinator 안에 내장"
+  },
+  {
+    "name": "TURN_LOOP",
+    "status": "enabled",
+    "kind": "orchestration",
+    "notes": "route → coordinator → verification → budget → task/checkpoint 세션 루프"
+  },
+  {
+    "name": "SESSION_STORE",
+    "status": "enabled",
+    "kind": "state",
+    "notes": "turn-loop 결과와 checkpoint를 세션 파일에 저장"
+  },
+  {
+    "name": "VOICE_MODE",
+    "status": "deferred",
+    "kind": "input",
+    "notes": "음성 입력은 현재 우선순위 낮음"
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "name": "last30days-research",
+    "responsibility": "최근 30일 리서치 브리핑 생성 및 비교 리서치 수행",
+    "source_hint": "scripts/last30days_research.py",
+    "keywords": ["research", "last30", "최근", "비교", "trend", "reddit", "hn"]
+  },
+  {
+    "name": "team-handoff",
+    "responsibility": "SONIC DEV TEAM 기준으로 작업을 역할별로 분해하고 handoff를 생성",
+    "source_hint": "SONIC DEV TEAM.md + templates/agent_handoff.md",
+    "keywords": ["handoff", "team", "개발", "분해", "계획", "역할", "backend", "frontend", "기능", "추가", "버그", "fix", "login", "로그인"]
+  },
+  {
+    "name": "heartbeat-check",
+    "responsibility": "HEARTBEAT.md 기준 주기 점검과 overdue check 실행",
+    "source_hint": "HEARTBEAT.md + memory/heartbeat-state.json",
+    "keywords": ["heartbeat", "check", "점검", "상태", "cron", "health"]
+  },
+  {
+    "name": "memory-recall",
+    "responsibility": "장기/일일 메모 검색과 회수로 prior context를 복원",
+    "source_hint": "MEMORY.md + memory/*.md",
+    "keywords": ["memory", "remember", "기억", "지난번", "prior", "context"]
+  },
+  {
+    "name": "github-pattern-import",
+    "responsibility": "외부 GitHub 구조/규칙을 cherry-pick 방식으로 로컬 이식",
+    "source_hint": "runtime/operating_rules/imported_from_top_repos.md",
+    "keywords": ["github", "repo", "import", "pattern", "이식", "clone", "구조"]
+  },
+  {
+    "name": "runtime-summary",
+    "responsibility": "현재 로컬 구조와 명령/도구 인벤토리를 요약 출력",
+    "source_hint": "scripts/sonic_runtime_structure.py",
+    "keywords": ["summary", "manifest", "runtime", "구조", "inventory", "tool", "command"]
+  },
+  {
+    "name": "route-request",
+    "responsibility": "들어온 요청을 command/tool/role에 자동 라우팅",
+    "source_hint": "scripts/sonic_runtime_structure.py route",
+    "keywords": ["route", "routing", "분류", "어디로", "흐름", "요청"]
+  },
+  {
+    "name": "kairos-tick",
+    "responsibility": "KAIROS 스타일 proactive tick 판단과 brief 응답 정책 실행",
+    "source_hint": "runtime/assistant_structure/state.json + scripts/sonic_runtime_structure.py tick",
+    "keywords": ["kairos", "proactive", "tick", "brief", "먼저", "자동", "quiet"]
+  },
+  {
+    "name": "dream-pass",
+    "responsibility": "Dream 4단계 기준 메모리 정리 패스 계획/상태 표시",
+    "source_hint": "runtime/assistant_structure/state.json + scripts/sonic_runtime_structure.py dream-plan",
+    "keywords": ["dream", "memory", "consolidate", "정리", "메모리", "회고", "durable"]
+  },
+  {
+    "name": "coordinator-plan",
+    "responsibility": "Coordinator Mode 식 연구→종합→구현→검증 단계 계획 생성",
+    "source_hint": "scripts/sonic_runtime_structure.py coordinator-plan",
+    "keywords": ["coordinator", "parallel", "research", "synthesis", "implementation", "verification", "병렬", "기능", "추가", "개발", "테스트", "구현"]
+  },
+  {
+    "name": "undercover-guard",
+    "responsibility": "공개 저장소 작업 시 내부/민감한 문구 노출 방지 가드",
+    "source_hint": "runtime/assistant_structure/policies.json",
+    "keywords": ["undercover", "guard", "public", "repo", "commit", "pr", "노출", "보안"]
+  },
+  {
+    "name": "ultraplan-gate",
+    "responsibility": "깊은 계획 작업을 원격/장기 세션 후보로 올릴지 판단",
+    "source_hint": "runtime/assistant_structure/policies.json",
+    "keywords": ["ultraplan", "remote", "deep", "planning", "장기", "복잡", "30분"]
+  },
+  {
+    "name": "feature-registry",
+    "responsibility": "활성 feature surface와 enabled/deferred 상태를 표시",
+    "source_hint": "runtime/assistant_structure/features.json",
+    "keywords": ["feature", "flag", "registry", "기능", "활성화", "enabled"]
+  },
+  {
+    "name": "verification-plan",
+    "responsibility": "구현 후 검증 체크리스트와 테스트 축을 생성",
+    "source_hint": "scripts/sonic_runtime_structure.py verify-plan",
+    "keywords": ["verify", "verification", "테스트", "검증", "qa", "checklist"]
+  },
+  {
+    "name": "token-budget-check",
+    "responsibility": "컨텍스트/토큰 예산 상태를 계산하고 경고를 표시",
+    "source_hint": "scripts/sonic_runtime_structure.py token-budget",
+    "keywords": ["token", "budget", "context", "compaction", "예산", "토큰"]
+  },
+  {
+    "name": "compaction-reminder",
+    "responsibility": "컨텍스트 사용량이 높을 때 정리 리마인더를 생성",
+    "source_hint": "scripts/sonic_runtime_structure.py compaction-reminder",
+    "keywords": ["compaction", "reminder", "context", "정리", "압축"]
+  },
+  {
+    "name": "bridge-status",
+    "responsibility": "브리지/원격 연동 상태를 표시하고 on/off를 관리",
+    "source_hint": "scripts/sonic_runtime_structure.py bridge-status",
+    "keywords": ["bridge", "remote", "ide", "연동", "원격"]
+  },
+  {
+    "name": "task-trigger",
+    "responsibility": "로컬 task queue에 후속 작업을 추가/조회",
+    "source_hint": "scripts/sonic_runtime_structure.py tasks / task-add",
+    "keywords": ["task", "trigger", "queue", "background", "후속", "작업"]
+  },
+  {
+    "name": "turn-loop",
+    "responsibility": "개발 요청을 route→coordinator→verification→budget→task→checkpoint 순서로 세션 실행",
+    "source_hint": "scripts/sonic_runtime_structure.py turn-loop",
+    "keywords": ["turn-loop", "loop", "세션", "체크포인트", "개발", "흐름", "자동"]
+  },
+  {
+    "name": "session-history",
+    "responsibility": "turn-loop 세션과 checkpoint 이력을 조회",
+    "source_hint": "scripts/sonic_runtime_structure.py sessions / session-show",
+    "keywords": ["session", "history", "checkpoint", "이력", "세션"]
+  }
+]
