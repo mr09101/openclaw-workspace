@@ -155,3 +155,5 @@
 - 2026-03-30 재확인: Windows TradingView/Desktop CDP를 WSL/OpenClaw에서 붙일 때는 **앱의 remote-debugging 포트와 portproxy 진입 포트를 반드시 분리**한다(권장: 앱 9224, WSL 진입 프록시 9225).
 - 2026-04-01 확정: 외부 상위 repo/오픈소스는 설치·채굴 출처로만 활용하고, 실제 운영 반영은 로컬 문서/스크립트/스킬로 이식하는 clean-room/cherry-pick 방식을 기본값으로 유지한다.
 - 2026-04-01 확정: 개발 하니스는 `runtime/assistant_structure` + `scripts/sonic_runtime_structure.py` 중심의 로컬 구조로 계속 키우고, 외부 repo 의존보다 로컬 운영 계층 강화에 우선순위를 둔다.
+- 2026-04-02 확정: 장시간 백그라운드 작업은 `scripts/completion_first_runner.py`로 감싸 종료 직후 system event 1차 완료 보고를 우선 보내는 흐름을 기본 운영으로 유지한다.
+- 2026-04-02 확정: 메모리/인사이트 운영의 기준 산출물은 `runtime/memory/memory.db`, `runtime/insights/*`, `runtime/knowledge_index.json`으로 보고, 저장뿐 아니라 검색·반영 루프가 실제 파일로 남는 구조를 유지한다.
