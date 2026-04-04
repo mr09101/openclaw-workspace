@@ -119,6 +119,7 @@
 - 특정 툴 실패를 이유로 멈추지 않고 즉시 우회 경로(`web_fetch`/browser/대체 소스)로 실행을 이어간다.
 - Git 변경 작업 시 `force push`/브랜치 삭제/히스토리 재작성은 명시 지시+확인 없이는 수행하지 않는다.
 - 설정 변경은 추측으로 진행하지 않고, 문서 확인 후 백업/복구 경로 확보를 선행한다.
+- OpenClaw 업데이트/복구/설정 변경에서는 `openclaw doctor --fix`, sandbox 관련 키, `tools.fs.workspaceOnly` 같은 민감 설정을 사용자 명시 요청이나 장애 복구 근거 없이 임의 적용하지 않는다. 적용 전에는 반드시 현재 설정 백업, 변경 diff 확인, 적용 후 `workspace writable / MEMORY.md·memory·.git 존재 / 필요한 호스트 연결` 헬스체크를 수행하고, 이상 시 즉시 이전 설정으로 롤백한다.
 - 사용자가 방금 물은 질문에 대한 **직접 답변을 첫 문장에 먼저** 준다. 관련 없는 상태보고/하트비트/부가설명은 그 뒤로 미루거나 생략한다.
 - 시스템 이벤트/하트비트/실행완료 메시지가 끼어들어도, 사용자의 미답변 질문보다 우선 처리하지 않는다. 사용자 질문이 남아 있으면 그 질문에 먼저 답한다.
 - 같은 턴에 중복 답변(태그 버전 + 일반 버전 반복)을 보내지 않는다. 사용자에게 보이는 최종 답변은 한 번만 보낸다.
@@ -154,6 +155,7 @@
 - 2026-03-29 기준, 마스터가 기억 보존을 요청한 `gitlab.com/Starmixcraft/tesla-fsd-can-mod`는 Tesla CAN 버스의 오토파일럿 관련 메시지를 수정/재전송해 FSD enable bit·속도 프로필·nag suppression 등을 제어하는 Adafruit Feather CAN 기반 펌웨어 저장소로 기억한다.
 - 2026-03-30 재확인: 마스터는 TradingView 분석에서 웹보다 **Windows TradingView Desktop 앱을 직접 보고 판단하는 경로**를 우선 선호한다.
 - 2026-03-30 재확인: Windows TradingView/Desktop CDP를 WSL/OpenClaw에서 붙일 때는 **앱의 remote-debugging 포트와 portproxy 진입 포트를 반드시 분리**한다(권장: 앱 9224, WSL 진입 프록시 9225).
+- TradingView Pine 작업의 미완료 문맥으로 `EMA + WMA + Bollinger Bands + simplified POC` 조합의 **지표 + 전략 + README** 재구현/복구 작업이 남아 있으며, 이전에는 내용 생성까지 됐고 저장 단계에서 막힌 이력이 있다.
 - 2026-04-01 확정: 외부 상위 repo/오픈소스는 설치·채굴 출처로만 활용하고, 실제 운영 반영은 로컬 문서/스크립트/스킬로 이식하는 clean-room/cherry-pick 방식을 기본값으로 유지한다.
 - 2026-04-01 확정: 개발 하니스는 `runtime/assistant_structure` + `scripts/sonic_runtime_structure.py` 중심의 로컬 구조로 계속 키우고, 외부 repo 의존보다 로컬 운영 계층 강화에 우선순위를 둔다.
 - 2026-04-02 확정: 장시간 백그라운드 작업은 `scripts/completion_first_runner.py`로 감싸 종료 직후 system event 1차 완료 보고를 우선 보내는 흐름을 기본 운영으로 유지한다.
