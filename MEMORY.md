@@ -161,3 +161,5 @@
 - 2026-04-02 확정: 장시간 백그라운드 작업은 `scripts/completion_first_runner.py`로 감싸 종료 직후 system event 1차 완료 보고를 우선 보내는 흐름을 기본 운영으로 유지한다.
 - 2026-04-02 확정: 메모리/인사이트 운영의 기준 산출물은 `runtime/memory/memory.db`, `runtime/insights/*`, `runtime/knowledge_index.json`으로 보고, 저장뿐 아니라 검색·반영 루프가 실제 파일로 남는 구조를 유지한다.
 - 2026-04-04 재확인: 마감 점검 시 작업트리에 다른 tracked 변경(예: runtime 상태파일 수정)이 함께 있어도, 자동 커밋 범위는 그 턴에서 갱신한 메모 기록(`memory/*`, `MEMORY.md`)으로 분리해 닫는 운영을 유지한다.
+- 2026-04-05 결정: Karpathy의 `llm-wiki` 패턴을 워크스페이스에 도입한다. 전면 롤아웃보다 먼저 `knowledge/` 레이어를 만들어 트레이딩/전략/자동화 지식부터 raw/wiki/schema 3층 구조로 축적하고, 기존 `MEMORY.md`/`memory/*.md`와 병행 운용한다.
+- 2026-04-06 확정: `korean-story-shorts-generator`는 clean-room MVP로 유지하며, 입력 경로를 `manual_story.yaml` + 공개 URL ingestion(본문 추출 → 검토용 manual_story 생성) 2축으로 운용한다. 자동 수집물은 업로드 완성본으로 간주하지 않고 항상 사람 검수 전제를 유지한다.
