@@ -22,6 +22,7 @@
 - 마감 점검 시 Git은 `tracked 변경` 기준으로만 커밋/푸시를 판단하고, `untracked-only` 상태에서는 메모 갱신 후 결과 보고로 마감하는 원칙을 유지함.
 - 마감 점검 체크리스트(일일 메모/장기 메모/git push/짧은 결과보고)는 크론 이벤트 수신 턴에서 한 번에 끝내고, 사용자에게는 결과만 전달하는 운영을 유지함.
 - 일일 마감 점검 시 해당 날짜 `memory/YYYY-MM-DD.md`가 없으면 즉시 생성해 핵심 요약을 남기는 원칙을 유지함.
+- 2026-04-09 기준 `btc-7step-checklist-alert`, `stock-7step-checklist-alert` 두 체크리스트 자동 알림 크론은 사용자 요청으로 중지(disabled) 상태를 유지한다.
 - 향후 브리핑에서는 티이엠씨(425040) 종목을 기본 제외 대상으로 유지.
 - Gmail/Calendar 관련 구글 연동 점검(gog 기반)은 별도 재지시 전까지 중지 상태를 유지.
 - HEARTBEAT 주기 점검 기본셋은 `tasks/git/system`만 유지하고, email/calendar 점검은 비활성 정책으로 운용.
