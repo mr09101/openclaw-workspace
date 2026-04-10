@@ -151,6 +151,7 @@ const dispenseCan = document.getElementById('dispense-can');
 const dispenseCanLabel = document.getElementById('dispense-can-label');
 const pickupToggle = document.getElementById('pickup-toggle');
 const pickupDoor = document.querySelector('.pickup-door');
+const flowSteps = Array.from(document.querySelectorAll('.flow-step'));
 
 const COIN_AMOUNT = 100;
 
@@ -206,12 +207,19 @@ function getTopicBySlot(slot) {
   return topics.find((topic) => topic.slot === slot) || null;
 }
 
+function updateFlowStep(stepIndex) {
+  flowSteps.forEach((step, index) => {
+    step.classList.toggle('is-active', index === stepIndex - 1);
+  });
+}
+
 function updateSelection(topic, sourceLabel = '상품 선택') {
   selectedTopicId = topic.id;
   activeTopicLabel.textContent = topic.labelKo;
   selectionReadout.textContent = `${topic.slot}번`;
   machineStatus.textContent = '선택됨';
-  statusDetail.textContent = `${sourceLabel} · ${topic.labelKo} 선택 완료. 동전을 넣고 확인을 눌러 주세요.`;
+  statusDetail.textContent = `${sourceLabel} · ${topic.labelKo} 선택 완료. 이제 100원을 넣고 배출 버튼을 눌러 주세요.`;
+  updateFlowStep(2);
   renderTopics();
 }
 
@@ -220,7 +228,7 @@ function updatePaymentUi() {
   if (insertedAmount > 0) {
     paymentNote.textContent = `${insertedAmount}원이 들어 있습니다. 상품 한 개당 100원씩 차감됩니다.`;
   } else {
-    paymentNote.textContent = '확인 전에 동전을 먼저 넣어 주세요.';
+    paymentNote.textContent = '상품을 고른 뒤 100원을 넣고 배출 버튼을 눌러 주세요.';
   }
 }
 
@@ -240,11 +248,13 @@ function insertCoin() {
 
   if (selectedTopicId) {
     const topic = getTopicById(selectedTopicId);
-    statusDetail.textContent = `${topic.labelKo} 선택 완료. 확인을 누르면 배출됩니다.`;
+    statusDetail.textContent = `${topic.labelKo} 선택 완료. 배출 버튼을 누르면 바로 내려옵니다.`;
+    updateFlowStep(2);
     return;
   }
 
-  statusDetail.textContent = '동전이 들어갔습니다. 이제 상품 번호를 선택해 주세요.';
+  statusDetail.textContent = '동전이 들어갔습니다. 이제 상품을 고르거나 번호를 선택해 주세요.';
+  updateFlowStep(1);
 }
 
 function clearSelection() {
@@ -254,15 +264,16 @@ function clearSelection() {
   machineStatus.textContent = insertedAmount > 0 ? '결제 대기' : '대기 중';
   statusDetail.textContent =
     insertedAmount > 0
-      ? `동전 ${insertedAmount}원이 들어 있습니다. 진열창을 누르거나 번호를 선택해 주세요.`
-      : '진열창을 누르거나 번호를 선택한 뒤, 동전을 넣고 확인을 눌러 주세요.';
+      ? `동전 ${insertedAmount}원이 들어 있습니다. 이제 원하는 상품을 골라 주세요.`
+      : '먼저 상품을 고른 뒤 결제하고, 마지막에 수령 버튼으로 문장을 꺼내 주세요.';
+  updateFlowStep(1);
   renderTopics();
 }
 
 function setPickupDoor(open) {
   pickupDoorOpen = open;
   pickupDoor.classList.toggle('is-open', open);
-  pickupToggle.textContent = '꺼내기';
+  pickupToggle.textContent = open ? '수령 완료' : '수령하기';
 }
 
 function clearDispensedItem() {
@@ -368,7 +379,7 @@ function renderTopics() {
   infoButton.textContent = '안내';
   infoButton.addEventListener('click', () => {
     machineStatus.textContent = '이용 안내';
-    statusDetail.textContent = '상품 선택 후 동전을 넣고 확인을 누르면 배출됩니다.';
+    statusDetail.textContent = '1단계 상품 선택 → 2단계 결제 → 3단계 수령 순서로 이용하면 됩니다.';
   });
   selectionPad.appendChild(infoButton);
 }
@@ -442,8 +453,9 @@ function dispenseTopic(topicId, sourceLabel = '직접 선택') {
   machineStatus.textContent = '배출 완료';
   statusDetail.textContent =
     insertedAmount > 0
-      ? `${sourceLabel} · ${topic.labelKo}가 배출되었습니다. 이제 꺼내기를 눌러 문장을 확인하세요. 남은 금액은 ${insertedAmount}원입니다.`
-      : `${sourceLabel} · ${topic.labelKo}가 배출되었습니다. 이제 꺼내기를 눌러 문장을 확인하세요.`;
+      ? `${sourceLabel} · ${topic.labelKo}가 배출되었습니다. 이제 수령하기를 눌러 문장을 확인하세요. 남은 금액은 ${insertedAmount}원입니다.`
+      : `${sourceLabel} · ${topic.labelKo}가 배출되었습니다. 이제 수령하기를 눌러 문장을 확인하세요.`;
+  updateFlowStep(3);
 
   if (insertedAmount > 0) {
     paymentNote.textContent = `남은 ${insertedAmount}원입니다. 먼저 상품을 꺼낸 뒤 한 개 더 선택할 수 있습니다.`;
@@ -464,8 +476,9 @@ coinButton.addEventListener('click', insertCoin);
 pickupToggle.addEventListener('click', () => {
   if (!dispensedTopicId || !pendingDispense) {
     machineStatus.textContent = '대기 중';
-    statusDetail.textContent = '배출된 상품이 없습니다. 상품을 선택하고 결제를 마쳐 주세요.';
+    statusDetail.textContent = '아직 배출된 상품이 없습니다. 먼저 상품을 고르고 결제해 주세요.';
     setPickupDoor(false);
+    updateFlowStep(selectedTopicId ? 2 : 1);
     return;
   }
 
@@ -480,21 +493,24 @@ pickupToggle.addEventListener('click', () => {
   machineStatus.textContent = insertedAmount > 0 ? '수령 완료' : '대기 중';
   statusDetail.textContent =
     insertedAmount > 0
-      ? `상품 수령 완료. 문장이 공개되었습니다. 남은 ${insertedAmount}원으로 다음 상품을 선택할 수 있습니다.`
-      : '상품 수령 완료. 문장이 공개되었습니다. 다음 이용을 위해 100원을 넣어 주세요.';
+      ? `상품 수령 완료. 문장이 공개되었습니다. 남은 ${insertedAmount}원으로 다음 상품을 바로 고를 수 있습니다.`
+      : '상품 수령 완료. 문장이 공개되었습니다. 다음 이용을 위해 다시 100원을 넣어 주세요.';
+  updateFlowStep(1);
 });
 cancelButton.addEventListener('click', clearSelection);
 confirmButton.addEventListener('click', () => {
   if (!selectedTopicId) {
     machineStatus.textContent = '선택 필요';
-    statusDetail.textContent = '먼저 상품을 선택해 주세요. 진열창을 누르거나 번호를 입력하면 됩니다.';
+    statusDetail.textContent = '먼저 상품을 선택해 주세요. 진열창을 누르거나 번호 패드를 사용하면 됩니다.';
+    updateFlowStep(1);
     return;
   }
 
   if (insertedAmount < COIN_AMOUNT) {
     machineStatus.textContent = '결제 필요';
-    statusDetail.textContent = '동전이 들어가지 않았습니다. 100원을 넣은 뒤 확인을 눌러 주세요.';
-    paymentNote.textContent = '결제가 필요합니다. 아래 버튼으로 100원을 넣어 주세요.';
+    statusDetail.textContent = '아직 결제가 안 됐습니다. 100원을 넣은 뒤 배출 버튼을 눌러 주세요.';
+    paymentNote.textContent = '결제가 필요합니다. 위 버튼으로 100원을 넣어 주세요.';
+    updateFlowStep(2);
     return;
   }
 

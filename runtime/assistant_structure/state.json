@@ -5,9 +5,9 @@
   "lastDreamAt": null,
   "sessionCountSinceDream": 0,
   "dreamLock": false,
-  "currentTask": "OpenClaw에 로그인 기능 추가하고 테스트까지 해줘",
-  "currentTaskStatus": "planned",
-  "currentSessionId": "loop-f7d9198ec3",
+  "currentTask": null,
+  "currentTaskStatus": "idle",
+  "currentSessionId": null,
   "lastRoute": {
     "at": "2026-04-01T14:51:17+09:00",
     "prompt": "OpenClaw에 로그인 기능 추가하고 테스트까지 해줘",

@@ -14,9 +14,11 @@ This version explicitly corrects the earlier mismatch with the request:
 
 ## Features
 
+- Desktop-style vending machine UI (`index.html`)
+- Mobile-first vending machine UI (`mobile.html`)
 - Eight Korean small-talk topics shown as shelf products
 - 3-5 Korean conversation starters per dispense
-- Topic selection from the product window or the right-side control pad
+- Topic selection from the product window or the control pad
 - `랜덤`, `행운`, and `확인` actions
 - Local-only history stored in `localStorage`
 - Runs directly in the browser with no build step
@@ -29,11 +31,14 @@ Option 1:
 python3 -m http.server 4173
 ```
 
-Then open `http://localhost:4173`.
+Then open one of these:
+
+- Desktop: `http://localhost:4173/index.html`
+- Mobile: `http://localhost:4173/mobile.html`
 
 Option 2:
 
-Open `index.html` directly in a browser.
+Open `index.html` or `mobile.html` directly in a browser.
 
 ## Validation
 
@@ -46,10 +51,24 @@ node --check app.js
 Lightweight static sanity check:
 
 ```bash
-node -e "const fs=require('fs');const html=fs.readFileSync('index.html','utf8');const js=fs.readFileSync('app.js','utf8');['topic-grid','selection-pad','prompt-window','history-list','machine-status','confirm-button'].forEach((id)=>{if(!html.includes(\`id=\\\"${id}\\\"\`)) throw new Error(\`Missing ${id}\`);});['A1','B2','labelEn','conversation vending machine'].forEach((text)=>{if(html.includes(text)||js.includes(text)) throw new Error(\`Unexpected legacy label: ${text}\`);});console.log('static structure ok');"
+node - <<'NODE'
+const fs = require('fs');
+const js = fs.readFileSync('app.js', 'utf8');
+['index.html', 'mobile.html'].forEach((file) => {
+  const html = fs.readFileSync(file, 'utf8');
+  ['topic-grid','selection-pad','prompt-window','history-list','machine-status','confirm-button','coin-button','pickup-toggle'].forEach((id) => {
+    if (!html.includes(`id="${id}"`)) throw new Error(`${file}: Missing ${id}`);
+  });
+  ['A1','B2','labelEn','conversation vending machine'].forEach((text) => {
+    if (html.includes(text) || js.includes(text)) throw new Error(`${file}: Unexpected legacy label ${text}`);
+  });
+});
+console.log('static structure ok');
+NODE
 ```
 
 ## Notes
 
 - No backend is used.
 - All history remains in the current browser only.
+- `mobile.html` is a dedicated mobile layout, not just a squeezed desktop page.

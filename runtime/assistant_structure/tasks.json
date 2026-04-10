@@ -5,26 +5,5 @@
     "status": "done",
     "trigger": "manual",
     "notes": "Reddit/HN 전용 수집과 route/state 구조 반영"
-  },
-  {
-    "id": "task-openclaw에-로그인-기능-추가하고-테스트까지-해줘-fae81a",
-    "title": "OpenClaw에 로그인 기능 추가하고 테스트까지 해줘",
-    "status": "queued",
-    "trigger": "turn-loop",
-    "notes": ""
-  },
-  {
-    "id": "task-claude-code-스타일-하니스-개선-작업-8460e4",
-    "title": "Claude Code 스타일 하니스 개선 작업",
-    "status": "queued",
-    "trigger": "turn-loop",
-    "notes": ""
-  },
-  {
-    "id": "task-openclaw에-로그인-기능-추가하고-테스트까지-해줘-f89f17",
-    "title": "OpenClaw에 로그인 기능 추가하고 테스트까지 해줘",
-    "status": "queued",
-    "trigger": "turn-loop",
-    "notes": ""
   }
 ]
