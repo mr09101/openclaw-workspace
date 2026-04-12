@@ -167,3 +167,4 @@
 - 2026-04-07 확정: `korean-story-shorts-generator`의 공개 URL 자동 추출은 이미지 위주 게시물에서 파일명만 빨려 들어가는 실패가 발생할 수 있으므로, **실제 이미지/B-roll 없이 자동 산출물을 업로드 가능본으로 취급하지 않는다**. 쇼츠 품질 평가는 "상위권 실제 레퍼런스 재현 여부"를 기준으로 하고, 보고도 `업로드 가능/불가`를 과장 없이 이분화한다.
 - 2026-04-08 기준, 마스터가 첨부한 `KDP Portal 작업 정리 (최종 통합본)`을 KDP Portal 관련 대화의 기준 문서로 기억한다. 프로젝트 축은 라이나생명보험 KDP Portal(DB INC 프리랜서), 백엔드는 Spring Boot/JPA-Hibernate/QueryDSL/SQL Server, 패키지 축은 `com.kdp.portal`(role/approval/batch) + `com.kdp.cmm`(board/file/common)이며, 실수 포인트로는 `@IdClass` vs `@EmbeddedId`, QueryDSL JPQL 필드명, `yyyyMMdd` 날짜 포맷, `roleAprvCd` String 타입, Eclipse Full Clean/Rebuild 필요가 있다.
 - 2026-04-10 마감 점검 재확인: 크론 원문에 `tracked 변경이 있으면 commit 후 origin/master push`가 명시되면, 메모 파일만 분리하는 기존 관성보다 **해당 턴의 tracked 변경 전체 커밋·푸시 지시를 우선 적용**한다.
+- 2026-04-12 재확인: 하루 마감 점검에서는 당일 `memory/YYYY-MM-DD.md` 생성과 `MEMORY.md` 최소 갱신을 먼저 완료하고, Git 정리는 대규모 untracked 작업물과 섞지 않도록 메모 관련 변경만 분리 커밋·푸시하는 운영을 유지한다.
