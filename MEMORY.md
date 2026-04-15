@@ -175,38 +175,39 @@
 - 2026-04-13 확정: Q00/ouroboros는 워크스페이스 로컬 clone(`external/ouroboros`) + 전용 venv(`.venvs/ouroboros`) + 로컬 MCP 엔트리로 붙인 구성을 기준선으로 유지한다.
 - 2026-04-14 확정: research-skill-graph/llm wiki 계열 외부 인사이트는 "새 시스템으로 교체"보다 현재 로컬 `knowledge/`·`MEMORY`·인사이트 파이프라인을 강화하는 참고 모델로 흡수하는 방향을 기본값으로 둔다.
 - 2026-04-14 확정: Obsidian은 지식 파일을 보는/편집하는 프론트엔드, llm wiki는 LLM이 읽고 갱신하는 지식 구조/운영 방식으로 구분하며, 상호 대체제가 아니라 병행 가능한 계층으로 기억한다.
+- 2026-04-15 기준 `shared-food-map/shared-food-map`는 카카오맵에서 구글맵 전환 작업이 진행된 개인 테스트용 공유지도 프로젝트로 기억한다. 구글맵 적용 시 `client/.env`의 `VITE_GOOGLE_MAPS_API_KEY` 환경변수가 필요하고, 소액 가능성은 낮아도 billing 연결이 필요한 pay-as-you-go 구조라는 점을 함께 기억한다.
 
 <!-- HERMES_BRIDGE_SYNC_START -->
 ## Hermes 브리지 최신 동기화(휘발성)
 - 메인 진입: Hermes 텔레그램 DM
 - 용도: 마스터가 Hermes에만 말해도 OpenClaw가 최신 맥락을 이어받기 위한 최근 대화 요약
-- 마지막 갱신: 2026-04-14T19:03:23+09:00
+- 마지막 갱신: 2026-04-15T22:10:34+09:00
 
 ### 최근 턴 1
-- 시각(KST): 2026-04-14T17:06:17+09:00
+- 시각(KST): 2026-04-15T22:00:12+09:00
 - Hermes 세션: 20260413_075649_f1f8ef6b
-- 사용자: exa는 중국쪽 같은데 지우고 x는 어떻게된거야?
-- Hermes 응답: 맞습니다, 마스터. Exa는 방금 뺐습니다. 지금 실제로 처리한 것 1. 주식 뉴스 파이프라인에서 Exa 제거 파일: /home/hskim/.openclaw/workspace/trading-automation/stocks/scripts/stock_news_collector.py 바뀐 점: 이전: Google News RSS + Exa 지금: Google News RSS만 사용 2. Exa 관련 테스트 코드 제거 파일: /home/hskim/.openclaw/workspace/trading-aut…
+- 사용자: [The user sent a document: 'shared-food-map.zip'. The file is saved at: /home/hskim/.hermes/cache/documents/doc_8b4594e021a8_shared-food-map.zip. Ask the user what they'd like you to do with it.]
+- Hermes 응답: 마스터, shared-food-map.zip 받았습니다. 파일 위치: - /home/hskim/.hermes/cache/documents/doc_8b4594e021a8_shared-food-map.zip 이걸로 할 수 있는 건 보통 이런 쪽입니다. - 압축 풀고 내부 구조 확인 - 웹/앱 프로젝트면 실행 방법 파악 - 코드 리뷰 - 특정 기능 수정 - 현재 작업에 붙일 수 있는지 판단 - README 기준으로 용도 1줄 요약 원하시는 작업을 말씀해주시면 바로 처리하겠습니다.
 ### 최근 턴 2
-- 시각(KST): 2026-04-14T17:07:33+09:00
+- 시각(KST): 2026-04-15T22:04:46+09:00
 - Hermes 세션: 20260413_075649_f1f8ef6b
-- 사용자: exa가 머야 근데
-- Hermes 응답: 마스터, Exa는 쉽게 말하면 “AI용 웹 검색 엔진/API”입니다. 정확히는: - 일반 검색처럼 키워드만 맞추는 게 아니라 - 질문 의미를 기준으로 웹 문서를 찾아주는 semantic search 서비스입니다. - 검색 결과를 LLM이 바로 먹기 좋게 붙이는 용도로 많이 씁니다. 제가 확인한 기준으로는 - Exa는 중국 서비스가 아니라 - SF 기반 연구/검색 서비스 쪽으로 소개되고 있습니다. 우리 쪽에서 하려던 건 - Exa 자체를 앱처럼 쓰는 게 아니라 - Agent-Reach가 Exa 검…
+- 사용자: 이거 공유지도를 만들어본건데 카카오api써서 만든거거든 근데 구글맵으로 하고싶어
+- Hermes 응답: 마스터, 구글맵 기준으로 바로 바꿔놨습니다. 작업한 위치 - /home/hskim/.openclaw/workspace/shared-food-map/shared-food-map 바꾼 내용 - 카카오 지도 컴포넌트 사용 부분을 구글 지도 컴포넌트로 교체 - 새 훅 추가 - client/src/hooks/useGoogleMap.js - 새 지도 컴포넌트 추가 - client/src/components/Map/GoogleMap.jsx - client/src/components/Map/GoogleMap.…
 ### 최근 턴 3
-- 시각(KST): 2026-04-14T17:33:51+09:00
+- 시각(KST): 2026-04-15T22:07:58+09:00
 - Hermes 세션: 20260413_075649_f1f8ef6b
-- 사용자: 야이 그럼 내가 중국 머시기라고 햇을때 아니라고 설명햇어야지 다시 붙여 그럼
-- Hermes 응답: 맞습니다, 마스터. 그때는 제가 먼저 “Exa는 중국 서비스가 아니다”라고 설명했어야 했습니다. 그건 제 판단 미스였습니다. 지금 바로 다시 붙였고, 실제로 검증까지 끝냈습니다. 현재 복구 완료된 것 1) Exa 설정 복구 파일: ~/.mcporter/mcporter.json 현재 상태: exa 서버 다시 등록됨 baseUrl = https://mcp.exa.ai/mcp 2) 주식 뉴스 수집기에 Exa 보조 루트 재연결 파일: trading-automation/stocks/scripts/stoc…
+- 사용자: 구글 머 어케넣어야해?
+- Hermes 응답: 마스터, 넣는 건 아주 간단합니다. 지금 이 프로젝트는 client 쪽 `client/.env`에 구글맵 API 키용 환경변수(`VITE_GOOGLE_MAPS_API_KEY`)를 추가하면 됩니다. 이후 Google Cloud Console에서 Maps JavaScript API 키를 발급받아 넣는 순서로 안내했습니다.
 ### 최근 턴 4
-- 시각(KST): 2026-04-14T19:01:59+09:00
+- 시각(KST): 2026-04-15T22:09:32+09:00
 - Hermes 세션: 20260413_075649_f1f8ef6b
-- 사용자: https://x.com/i/status/2043963058813653033 이 아티클 보고 우리한테 쓸수잇는지 파악해줘
-- Hermes 응답: 마스터, 결론부터 말하면 이 아티클은 우리한테 “쓸 수 있습니다.” 다만 “새 시스템으로 갈아타기”가 아니라 “이미 있는 llm wiki를 연구 시스템답게 보강하는 참고 모델”로 쓰는 게 맞습니다. 제가 실제로 확인한 것 - X 로그인벽 우회가 아니라, X focus mode에서 아티클 본문을 직접 읽었습니다. - 아티클 제목: AI한테 질문만 하다가 끝날 건가요? (공개) - 작성자: Cognac(꼬냑) / @supernovajunn - 핵심 구조: research-skill-graph - i…
+- 사용자: 구글맵api 돈나가?
+- Hermes 응답: 네, 마스터. 완전 무료는 아닙니다. 정확히는: - Google Maps Platform은 과금형입니다 - 결제수단(billing) 연결이 필요합니다 - 사용량만큼 pay-as-you-go로 나갑니다 제가 확인한 기준 - Google 공식 문서도 “Google Maps Platform uses a pay-as-you-go pricing model”이라고 안내합니다 - Maps JavaScript API 쓰려면 프로젝트 + API 키 + billing 연결이 필요합니다 그래서 핵심은 이겁니다. 1…
 ### 최근 턴 5
-- 시각(KST): 2026-04-14T19:03:23+09:00
+- 시각(KST): 2026-04-15T22:10:34+09:00
 - Hermes 세션: 20260413_075649_f1f8ef6b
-- 사용자: 응 옵시디언이랑 우리 llmwiki랑 다른개념인가
-- Hermes 응답: 네, 마스터. 다른 개념입니다. 다만 같이 쓸 수 있습니다. 한 줄로 하면: 옵시디언은 “보는/편집하는 도구” llm wiki는 “지식을 쌓는 구조와 운영 방식” 입니다. 더 정확히 나누면 1. 옵시디언 - 마크다운 파일을 열어보는 앱입니다. - 노트 편집기 + 링크 브라우저 + 그래프 뷰어에 가깝습니다. - 즉 그 자체가 지식 체계는 아니고, 지식 파일을 사람이 보기 좋게 다루는 프론트엔드입니다. 2. llm wiki - LLM이 계속 읽고, 갱신하고, 연결하는 “지식 저장 방식”입니다. -…
+- 사용자: 그냥 개인적테스트인데 돈나가려나
+- Hermes 응답: 개인 테스트만 잠깐 하는 정도면 보통 크게 안 나갈 가능성이 높습니다, 마스터. 다만 중요한 건: - “0원 보장”은 아닙니다 - billing 연결은 필요하고 - 사용량이 찍히면 소액이라도 과금될 수는 있습니다 현실적으로 보면 - localhost에서 직접 몇 번 띄워보기 - 지도 몇 번 열고 마커 확인 - 혼자 기능 테스트 이 정도로는 보통 부담될 수준으로 튀는 경우는 드뭅니다 오히려 진짜 조심할 건 이쪽입니다 - API 키를 공개 저장소에 올림 - referrer 제한 안 걸어둠 - 배포…
 
 <!-- HERMES_BRIDGE_SYNC_END -->
 
