@@ -176,38 +176,39 @@
 - 2026-04-14 확정: research-skill-graph/llm wiki 계열 외부 인사이트는 "새 시스템으로 교체"보다 현재 로컬 `knowledge/`·`MEMORY`·인사이트 파이프라인을 강화하는 참고 모델로 흡수하는 방향을 기본값으로 둔다.
 - 2026-04-14 확정: Obsidian은 지식 파일을 보는/편집하는 프론트엔드, llm wiki는 LLM이 읽고 갱신하는 지식 구조/운영 방식으로 구분하며, 상호 대체제가 아니라 병행 가능한 계층으로 기억한다.
 - 2026-04-15 기준 `shared-food-map/shared-food-map`는 카카오맵에서 구글맵 전환 작업이 진행된 개인 테스트용 공유지도 프로젝트로 기억한다. 구글맵 적용 시 `client/.env`의 `VITE_GOOGLE_MAPS_API_KEY` 환경변수가 필요하고, 소액 가능성은 낮아도 billing 연결이 필요한 pay-as-you-go 구조라는 점을 함께 기억한다.
+- 2026-04-16 확정: Bybit 계열 외부 bot 아이디어는 원본 직결 도입보다 `trading-automation`에 **clean-room overlay**로만 흡수하고, 기본 운용은 `shadow_only: true` / `overlay.apply_to_paper: false`를 유지한다. quick replay 개선 신호가 있어도 표본 부족·price-only 근사 한계가 남아 있어, 즉시 paper 승격은 하지 않는다.
 
 <!-- HERMES_BRIDGE_SYNC_START -->
 ## Hermes 브리지 최신 동기화(휘발성)
 - 메인 진입: Hermes 텔레그램 DM
 - 용도: 마스터가 Hermes에만 말해도 OpenClaw가 최신 맥락을 이어받기 위한 최근 대화 요약
-- 마지막 갱신: 2026-04-15T22:10:34+09:00
+- 마지막 갱신: 2026-04-16T18:52:07+09:00
 
 ### 최근 턴 1
-- 시각(KST): 2026-04-15T22:00:12+09:00
-- Hermes 세션: 20260413_075649_f1f8ef6b
-- 사용자: [The user sent a document: 'shared-food-map.zip'. The file is saved at: /home/hskim/.hermes/cache/documents/doc_8b4594e021a8_shared-food-map.zip. Ask the user what they'd like you to do with it.]
-- Hermes 응답: 마스터, shared-food-map.zip 받았습니다. 파일 위치: - /home/hskim/.hermes/cache/documents/doc_8b4594e021a8_shared-food-map.zip 이걸로 할 수 있는 건 보통 이런 쪽입니다. - 압축 풀고 내부 구조 확인 - 웹/앱 프로젝트면 실행 방법 파악 - 코드 리뷰 - 특정 기능 수정 - 현재 작업에 붙일 수 있는지 판단 - README 기준으로 용도 1줄 요약 원하시는 작업을 말씀해주시면 바로 처리하겠습니다.
+- 시각(KST): 2026-04-16T16:23:22+09:00
+- Hermes 세션: 20260416_094934_54876cfc
+- 사용자: 1번으로 다시 돌려
+- Hermes 응답: 다시 돌렸습니다, 마스터. 이번에 쓴 기준 - README 기본 운용 의도에 맞춰 1h / 4h / 1d로 재실행 - 설정은 lab 기본값 사용 - 심볼: BTC/USDT, ETH/USDT, SOL/USDT - 룩백: 600 bars - BTC bias: 일봉 EMA 13/21 결과 1h original - Equity: 10000.00 - Closed Trades: 0 - Win Rate: 0.00% - Total PnL: 0.00 - Profit Factor: - - Open Position…
 ### 최근 턴 2
-- 시각(KST): 2026-04-15T22:04:46+09:00
-- Hermes 세션: 20260413_075649_f1f8ef6b
-- 사용자: 이거 공유지도를 만들어본건데 카카오api써서 만든거거든 근데 구글맵으로 하고싶어
-- Hermes 응답: 마스터, 구글맵 기준으로 바로 바꿔놨습니다. 작업한 위치 - /home/hskim/.openclaw/workspace/shared-food-map/shared-food-map 바꾼 내용 - 카카오 지도 컴포넌트 사용 부분을 구글 지도 컴포넌트로 교체 - 새 훅 추가 - client/src/hooks/useGoogleMap.js - 새 지도 컴포넌트 추가 - client/src/components/Map/GoogleMap.jsx - client/src/components/Map/GoogleMap.…
+- 시각(KST): 2026-04-16T16:43:11+09:00
+- Hermes 세션: 20260416_094934_54876cfc
+- 사용자: v2는 폐기 1번으로 가봐 한번
+- Hermes 응답: 해봤습니다 마스터. 결론부터: v2는 버리고 original-lite 방향으로 가는 건 맞습니다. 다만 지금 만든 original-lite도 “실거래 투입” 수준은 아니고, “원본이 너무 안 움직이니 신호를 조금 열어본 보수적 완화판” 정도입니다. 이번에 잡은 original-lite 값 - min_tech_score: 5 → 3 - min_rvol: 2.0 → 1.8 - risk_reward_min: 3.0 유지 - pattern_tolerance: 0.015 → 0.02 파일 - state/…
 ### 최근 턴 3
-- 시각(KST): 2026-04-15T22:07:58+09:00
-- Hermes 세션: 20260413_075649_f1f8ef6b
-- 사용자: 구글 머 어케넣어야해?
-- Hermes 응답: 마스터, 넣는 건 아주 간단합니다. 지금 이 프로젝트는 client 쪽 `client/.env`에 구글맵 API 키용 환경변수(`VITE_GOOGLE_MAPS_API_KEY`)를 추가하면 됩니다. 이후 Google Cloud Console에서 Maps JavaScript API 키를 발급받아 넣는 순서로 안내했습니다.
+- 시각(KST): 2026-04-16T16:46:20+09:00
+- Hermes 세션: 20260416_094934_54876cfc
+- 사용자: 오리지널 전략 다시이야기해봐
+- Hermes 응답: 네 마스터. 오리지널 전략만 다시 깔끔하게 정리하면 이렇습니다. 한 줄 요약 오리지널은 “패턴 먼저 찾고, 구조/거래량/BTC 방향/RR로 여러 번 거른 뒤 들어가는 보수적인 패턴 필터 전략”입니다. 핵심 흐름 1. 패턴을 먼저 찾습니다 잡는 패턴은 이 6개입니다. - ascending triangle → long - descending triangle → short - double bottom → long - double top → short - bull flag → long - bullish…
 ### 최근 턴 4
-- 시각(KST): 2026-04-15T22:09:32+09:00
-- Hermes 세션: 20260413_075649_f1f8ef6b
-- 사용자: 구글맵api 돈나가?
-- Hermes 응답: 네, 마스터. 완전 무료는 아닙니다. 정확히는: - Google Maps Platform은 과금형입니다 - 결제수단(billing) 연결이 필요합니다 - 사용량만큼 pay-as-you-go로 나갑니다 제가 확인한 기준 - Google 공식 문서도 “Google Maps Platform uses a pay-as-you-go pricing model”이라고 안내합니다 - Maps JavaScript API 쓰려면 프로젝트 + API 키 + billing 연결이 필요합니다 그래서 핵심은 이겁니다. 1…
+- 시각(KST): 2026-04-16T18:08:18+09:00
+- Hermes 세션: 20260416_094934_54876cfc
+- 사용자: [Replying to: "Cronjob Response: strategy-lab-paper-report-hourly ------------- [Strategy Lab Hourly Paper Report] Paper Trading Report Generated: 2026-04-16T09:05:25Z original - Cash: 10000.00 - Equity: 10000.00 - Closed trades: 0 - Win rate: 0.00% - Total PnL: 0.00 - Profit fa…
+- Hermes 응답: 중지했습니다, 마스터. 중지된 작업 - strategy-lab-paper-report-hourly - job_id: 3324f516a581 현재 상태 - paused - 다음부터 시간별 전략 리포트는 안 옵니다 원하시면 - 나중에 다시 켜드리거나 - 아예 삭제도 해드릴 수 있습니다.
 ### 최근 턴 5
-- 시각(KST): 2026-04-15T22:10:34+09:00
-- Hermes 세션: 20260413_075649_f1f8ef6b
-- 사용자: 그냥 개인적테스트인데 돈나가려나
-- Hermes 응답: 개인 테스트만 잠깐 하는 정도면 보통 크게 안 나갈 가능성이 높습니다, 마스터. 다만 중요한 건: - “0원 보장”은 아닙니다 - billing 연결은 필요하고 - 사용량이 찍히면 소액이라도 과금될 수는 있습니다 현실적으로 보면 - localhost에서 직접 몇 번 띄워보기 - 지도 몇 번 열고 마커 확인 - 혼자 기능 테스트 이 정도로는 보통 부담될 수준으로 튀는 경우는 드뭅니다 오히려 진짜 조심할 건 이쪽입니다 - API 키를 공개 저장소에 올림 - referrer 제한 안 걸어둠 - 배포…
+- 시각(KST): 2026-04-16T18:52:07+09:00
+- Hermes 세션: 20260416_094934_54876cfc
+- 사용자: 주식성과는 왜 안올려 그리고 코인 진입금액들이 크다 천만원으로좀 해
+- Hermes 응답: 맞습니다 마스터. 제가 바로 확인하고 고쳤습니다. 왜 주식 성과가 안 올라왔냐 1. 주식은 아예 안 돌던 건 아닙니다. - 크론은 살아 있었습니다. - 다만 주식 요약은 “장마감 후 15:35 1회”만 보내는 구조였고, - 보낼 때도 실제 체결 성과 중심으로 강하게 요약하도록 안 잡혀 있었습니다. 2. 실제 오늘 주식 성과는 있었습니다. 오늘 성공 체결 기준: - 삼성전자 4주 매도 성공, pnl_pct +1.2806 - HD현대중공업 2주 매도 성공, pnl_pct +1.8576 현재 주식 상…
 
 <!-- HERMES_BRIDGE_SYNC_END -->
 
