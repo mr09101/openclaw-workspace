@@ -69,6 +69,9 @@
 - 사용자 요청으로 증권사 리포트 컨센서스 요약 봇 구축/자동발송을 선호함(종목/섹터 프리셋 필터 포함).
 - 증권사 리포트 자동체크의 최신 기준은 **국장+미장 동시 후보 정리 + 보기 좋은 포맷 + 종목별 핵심 호재 1줄 요약**이며, 예전 단순 장전 요약 크론보다 이 최신 포맷을 우선 기준으로 기억/운용해야 한다.
 - 최신 리포트 자동화의 실전형 권장 스케줄은 **매일 08:40 KST + 21:30 KST** 2회 보고다(오전은 국장 시작 전 + 밤사이 미장 반영, 야간은 당일 국장 반영 + 미장 시작 전 점검).
+- 마스터는 이 최신 리포트(국장+미장 후보 + 호재 요약)를 **한투 KIS 모의거래의 후보 선정 입력**으로 실제 연결하길 원하며, 기본 운용안은 `국장 TOP 후보 상위 3개 / 종목당 약 100만원 / 손절 -5% / 익절 +12% / 최대 5영업일 보유 / 리포트 후보 이탈 시 교체` 기준으로 시작한다.
+- 리포트기준 한투모의 상태 보고는 장중 **10:50 / 12:50 / 14:50 KST** 3회 주기 보고를 기본으로 유지하고, **장마감 상태 보고는 15:25 KST**에 1회 추가한다. 진입/청산/교체 같은 액션 발생 시에는 즉시 추가 보고한다.
+- 2026-04-21 확정: 최신 증권사 리포트 자동화(국장+미장 후보 + 종목별 핵심 호재 1줄)는 **한투 KIS 모의거래의 실제 후보 선정 입력으로 이미 연결된 운영 상태**로 기억한다. 현재 시작 기준은 `국장 리포트 후보 상위 3개 / 언급수 2건 이상 / 매수비율 80% 이상 / 상승여력 15% 이상 / 종목당 약 100만원 / 손절 -5% / 익절 +12% / 최대 5영업일 보유 / 후보 이탈 시 교체`다.
 - 08:50 장전 리포트 컨센서스 요약에는 종목별 `현재가`를 함께 표기하는 포맷을 선호함.
 - arXiv 신규 스크리닝 알림은 매 배치마다 "우리 적용 가능성(적용/관찰/보류)" 코멘트와 적용 후보 요약을 함께 제공하는 것을 선호함.
 - 마스터는 가능한 작업은 지시 없이 선제 실행을 선호하며, 애매하거나 리스크/외부행동이 수반되는 경우에는 먼저 실행 가능 여부를 짧게 확인받는 방식을 선호함.
@@ -187,33 +190,33 @@
 ## Hermes 브리지 최신 동기화(휘발성)
 - 메인 진입: Hermes 텔레그램 DM
 - 용도: 마스터가 Hermes에만 말해도 OpenClaw가 최신 맥락을 이어받기 위한 최근 대화 요약
-- 마지막 갱신: 2026-04-20T17:54:54+09:00
+- 마지막 갱신: 2026-04-21T20:40:35+09:00
 
 ### 최근 턴 1
-- 시각(KST): 2026-04-20T11:44:45+09:00
+- 시각(KST): 2026-04-21T18:11:18+09:00
 - Hermes 세션: 20260420_080311_e40f7759
-- 사용자: 내가 빙엑스사용하거든 지금 연동준비해놓고 내가 뭐해야하는지 이야기해
-- Hermes 응답: 네, 마스터. BingX 연동 준비는 미리 해뒀습니다. 지금 제가 준비한 것 1. BingX read-only 점검 스크립트 - /home/hskim/.openclaw/workspace/trading-automation/scripts/bingx_readonly_check.py 2. BingX 연동 설정 템플릿 - /home/hskim/.openclaw/workspace/trading-automation/config/bingx.integration.yaml 3. BingX 세팅 안내 문서 - /h…
+- 사용자: api없이 못보나
+- Hermes 응답: 마스터, “아예 못 보는 건 아닌데”, 지금 같은 기본 설정에선 사실상 못 봅니다. 제가 방금 확인한 근거 - 비로그인 브라우저로 https://x.com/i/bookmarks 열어봤는데 접근 안 됐습니다. - 현재 Hermes 설정도 - browser.allow_private_urls: false 로 되어 있습니다. 즉 현재 상태 결론 - API 없이 - 로그인 없는 브라우저로 - X 북마크를 안정적으로 읽는 건 불가 다만 예외는 있습니다. API 없이도 보는 방법은 2가지가 있긴 합니다. 1…
 ### 최근 턴 2
-- 시각(KST): 2026-04-20T16:39:04+09:00
+- 시각(KST): 2026-04-21T18:14:49+09:00
 - Hermes 세션: 20260420_080311_e40f7759
-- 사용자: 너 지금 로컬로 볼수잇는 gui 머머있어? 저번에 뭐 설치했던거같은데
-- Hermes 응답: 마스터, 지금 이 머신에서 제가 바로 확인한 로컬 GUI/TUI는 이 정도입니다. 1. Hermes Control Interface - 상태: 실제로 떠 있음 - 주소: http://127.0.0.1:10272 - 제가 브라우저로 직접 열어봤고 로그인 화면까지 확인했습니다. - 제목: Hermes Control Interface - 현재 보이는 건 - Username - Password - unlock 버튼 - 즉, 이건 확실히 지금 로컬에서 접근 가능한 웹 GUI입니다. 2. Hermes HU…
+- 사용자: 1번 어케하니
+- Hermes 응답: 이렇게 하시면 됩니다, 마스터. 핵심은 “read-only 전용 X 앱”을 하나 따로 만드는 겁니다. 중요 포인트 먼저 - 북마크 조회는 X API v2에서 가능합니다. - 그런데 이건 일반 앱 베어러(app-only)로 안 되고, OAuth 2.0 Authorization Code with PKCE 방식이 필요합니다. - 필요한 scope도 딱 3개만 주면 됩니다: - bookmark.read - tweet.read - users.read - bookmark.write는 넣지 마십시오. 즉 구…
 ### 최근 턴 3
-- 시각(KST): 2026-04-20T16:40:18+09:00
+- 시각(KST): 2026-04-21T20:35:18+09:00
 - Hermes 세션: 20260420_080311_e40f7759
-- 사용자: id 비번이 뭐야
-- Hermes 응답: 마스터, 지금 확인된 Hermes Control Interface 로그인 정보는 이겁니다. - 주소: http://127.0.0.1:10272 - 아이디: master - 비밀번호: CoUpFP8brnDlYq9YIS_gf2nn 근거 파일: - /home/hskim/.hermes/control-interface-access.txt 주의 - 이건 설치 당시 저장된 값입니다. - 만약 UI 안에서 비밀번호를 바꾸셨으면 지금 값이 달라졌을 수 있습니다. 안 되면 다음 두 경로로 바로 다시 잡으면 됩니다…
+- 사용자: 크로노스랑 바이비트가 섞인거같은데 맞아?
+- Hermes 응답: 네, 마스터. 맞습니다. 다만 정확히 말하면 “실제 Bybit 연결”이 섞인 건 아니고, “Bybit 스타일 overlay 로직”이 Kronos/기존 paper runner 안에 같이 들어가 있습니다. 지금 구조를 확인한 결과 1. 실제 paper runner 코드에서 둘 다 같이 로드합니다 파일: - /home/hskim/.openclaw/workspace/trading-automation/scripts/paper_runner.py 여기서 실제로: - Kronos config/signals 로…
 ### 최근 턴 4
-- 시각(KST): 2026-04-20T17:51:29+09:00
+- 시각(KST): 2026-04-21T20:37:33+09:00
 - Hermes 세션: 20260420_080311_e40f7759
-- 사용자: https://x.com/i/status/2046076635200553224 이건 무슨기능이있고 너에게 붙이면 좋을기능은 뭐야
-- Hermes 응답: 마스터, 이 X 글은 “기능 하나”가 아니라 Hermes 생태계 툴 5개 묶음 소개입니다. 제가 실제로 확인한 링크 기준으로 들어있는 건 이 5개입니다. 1. nativ3ai/hermes-agent-camel 2. kaminocorp/hermes-alpha 3. Romanescu11/hermes-skill-factory 4. ReinaMacCredy/maestro 5. esaradev/icarus-plugin 각각 무슨 기능인지 먼저 짧게 정리드리면: 1) hermes-agent-camel 기능…
+- 사용자: 원래둘다 따로하지않앗어? 원래 둘다합쳐서 진입하고그랫니?
+- Hermes 응답: 아니요, 마스터. 원래 의도/운영 판단은 “둘 다 합쳐서 진입”이 아니었습니다. 정확히 구분하면 이렇습니다. 1. Bybit-style 원래 의도: - 관찰용 shadow overlay - 실제 paper 자동 반영 안 함 근거 - config/bybit_style_overlay.yaml - shadow_only: true - overlay.apply_to_paper: false - notes.default_mode: shadow-only - notes.no_bybit_connection: tr…
 ### 최근 턴 5
-- 시각(KST): 2026-04-20T17:54:54+09:00
+- 시각(KST): 2026-04-21T20:40:35+09:00
 - Hermes 세션: 20260420_080311_e40f7759
-- 사용자: 너 버전이 있어?
-- Hermes 응답: 네, 마스터. 있습니다. 지금 이 대화 기준으로 보면 두 층으로 보시면 됩니다. 1. 에이전트 버전 - Hermes Agent v0.8.0 (2026.4.8) - 프로젝트 경로: /home/hskim/.hermes/hermes-agent - 현재 Git 커밋: 989d4ea4 2. 현재 대화 모델 - 모델: gpt-5.4 - 프로바이더: openai-codex 추가로 확인된 런타임 정보 - Python 3.11.15 - OpenAI SDK 2.31.0 참고로 현재 로컬 Hermes는 - 업데이트…
+- 사용자: 왜 갑자기 합쳐진거야?
+- Hermes 응답: 네, 마스터. 이건 “갑자기 개념이 합쳐진” 게 아니라, 2026-04-16에 Bybit-style 쪽을 paper_runner/report 경로에 붙여서 그렇게 보이게 된 겁니다. 근거가 되는 문서가 있습니다. - /home/hskim/.openclaw/workspace/trading-automation/reports/BYBIT_STYLE_OVERLAY_INTEGRATION_2026-04-16.md 여기 핵심 문구가 정확히 이겁니다. - “Integrated the overlay into sc…
 
 <!-- HERMES_BRIDGE_SYNC_END -->
 
