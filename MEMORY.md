@@ -185,38 +185,39 @@
 - 2026-04-17 확정: BTC/ETH 비교 재검토 끝에, 마스터는 **실전형 차트 전략을 BTC 전용으로만 운용**하는 방향을 선택했다. 기준 구조는 `4H 방향 → 4H 위치 → 15m 레인지/스윕 → 5m MSS → OTE+FVG → 첫 리테스트 진입`의 보수적 체크리스트형 흐름으로 기억한다.
 - 2026-04-19 확인: 현재 메인 LLM 연결은 `openai-codex` 1개이며, 향후 NVIDIA NIM 같은 추가 provider를 붙이더라도 소닉이 "둘"이 되는 개념이 아니라 **선택 가능한 추가 provider/모델 경로가 늘어나는 것**으로 이해한다.
 - 2026-04-20 재확인: 증권사 리포트 자동화의 장기 기준은 예전 08:50 장전 요약이 아니라, **국장+미장 후보를 보기 좋게 정리하고 종목별 핵심 호재 1줄까지 붙이는 최신 포맷**이며, 실전형 발송 시각은 **08:40 KST + 21:30 KST** 2회다.
+- 2026-04-22 확정: `shared-food-map` 검색 UX는 **검색 결과 클릭 → 지도 먼저 이동/프리뷰 표시 → 사용자가 저장 버튼을 눌렀을 때만 저장 모달 오픈** 흐름을 기준선으로 기억한다. 자동으로 저장 모달이 튀는 UX로 되돌리지 않는다.
 
 <!-- HERMES_BRIDGE_SYNC_START -->
 ## Hermes 브리지 최신 동기화(휘발성)
 - 메인 진입: Hermes 텔레그램 DM
 - 용도: 마스터가 Hermes에만 말해도 OpenClaw가 최신 맥락을 이어받기 위한 최근 대화 요약
-- 마지막 갱신: 2026-04-21T20:40:35+09:00
+- 마지막 갱신: 2026-04-22T22:03:48+09:00
 
 ### 최근 턴 1
-- 시각(KST): 2026-04-21T18:11:18+09:00
-- Hermes 세션: 20260420_080311_e40f7759
-- 사용자: api없이 못보나
-- Hermes 응답: 마스터, “아예 못 보는 건 아닌데”, 지금 같은 기본 설정에선 사실상 못 봅니다. 제가 방금 확인한 근거 - 비로그인 브라우저로 https://x.com/i/bookmarks 열어봤는데 접근 안 됐습니다. - 현재 Hermes 설정도 - browser.allow_private_urls: false 로 되어 있습니다. 즉 현재 상태 결론 - API 없이 - 로그인 없는 브라우저로 - X 북마크를 안정적으로 읽는 건 불가 다만 예외는 있습니다. API 없이도 보는 방법은 2가지가 있긴 합니다. 1…
+- 시각(KST): 2026-04-22T21:21:11+09:00
+- Hermes 세션: 20260422_142931_05359cf4
+- 사용자: [SYSTEM: Background process proc_0cdd2c3015ba matched watch pattern "tunneled with tls termination". Command: ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -R 80:localhost:5173 nokey@localhost.run Matched output: 1dc4f52d549446.lhr.life tunneled with tls termination,…
+- Hermes 응답: 마스터, 최신 상태 반영해서 **지금 쓰시면 되는 공개 링크** 다시 드립니다. | 상태 | 내용 | |---|---| | 현재 살아있는 공개 터널 | `proc_0cdd2c3015ba` | | 최신 주소 | `https://1dc4f52d549446.lhr.life` | | 접속 확인 | `200 OK` | | invite 링크 확인 | `200 OK` | | 용도 | 링크 | |---|---| | 공유지도 메인 | [https://1dc4f52d549446.lhr.life](https://1…
 ### 최근 턴 2
-- 시각(KST): 2026-04-21T18:14:49+09:00
-- Hermes 세션: 20260420_080311_e40f7759
-- 사용자: 1번 어케하니
-- Hermes 응답: 이렇게 하시면 됩니다, 마스터. 핵심은 “read-only 전용 X 앱”을 하나 따로 만드는 겁니다. 중요 포인트 먼저 - 북마크 조회는 X API v2에서 가능합니다. - 그런데 이건 일반 앱 베어러(app-only)로 안 되고, OAuth 2.0 Authorization Code with PKCE 방식이 필요합니다. - 필요한 scope도 딱 3개만 주면 됩니다: - bookmark.read - tweet.read - users.read - bookmark.write는 넣지 마십시오. 즉 구…
+- 시각(KST): 2026-04-22T21:22:20+09:00
+- Hermes 세션: 20260422_142931_05359cf4
+- 사용자: 아 내가 클릭할수있는 링크로달라고
+- Hermes 응답: 마스터, 바로 누를 수 있게 드리겠습니다. - [공유지도 열기](https://1dc4f52d549446.lhr.life) - [초대코드 포함해서 바로 열기](https://1dc4f52d549446.lhr.life/?invite=0298819117) 그냥 위 두 줄 중 하나 누르시면 됩니다.
 ### 최근 턴 3
-- 시각(KST): 2026-04-21T20:35:18+09:00
-- Hermes 세션: 20260420_080311_e40f7759
-- 사용자: 크로노스랑 바이비트가 섞인거같은데 맞아?
-- Hermes 응답: 네, 마스터. 맞습니다. 다만 정확히 말하면 “실제 Bybit 연결”이 섞인 건 아니고, “Bybit 스타일 overlay 로직”이 Kronos/기존 paper runner 안에 같이 들어가 있습니다. 지금 구조를 확인한 결과 1. 실제 paper runner 코드에서 둘 다 같이 로드합니다 파일: - /home/hskim/.openclaw/workspace/trading-automation/scripts/paper_runner.py 여기서 실제로: - Kronos config/signals 로…
+- 시각(KST): 2026-04-22T21:35:58+09:00
+- Hermes 세션: 20260422_142931_05359cf4
+- 사용자: 이거 검색하면 지도로 먼저가고 그 밑에 저장할지 말지 뜨면좋겟는데 지금은 검색하자마자 저장떠서 ui ux가 별로야
+- Hermes 응답: 좋습니다, 마스터. **지금 말씀하신 흐름으로 바꿨습니다.** ## 바뀐 UX 이전: 1. 검색 2. 결과 클릭 3. **바로 저장 모달 뜸** ← 별로였던 부분 지금: 1. 검색 2. 결과 클릭 3. **지도로 먼저 이동 + 프리뷰 카드 표시** 4. 거기서 **`이 장소 저장하기`** 누를 때만 저장 모달 오픈 ## 실제로 바꾼 것 - 검색 결과 클릭 시: - 저장창 즉시 오픈 안 함 - 지도 중심 이동 + 프리뷰 마커만 표시 - 검색창 아래에: - 장소명 - 주소 - 카테고리 - `다시 검…
 ### 최근 턴 4
-- 시각(KST): 2026-04-21T20:37:33+09:00
-- Hermes 세션: 20260420_080311_e40f7759
-- 사용자: 원래둘다 따로하지않앗어? 원래 둘다합쳐서 진입하고그랫니?
-- Hermes 응답: 아니요, 마스터. 원래 의도/운영 판단은 “둘 다 합쳐서 진입”이 아니었습니다. 정확히 구분하면 이렇습니다. 1. Bybit-style 원래 의도: - 관찰용 shadow overlay - 실제 paper 자동 반영 안 함 근거 - config/bybit_style_overlay.yaml - shadow_only: true - overlay.apply_to_paper: false - notes.default_mode: shadow-only - notes.no_bybit_connection: tr…
+- 시각(KST): 2026-04-22T22:03:33+09:00
+- Hermes 세션: 20260422_142931_05359cf4
+- 사용자: 링크줘봐
+- Hermes 응답: 마스터, 지금 눌러서 들어가실 링크입니다. - [공유지도 열기](https://c04ee91d308e78.lhr.life) - [초대코드 포함 바로 열기](https://c04ee91d308e78.lhr.life/?invite=0298819117) 둘 다 지금 **200 OK 확인**했습니다.
 ### 최근 턴 5
-- 시각(KST): 2026-04-21T20:40:35+09:00
-- Hermes 세션: 20260420_080311_e40f7759
-- 사용자: 왜 갑자기 합쳐진거야?
-- Hermes 응답: 네, 마스터. 이건 “갑자기 개념이 합쳐진” 게 아니라, 2026-04-16에 Bybit-style 쪽을 paper_runner/report 경로에 붙여서 그렇게 보이게 된 겁니다. 근거가 되는 문서가 있습니다. - /home/hskim/.openclaw/workspace/trading-automation/reports/BYBIT_STYLE_OVERLAY_INTEGRATION_2026-04-16.md 여기 핵심 문구가 정확히 이겁니다. - “Integrated the overlay into sc…
+- 시각(KST): 2026-04-22T22:03:48+09:00
+- Hermes 세션: 20260422_142931_05359cf4
+- 사용자: [SYSTEM: Background process proc_f2121fca7c93 matched watch pattern "permission denied". Command: ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -R 80:localhost:5173 nokey@localhost.run Matched output: If you get a permission denied error check the faq for how to conn…
+- Hermes 응답: 마스터, **지금 링크는 정상입니다.** 저 시스템 메시지는 **실제 에러가 아니라 localhost.run 안내문 안에 `permission denied` 문구가 들어 있어서 감지된 오탐**입니다. 바로 눌러서 들어가시면 됩니다: - [공유지도 열기](https://c04ee91d308e78.lhr.life) - [초대코드 포함 바로 열기](https://c04ee91d308e78.lhr.life/?invite=0298819117) 제가 확인한 상태: - 터널 주소 발급됨 - 링크 응답 `20…
 
 <!-- HERMES_BRIDGE_SYNC_END -->
 
