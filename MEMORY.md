@@ -186,38 +186,39 @@
 - 2026-04-19 확인: 현재 메인 LLM 연결은 `openai-codex` 1개이며, 향후 NVIDIA NIM 같은 추가 provider를 붙이더라도 소닉이 "둘"이 되는 개념이 아니라 **선택 가능한 추가 provider/모델 경로가 늘어나는 것**으로 이해한다.
 - 2026-04-20 재확인: 증권사 리포트 자동화의 장기 기준은 예전 08:50 장전 요약이 아니라, **국장+미장 후보를 보기 좋게 정리하고 종목별 핵심 호재 1줄까지 붙이는 최신 포맷**이며, 실전형 발송 시각은 **08:40 KST + 21:30 KST** 2회다.
 - 2026-04-22 확정: `shared-food-map` 검색 UX는 **검색 결과 클릭 → 지도 먼저 이동/프리뷰 표시 → 사용자가 저장 버튼을 눌렀을 때만 저장 모달 오픈** 흐름을 기준선으로 기억한다. 자동으로 저장 모달이 튀는 UX로 되돌리지 않는다.
+- 2026-04-24 확정: X 추천 계정 검토에서는 전체 편입 대신 **선별 추가**를 기본 원칙으로 유지하고, `@itsCblast`, `@jordanfogel`는 종목발굴용 후보 소스가 아니라 **GEX/옵션 플로우/시장구조 보조 소스**로만 운영한다.
 
 <!-- HERMES_BRIDGE_SYNC_START -->
 ## Hermes 브리지 최신 동기화(휘발성)
 - 메인 진입: Hermes 텔레그램 DM
 - 용도: 마스터가 Hermes에만 말해도 OpenClaw가 최신 맥락을 이어받기 위한 최근 대화 요약
-- 마지막 갱신: 2026-04-22T22:03:48+09:00
+- 마지막 갱신: 2026-04-24T21:44:30+09:00
 
 ### 최근 턴 1
-- 시각(KST): 2026-04-22T21:21:11+09:00
-- Hermes 세션: 20260422_142931_05359cf4
-- 사용자: [SYSTEM: Background process proc_0cdd2c3015ba matched watch pattern "tunneled with tls termination". Command: ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -R 80:localhost:5173 nokey@localhost.run Matched output: 1dc4f52d549446.lhr.life tunneled with tls termination,…
-- Hermes 응답: 마스터, 최신 상태 반영해서 **지금 쓰시면 되는 공개 링크** 다시 드립니다. | 상태 | 내용 | |---|---| | 현재 살아있는 공개 터널 | `proc_0cdd2c3015ba` | | 최신 주소 | `https://1dc4f52d549446.lhr.life` | | 접속 확인 | `200 OK` | | invite 링크 확인 | `200 OK` | | 용도 | 링크 | |---|---| | 공유지도 메인 | [https://1dc4f52d549446.lhr.life](https://1…
+- 시각(KST): 2026-04-24T14:06:13+09:00
+- Hermes 세션: 20260424_110938_02beb4
+- 사용자: 이게 머하는 깃허브야 정확히
+- Hermes 응답: TeamDark: Shadow 활성 마스터, 이 GitHub는 정확히 말하면 **“주식시장용 개인 대시보드 웹앱”**입니다. 이름은 **OpenStock**이고, 목적은: > 주식 가격, 차트, 뉴스, 관심종목, 알림, AI 뉴스요약을 한 화면에서 보는 오픈소스 웹앱 입니다. ## 한 줄 요약 **블룸버그 터미널 같은 전문 단말기가 아니라, Next.js로 만든 “개인용 주식 watchlist + 차트 + 뉴스 + 알림 대시보드”입니다.** ## 구성은 이렇습니다 ### 1. 주식 검색 / 관심…
 ### 최근 턴 2
-- 시각(KST): 2026-04-22T21:22:20+09:00
-- Hermes 세션: 20260422_142931_05359cf4
-- 사용자: 아 내가 클릭할수있는 링크로달라고
-- Hermes 응답: 마스터, 바로 누를 수 있게 드리겠습니다. - [공유지도 열기](https://1dc4f52d549446.lhr.life) - [초대코드 포함해서 바로 열기](https://1dc4f52d549446.lhr.life/?invite=0298819117) 그냥 위 두 줄 중 하나 누르시면 됩니다.
+- 시각(KST): 2026-04-24T14:12:16+09:00
+- Hermes 세션: 20260424_110938_02beb4
+- 사용자: 나는 지금 거의 핸드폰으로만하는데 아직은 쓸데없는ui네 그럼
+- Hermes 응답: 맞습니다, 마스터. **지금 기준으론 거의 쓸데없는 UI에 가깝습니다.** 마스터가 주로 **핸드폰 + 텔레그램**으로 운영한다면 OpenStock 같은 웹 대시보드는 오히려 번거롭습니다. ## 왜 지금은 별로냐 - 따로 웹앱을 띄워야 함 - 로그인/DB/API 키/Finnhub/MongoDB 같은 세팅 필요 - 모바일에서 대시보드 보는 것보다 텔레그램 요약이 빠름 - 우리 투자OS의 핵심인 **X후보 → 일론 병목 → 종목발굴 겹침 → trigger/invalidation** 이 이미 텔레그램…
 ### 최근 턴 3
-- 시각(KST): 2026-04-22T21:35:58+09:00
-- Hermes 세션: 20260422_142931_05359cf4
-- 사용자: 이거 검색하면 지도로 먼저가고 그 밑에 저장할지 말지 뜨면좋겟는데 지금은 검색하자마자 저장떠서 ui ux가 별로야
-- Hermes 응답: 좋습니다, 마스터. **지금 말씀하신 흐름으로 바꿨습니다.** ## 바뀐 UX 이전: 1. 검색 2. 결과 클릭 3. **바로 저장 모달 뜸** ← 별로였던 부분 지금: 1. 검색 2. 결과 클릭 3. **지도로 먼저 이동 + 프리뷰 카드 표시** 4. 거기서 **`이 장소 저장하기`** 누를 때만 저장 모달 오픈 ## 실제로 바꾼 것 - 검색 결과 클릭 시: - 저장창 즉시 오픈 안 함 - 지도 중심 이동 + 프리뷰 마커만 표시 - 검색창 아래에: - 장소명 - 주소 - 카테고리 - `다시 검…
+- 시각(KST): 2026-04-24T16:06:31+09:00
+- Hermes 세션: 20260424_110938_02beb4
+- 사용자: https://x.com/i/status/2047216767106466090 이거 연계된 글 다읽고 어떤전략인지 알려주고 백테스팅해봐
+- Hermes 응답: TeamDark: Shadow 활성 마스터, 다 읽고 기계식으로 백테스트까지 돌렸습니다. ## 결론 **그대로는 쓸 전략 아닙니다. 폐기 쪽입니다.** 이 글의 전략은: > **15분봉 EMA10 돌파 후, EMA10 재터치 때 특정 캔들 모양이 나오면 다음 봉 진입하는 눌림/되돌림 전략** 입니다. 겉보기엔 간단한데, 실제 백테스트에서는 **BTC/ETH 둘 다 음수**였습니다. --- ## 연계 글에서 나온 전략 구조 원글: - 작성자: `ヨシ＠兼業トレーダー` - 핸들: `@Cora64189…
 ### 최근 턴 4
-- 시각(KST): 2026-04-22T22:03:33+09:00
-- Hermes 세션: 20260422_142931_05359cf4
-- 사용자: 링크줘봐
-- Hermes 응답: 마스터, 지금 눌러서 들어가실 링크입니다. - [공유지도 열기](https://c04ee91d308e78.lhr.life) - [초대코드 포함 바로 열기](https://c04ee91d308e78.lhr.life/?invite=0298819117) 둘 다 지금 **200 OK 확인**했습니다.
+- 시각(KST): 2026-04-24T19:56:26+09:00
+- Hermes 세션: 20260424_110938_02beb4
+- 사용자: [The user sent an image~ Here's what I can see: The image is a vertical smartphone screenshot of an X/Twitter profile page, shown in Korean interface language. It appears to be the profile for **“Prof”** with a blue verified checkmark. At the very top left is a white back arrow.…
+- Hermes 응답: TeamDark: Shadow 활성 마스터, 이 화면은 **X가 추천해준 트레이딩 계정 목록**입니다. 그런데 여기 있는 계정들을 전부 X후보로 넣는 건 비추천입니다. ## 제 판단 **전부 추가 X. 선별 추가가 맞습니다.** 이유는 간단합니다. - 대부분 **옵션/데이트레이딩/시그널 계정** - `SPY`, `SPX`, 옵션플로우, GEX, 딜러 포지셔닝 쪽이 많음 - 우리 현재 투자OS 핵심인 **일론 병목 + X후보 실제 언급 종목 + 내부 종목발굴/모닝레이더 겹침** 이 흐름과는 조금…
 ### 최근 턴 5
-- 시각(KST): 2026-04-22T22:03:48+09:00
-- Hermes 세션: 20260422_142931_05359cf4
-- 사용자: [SYSTEM: Background process proc_f2121fca7c93 matched watch pattern "permission denied". Command: ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -R 80:localhost:5173 nokey@localhost.run Matched output: If you get a permission denied error check the faq for how to conn…
-- Hermes 응답: 마스터, **지금 링크는 정상입니다.** 저 시스템 메시지는 **실제 에러가 아니라 localhost.run 안내문 안에 `permission denied` 문구가 들어 있어서 감지된 오탐**입니다. 바로 눌러서 들어가시면 됩니다: - [공유지도 열기](https://c04ee91d308e78.lhr.life) - [초대코드 포함 바로 열기](https://c04ee91d308e78.lhr.life/?invite=0298819117) 제가 확인한 상태: - 터널 주소 발급됨 - 링크 응답 `20…
+- 시각(KST): 2026-04-24T21:44:30+09:00
+- Hermes 세션: 20260424_110938_02beb4
+- 사용자: 그래 추천만넣어
+- Hermes 응답: TeamDark: Shadow 활성 마스터, **추천한 2개만 넣었습니다.** 추가한 계정: 1. **Chris / `@itsCblast`** - 분류: **시장구조 보조 소스** - 용도: GEX, 옵션 플로우, 딜러 포지셔닝, SPY/SPX 리스크 컨텍스트 2. **Jordan F / `@jordanfogel`** - 분류: **시장구조 보조 소스** - 용도: 퀀트, optionbots, 옵션/시장구조 컨텍스트 ## 중요한 처리 방식 이 둘은 **종목발굴 X후보 소스군에는 안 넣었습니다.*…
 
 <!-- HERMES_BRIDGE_SYNC_END -->
 
