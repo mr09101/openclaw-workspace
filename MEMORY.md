@@ -41,11 +41,14 @@
 - 텔레그램 체감형 스트리밍 이슈 점검 시 `draft 경로 설정`만 보지 말고 `sendMessage 400(message is too long)` 로그를 함께 확인해야 하며, 장문 실패 재발 시 `textChunkLimit`/`chunkMode` 튜닝을 우선 검토함.
 - 텔레그램 direct 메인 세션은 컨텍스트가 약 90%대까지 비대해지면 `embedded run timeout`, `timed out during compaction`, `prompt-error: aborted`가 연쇄 발생할 수 있으므로, 채널 장애로 단정하지 말고 **해당 DM 세션 과포화**를 먼저 의심한다.
 - `runtime/insights/state.json` 기준 인사이트 자동반영 크론이 예정 주기(매시 17분 KST) 대비 멈춰 있으면, 단순 보고 누락이 아니라 **수집→반영→개선효과 보고 루프 전체 중단**으로 간주하고 blocker로 취급한다.
+- bundle MCP 서버(특히 `gbrain`) 기동 타임아웃이 반복될 때는, 무작정 gateway만 여러 번 재시작하지 말고 **해당 MCP 엔트리를 먼저 비활성화/분리한 last-good 설정으로 복구**하는 쪽을 우선 고려한다.
 - cron 세션에서 `EXEC_BLOCKED`가 보이면 gateway 재시작보다 먼저 에이전트 tool allowlist 누락 여부(`exec/read/write`)를 우선 점검한다.
 - `cron status`에서 jobs=0이면 `~/.openclaw/cron/jobs.json.bak` 복원 가능성을 우선 확인하고, 복원 후 재기동으로 신속 복구한다.
 - `cron list`의 `error`는 "마지막 실행 결과"가 남아 보이는 상태일 수 있으므로, 일간 잡은 `cron runs --id <job>`로 최신 실패 원인(server_error/timeout 등)을 함께 확인해 실제 막힘 여부를 판단한다.
 - OpenClaw 기본 모델 변경은 외부 카탈로그/Hermes 지원 여부만 믿고 적용하지 말고, 반드시 해당 런타임에서 `허용 모델 확인 → 1회성 실제 호출 테스트 → 성공 확인 후 기본값 변경` 순서로 검증한다.
 - Hermes의 `Response truncated due to output length limit` 경고는 텔레그램 전송 실패보다 Hermes 내부 출력 길이 제한일 가능성을 우선 본다. X 스냅샷/FxTwitter JSON 같은 과다 입력은 핵심만 추려 짧게 답하는 방향을 기본으로 유지한다.
+- OpenClaw 장애 복구 시 `gbrain` 같은 bundle MCP 서버가 반복 타임아웃을 내면, gateway 재기동만 반복하지 말고 해당 MCP 엔트리를 last-good 설정에서 먼저 비활성화/분리하는 복구 루트를 우선 고려한다.
+- `openclaw gateway status`는 정상이지만 `openclaw status`만 timeout/SIGKILL로 재현될 때는 서비스 전체 장애보다 메인 DM 세션 과포화·상태조회 경로 과부하를 먼저 의심한다.
 
 ## 작업 방식 선호(신규)
 - 마스터는 단일 스킬과 그래프형(쪼개기) 스킬을 상황별로 섞는 하이브리드 운영을 선호함.
@@ -195,33 +198,33 @@
 ## Hermes 브리지 최신 동기화(휘발성)
 - 메인 진입: Hermes 텔레그램 DM
 - 용도: 마스터가 Hermes에만 말해도 OpenClaw가 최신 맥락을 이어받기 위한 최근 대화 요약
-- 마지막 갱신: 2026-04-25T21:53:15+09:00
+- 마지막 갱신: 2026-04-26T20:27:26+09:00
 
 ### 최근 턴 1
-- 시각(KST): 2026-04-25T01:39:49+09:00
-- Hermes 세션: 20260425_013748_92830eca
-- 사용자: [Replying to: "https://x.com/i/status/2047635635184533859 이거 일본껀데 일본대신 한국이랑 미국 2개버전으로 해줘"] 이거 진행해
-- Hermes 응답: 마스터, 원문 구조 살려서 **한국 주식용 / 미국 주식용 2개 버전**으로 바로 복붙 가능하게 바꿔놨습니다. ## 1. 한국 주식 10배주 후보 발굴 프롬프트 ```text 당신은 한국 주식의 중소형 성장주와 저평가 성장주에 강한 프로 주식 애널리스트입니다. 아래 투자 스타일을 전제로, 장기적으로 10배주가 될 가능성이 있는 한국의 저평가 성장주를 찾아 제안해주세요. 【전제와 투자 스타일】 ・중장기 투자 관점 ・저평가 성장주를 중시 ・코스피, 코스닥의 소형주~중형주를 중심으로 보되, 시가총액…
+- 시각(KST): 2026-04-26T19:10:38+09:00
+- Hermes 세션: 20260426_134304_0f1dfd
+- 사용자: 최대보유시간이 얼마야?
+- Hermes 응답: 마스터, 현재 체크리스트V1은 **15분봉 기준**이라 최대보유시간은 모드별로 다릅니다. - **strong_bull_long / 강한 상승장 롱** `32봉 × 15분 = 480분` → **8시간** - **weak_bull_long / 약한 상승장 롱** `16봉 × 15분 = 240분` → **4시간** - **weak_bear_short / 약한 하락장 숏** `16봉 × 15분 = 240분` → **4시간** - **strong_bear_short / 강한 하락장 숏** `24봉 × 1…
 ### 최근 턴 2
-- 시각(KST): 2026-04-25T01:52:11+09:00
-- Hermes 세션: 20260425_013748_92830eca
-- 사용자: 아니 프롬프트 만들라는게아니고 저걸 찾으라는거엿는데
-- Hermes 응답: 맞습니다, 마스터. 제가 잘못 읽었습니다. **프롬프트를 만들 게 아니라, 그 조건으로 한국/미국 10배주 후보를 실제로 찾으라는 뜻**이었네요. 바로 기준 맞춰서 1차 스크리닝 돌렸습니다. 기준일은 **2026-04-25 KST**, 근거는 최대한 **DART/KIND/SEC/회사 실적자료 같은 1차 자료** 위주로 봤고, 시총·PER·PBR 같은 시세 데이터는 보조로만 썼습니다. 투자 추천이 아니라 **“더 파볼 만한 조사 후보”**입니다. --- # 한국 후보 8개 ## 1. 케이엔제이 `…
+- 시각(KST): 2026-04-26T19:28:06+09:00
+- Hermes 세션: 20260426_134304_0f1dfd
+- 사용자: 오픈클로 또 맛탱이갓는데 고쳐줄래?
+- Hermes 응답: (없음)
 ### 최근 턴 3
-- 시각(KST): 2026-04-25T01:59:51+09:00
-- Hermes 세션: 20260425_013748_92830eca
-- 사용자: [The user sent an image~ Here's what I can see: The image is a smartphone screenshot of an X/Twitter profile page displayed in Korean. At the top is a dark header/banner image with a black and charcoal background. Centered in large white uppercase text it says: “TRADING WHAT’S N…
-- Hermes 응답: 완료했습니다, 마스터. **Justin Banks / `@RealJGBanks`** 를 X후보 소스군에 추가했습니다. 반영한 위치: - `state/social-signal-watchlist.json` - `accounts.justin_banks` 추가 - `tracking_mode_policy.x_candidate_sources`에 `RealJGBanks` 추가 - `state/advisor-state.json` - `social_signal_tracking.x_candidate_sources…
+- 시각(KST): 2026-04-26T19:35:04+09:00
+- Hermes 세션: 20260426_134304_0f1dfd
+- 사용자: 아직고치는중이야?
+- Hermes 응답: 네 마스터, 방금 마저 끝냈습니다. 원인 두 개였습니다. 1. **gpt-5.5 문제 맞았습니다.** - OpenClaw 현재 런타임은 `openai-codex/gpt-5.5`를 제대로 허용하지 않습니다. - 로그에 실제로 `model not allowed: openai-codex/gpt-5.5`가 떴습니다. - 기본 모델은 이미 `gpt-5.4`였는데, 내부 모델 카탈로그에 `gpt-5.5`가 남아 있어서 계속 선택/패치 시도될 수 있는 상태였습니다. 2. **Bonjour/mDNS 플러그인도…
 ### 최근 턴 4
-- 시각(KST): 2026-04-25T02:01:54+09:00
-- Hermes 세션: 20260425_013748_92830eca
-- 사용자: 아래는 투자 추천이 아니라 “추가 정밀조사 후보”입니다. 전제 자체에 한계가 있습니다. 진짜 10배주는 대개 현재 수치만으로는 잘 보이지 않고, “저PER”와 “10배 성장성”은 자주 충돌합니다. 그래서 저는 다음 기준으로 걸렀습니다. 최근 사업보고서/IR/공시에서 실적 성장 또는 턴어라운드가 확인되는가 PER 15배 이하 또는 12개월 선행 기준으로 PER 15배 안팎까지 내려올 수 있는가 2~3년 뒤 매출·이익 증가 경로가 설명 가능한가 사업이 이해 가능하고, 단순 테마주가 아닌가 이미 너무…
-- Hermes 응답: 맞습니다. 결과가 다른 이유는 꽤 명확합니다. ## 결론부터 **지피티가 뽑은 한국 리스트가 “저PER 성장주 스크리닝” 관점에서는 더 그럴듯한 부분이 있습니다.** 특히 **티앤엘, 슈프리마**를 제가 앞선 1차 리스트에서 놓친 건 제 쪽 스크리닝 커버리지 문제입니다. 다만 지피티 결과도 완전히 더 맞다는 뜻은 아닙니다. 그 결과는 **증권사 추정치, FnGuide/CompanyWise/ValueLine 같은 보조 데이터**를 많이 섞었고, 일부는 “10배주 후보”라기보다는 **좋은 회사/관찰…
+- 시각(KST): 2026-04-26T19:38:40+09:00
+- Hermes 세션: 20260426_134304_0f1dfd
+- 사용자: 엑스유저들 추가로 언급하는종목들 있는지 확인해봐
+- Hermes 응답: 마스터, 확인했습니다. 이번 확인은 **Tavily / web_search / web_extract 안 쓰고**, 기존 no-Tavily X수집 스크립트로 돌렸습니다. ## 수집 상태 - X후보 계정 7개 전부 수집 OK `Alisvolatprop12`, `Semicon_player`, `TheLongInvest`, `MrMikeInvesting`, `aleabitoreddit`, `TheProfInvestor`, `RealJGBanks` - fresh mentions: **91개** - 내부…
 ### 최근 턴 5
-- 시각(KST): 2026-04-25T21:53:15+09:00
-- Hermes 세션: 20260425_215158_d9b10e78
-- 사용자: 종목발굴 1번2번3번 알아보는게 힘든데 잘 정리좀해서 줘라
-- Hermes 응답: 마스터, 헷갈리는 핵심은 이겁니다. **1번/2번/3번은 “종목 추천 단계”가 아니라, 종목을 걸러내는 3개의 겹침 검사 방식**입니다. 각 번호가 보는 교집합이 다릅니다. ## 한 줄 정의 | 구분 | 보는 것 | 목적 | |---|---|---| | **1번추적** | **일론 병목 + X후보 언급 + 내부 종목발굴** | “AI/우주/전력/칩 병목 같은 큰 테마와 실제 종목 후보가 겹치나?” | | **2번추적** | **X후보 언급 + 내부 종목발굴** | “일론 빼고도 X 고수들이 말한…
+- 시각(KST): 2026-04-26T20:27:26+09:00
+- Hermes 세션: 20260426_134304_0f1dfd
+- 사용자: 우리 내부레이더 리서치는 어떻게나온건데?
+- Hermes 응답: 마스터, 우리 **내부레이더 리서치**는 “X후보가 지금 말한 종목”을 그대로 받은 게 아니라, 그 전에 따로 만든 **내부 종목 발굴/우선순위 문서**에서 나온 겁니다. 핵심 흐름은 이렇습니다. ## 1) 시작점: 5개 테마 후보군 처음 내부 리서치는 2026-04-23 기준으로 아래 5개 테마에서 시작했습니다. - 우주 / 위성 - 광통신 / photonics - AI 인프라 - AI 전력 - 방산 / 드론 / 우주방산 기초 문서: `resources/market/self-research/2…
 
 <!-- HERMES_BRIDGE_SYNC_END -->
 
