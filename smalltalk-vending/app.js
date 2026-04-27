@@ -152,8 +152,17 @@ const dispenseCanLabel = document.getElementById('dispense-can-label');
 const pickupToggle = document.getElementById('pickup-toggle');
 const pickupDoor = document.querySelector('.pickup-door');
 const flowSteps = Array.from(document.querySelectorAll('.flow-step'));
+const shakeButton = document.getElementById('shake-button');
+const directDrawButton = document.getElementById('direct-draw-button');
+const topicToggleButton = document.getElementById('topic-toggle-button');
+const topicDrawer = document.getElementById('topic-drawer');
+const motionMeter = document.getElementById('motion-meter');
+const motionStatus = document.getElementById('motion-status');
+const analogVendingMachine = document.getElementById('analog-vending-machine');
 
 const COIN_AMOUNT = 100;
+const SHAKE_THRESHOLD = 18;
+const SHAKE_COOLDOWN_MS = 1400;
 
 let selectedTopicId = null;
 let history = loadHistory();
@@ -162,6 +171,10 @@ let insertedAmount = 0;
 let pickupDoorOpen = false;
 let dispensedTopicId = null;
 let pendingDispense = null;
+let motionEnabled = false;
+let lastMotion = null;
+let lastShakeAt = 0;
+let shakeBurstCount = 0;
 
 function shuffle(list) {
   const copy = [...list];
@@ -207,6 +220,125 @@ function getTopicBySlot(slot) {
   return topics.find((topic) => topic.slot === slot) || null;
 }
 
+function getRandomTopic() {
+  return topics[Math.floor(Math.random() * topics.length)];
+}
+
+function setMotionStatus(text) {
+  if (motionStatus) {
+    motionStatus.textContent = text;
+  }
+}
+
+function updateMotionMeter(power = 0) {
+  if (!motionMeter) return;
+  const level = Math.max(0.08, Math.min(0.92, power / 42));
+  motionMeter.style.setProperty('--motion-level', String(level));
+
+  const activeBars = Math.round(level * 8);
+  motionMeter.querySelectorAll('.meter-bar').forEach((bar, index) => {
+    bar.classList.toggle('is-active', index < activeBars);
+  });
+}
+
+function pulseVendingMachine() {
+  if (!analogVendingMachine) return;
+  analogVendingMachine.classList.remove('vending-is-shaking');
+  void analogVendingMachine.offsetWidth;
+  analogVendingMachine.classList.add('vending-is-shaking');
+}
+
+function dispenseRandomTopic(sourceLabel = '흔들기 뽑기') {
+  const topic = getRandomTopic();
+  insertedAmount = Math.max(insertedAmount, COIN_AMOUNT);
+  pulseVendingMachine();
+  if (navigator.vibrate) {
+    navigator.vibrate(40);
+  }
+  dispenseTopic(topic.id, sourceLabel);
+  setMotionStatus('캔 배출 완료');
+}
+
+async function requestMotionPermission() {
+  if (typeof DeviceMotionEvent === 'undefined') {
+    setMotionStatus('센서 미지원');
+    machineStatus.textContent = '직접 뽑기 가능';
+    statusDetail.textContent = '이 브라우저는 흔들기 센서를 지원하지 않습니다. 직접 뽑기를 눌러 이용해 주세요.';
+    return false;
+  }
+
+  try {
+    if (typeof DeviceMotionEvent.requestPermission === 'function') {
+      const permission = await DeviceMotionEvent.requestPermission();
+      if (permission !== 'granted') {
+        setMotionStatus('권한 거부');
+        machineStatus.textContent = '권한 필요';
+        statusDetail.textContent = '센서 권한이 꺼져 있습니다. 직접 뽑기를 눌러 이용할 수 있습니다.';
+        return false;
+      }
+    }
+
+    if (!motionEnabled) {
+      window.addEventListener('devicemotion', handleDeviceMotion);
+      motionEnabled = true;
+    }
+
+    setMotionStatus('준비 완료');
+    machineStatus.textContent = '흔들기 대기';
+    statusDetail.textContent = '준비 완료. 휴대폰을 두 번 가볍게 흔들면 대화 캔이 내려옵니다.';
+    updateMotionMeter(8);
+    return true;
+  } catch (error) {
+    setMotionStatus('센서 오류');
+    machineStatus.textContent = '직접 뽑기 가능';
+    statusDetail.textContent = '센서 권한 요청 중 오류가 났습니다. 직접 뽑기를 눌러 이용해 주세요.';
+    return false;
+  }
+}
+
+function handleDeviceMotion(event) {
+  const acceleration = event.accelerationIncludingGravity || event.acceleration;
+  if (!acceleration) return;
+
+  const current = {
+    x: acceleration.x || 0,
+    y: acceleration.y || 0,
+    z: acceleration.z || 0
+  };
+
+  if (!lastMotion) {
+    lastMotion = current;
+    return;
+  }
+
+  const power =
+    Math.abs(current.x - lastMotion.x) +
+    Math.abs(current.y - lastMotion.y) +
+    Math.abs(current.z - lastMotion.z);
+
+  lastMotion = current;
+  updateMotionMeter(power);
+
+  const now = Date.now();
+  if (power < SHAKE_THRESHOLD || now - lastShakeAt < 260) {
+    return;
+  }
+
+  shakeBurstCount += 1;
+  lastShakeAt = now;
+  setMotionStatus(shakeBurstCount >= 2 ? '배출 중' : '한 번 더');
+
+  window.setTimeout(() => {
+    shakeBurstCount = Math.max(0, shakeBurstCount - 1);
+  }, 850);
+
+  if (shakeBurstCount >= 2 && now - (dispenseRandomTopic.lastDispenseAt || 0) > SHAKE_COOLDOWN_MS) {
+    dispenseRandomTopic.lastDispenseAt = now;
+    shakeBurstCount = 0;
+    dispenseRandomTopic('흔들기 뽑기');
+  }
+}
+
 function updateFlowStep(stepIndex) {
   flowSteps.forEach((step, index) => {
     step.classList.toggle('is-active', index === stepIndex - 1);
@@ -218,7 +350,9 @@ function updateSelection(topic, sourceLabel = '상품 선택') {
   activeTopicLabel.textContent = topic.labelKo;
   selectionReadout.textContent = `${topic.slot}번`;
   machineStatus.textContent = '선택됨';
-  statusDetail.textContent = `${sourceLabel} · ${topic.labelKo} 선택 완료. 이제 100원을 넣고 배출 버튼을 눌러 주세요.`;
+  statusDetail.textContent = analogVendingMachine
+    ? `${sourceLabel} · ${topic.labelKo} 선택 완료. 흔들거나 선택 캔 뽑기를 누르면 내려옵니다.`
+    : `${sourceLabel} · ${topic.labelKo} 선택 완료. 이제 100원을 넣고 배출 버튼을 눌러 주세요.`;
   updateFlowStep(2);
   renderTopics();
 }
@@ -259,20 +393,24 @@ function insertCoin() {
 
 function clearSelection() {
   selectedTopicId = null;
-  activeTopicLabel.textContent = '상품을 골라 주세요';
+  activeTopicLabel.textContent = analogVendingMachine ? '흔들기 대기' : '상품을 골라 주세요';
   selectionReadout.textContent = '없음';
   machineStatus.textContent = insertedAmount > 0 ? '결제 대기' : '대기 중';
   statusDetail.textContent =
     insertedAmount > 0
       ? `동전 ${insertedAmount}원이 들어 있습니다. 이제 원하는 상품을 골라 주세요.`
-      : '먼저 상품을 고른 뒤 결제하고, 마지막에 수령 버튼으로 문장을 꺼내 주세요.';
+      : analogVendingMachine
+        ? '센서를 켜고 흔들거나 직접 뽑기를 누르면 대화 캔이 내려옵니다.'
+        : '먼저 상품을 고른 뒤 결제하고, 마지막에 수령 버튼으로 문장을 꺼내 주세요.';
   updateFlowStep(1);
   renderTopics();
 }
 
 function setPickupDoor(open) {
   pickupDoorOpen = open;
-  pickupDoor.classList.toggle('is-open', open);
+  if (pickupDoor) {
+    pickupDoor.classList.toggle('is-open', open);
+  }
   pickupToggle.textContent = open ? '수령 완료' : '수령하기';
 }
 
@@ -476,7 +614,9 @@ coinButton.addEventListener('click', insertCoin);
 pickupToggle.addEventListener('click', () => {
   if (!dispensedTopicId || !pendingDispense) {
     machineStatus.textContent = '대기 중';
-    statusDetail.textContent = '아직 배출된 상품이 없습니다. 먼저 상품을 고르고 결제해 주세요.';
+    statusDetail.textContent = analogVendingMachine
+      ? '아직 배출된 캔이 없습니다. 센서를 켜고 흔들거나 직접 뽑기를 눌러 주세요.'
+      : '아직 배출된 상품이 없습니다. 먼저 상품을 고르고 결제해 주세요.';
     setPickupDoor(false);
     updateFlowStep(selectedTopicId ? 2 : 1);
     return;
@@ -494,7 +634,9 @@ pickupToggle.addEventListener('click', () => {
   statusDetail.textContent =
     insertedAmount > 0
       ? `상품 수령 완료. 문장이 공개되었습니다. 남은 ${insertedAmount}원으로 다음 상품을 바로 고를 수 있습니다.`
-      : '상품 수령 완료. 문장이 공개되었습니다. 다음 이용을 위해 다시 100원을 넣어 주세요.';
+      : analogVendingMachine
+        ? '캔 수령 완료. 문장이 공개되었습니다. 다시 흔들거나 직접 뽑기를 눌러 주세요.'
+        : '상품 수령 완료. 문장이 공개되었습니다. 다음 이용을 위해 다시 100원을 넣어 주세요.';
   updateFlowStep(1);
 });
 cancelButton.addEventListener('click', clearSelection);
@@ -507,19 +649,44 @@ confirmButton.addEventListener('click', () => {
   }
 
   if (insertedAmount < COIN_AMOUNT) {
-    machineStatus.textContent = '결제 필요';
-    statusDetail.textContent = '아직 결제가 안 됐습니다. 100원을 넣은 뒤 배출 버튼을 눌러 주세요.';
-    paymentNote.textContent = '결제가 필요합니다. 위 버튼으로 100원을 넣어 주세요.';
-    updateFlowStep(2);
-    return;
+    if (analogVendingMachine) {
+      insertedAmount = COIN_AMOUNT;
+    } else {
+      machineStatus.textContent = '결제 필요';
+      statusDetail.textContent = '아직 결제가 안 됐습니다. 100원을 넣은 뒤 배출 버튼을 눌러 주세요.';
+      paymentNote.textContent = '결제가 필요합니다. 위 버튼으로 100원을 넣어 주세요.';
+      updateFlowStep(2);
+      return;
+    }
   }
 
-  dispenseTopic(selectedTopicId, '확인 완료');
+  dispenseTopic(selectedTopicId, analogVendingMachine ? '선택 캔 뽑기' : '확인 완료');
 });
 clearButton.addEventListener('click', clearHistory);
+
+if (shakeButton) {
+  shakeButton.addEventListener('click', requestMotionPermission);
+}
+
+if (directDrawButton) {
+  directDrawButton.addEventListener('click', () => {
+    dispenseRandomTopic('직접 뽑기');
+  });
+}
+
+if (topicToggleButton && topicDrawer) {
+  topicToggleButton.addEventListener('click', () => {
+    const shouldOpen = topicDrawer.hasAttribute('hidden');
+    topicDrawer.toggleAttribute('hidden', !shouldOpen);
+    topicToggleButton.setAttribute('aria-expanded', String(shouldOpen));
+    topicToggleButton.textContent = shouldOpen ? '주제 닫기' : '주제 선택';
+  });
+}
 
 renderTopics();
 renderHistory();
 clearSelection();
 clearDispensedItem();
 updatePaymentUi();
+updateMotionMeter(6);
+setMotionStatus('센서 대기');
