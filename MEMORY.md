@@ -198,38 +198,39 @@
 - 2026-04-20 재확인: 증권사 리포트 자동화의 장기 기준은 예전 08:50 장전 요약이 아니라, **국장+미장 후보를 보기 좋게 정리하고 종목별 핵심 호재 1줄까지 붙이는 최신 포맷**이며, 실전형 발송 시각은 **08:40 KST + 21:30 KST** 2회다.
 - 2026-04-22 확정: `shared-food-map` 검색 UX는 **검색 결과 클릭 → 지도 먼저 이동/프리뷰 표시 → 사용자가 저장 버튼을 눌렀을 때만 저장 모달 오픈** 흐름을 기준선으로 기억한다. 자동으로 저장 모달이 튀는 UX로 되돌리지 않는다.
 - 2026-04-24 확정: X 추천 계정 검토에서는 전체 편입 대신 **선별 추가**를 기본 원칙으로 유지하고, `@itsCblast`, `@jordanfogel`는 종목발굴용 후보 소스가 아니라 **GEX/옵션 플로우/시장구조 보조 소스**로만 운영한다.
+- 2026-04-30 확정: X 후보 계정/종목 검토는 프로필 전체를 뭉뚱그려 추론하지 말고, **사용자가 지목한 정확한 원글 링크를 먼저 열어 본문 기준으로 종목을 추출·검증**하는 절차를 기본값으로 유지한다.
 
 <!-- HERMES_BRIDGE_SYNC_START -->
 ## Hermes 브리지 최신 동기화(휘발성)
 - 메인 진입: Hermes 텔레그램 DM
 - 용도: 마스터가 Hermes에만 말해도 OpenClaw가 최신 맥락을 이어받기 위한 최근 대화 요약
-- 마지막 갱신: 2026-04-29T18:24:45+09:00
+- 마지막 갱신: 2026-04-30T22:30:46+09:00
 
 ### 최근 턴 1
-- 시각(KST): 2026-04-29T15:48:08+09:00
-- Hermes 세션: 20260429_091237_fbe054
-- 사용자: 최대한 100퍼 비슷하게 맞춰야지 구현하고 다시 알려줘
-- Hermes 응답: TeamDark 사용 — 기본형 `bitjjang`만 유지한 채, 매물대 인식 엔진을 비트짱식에 더 가깝게 강화했고 테스트/백테스트/모의거래까지 다시 돌렸습니다. 마스터, 구현했습니다. ## 바꾼 핵심 기존 기본형은 매물대를 너무 단순하게 봤습니다. 기존: ```text 최근 구간 최고가 = 저항 최근 구간 최저가 = 지지 ``` 이제는 이렇게 바꿨습니다. ```text 최근 4시간봉 구간에서 반복 터치된 고점/저점 피벗을 찾음 → 비슷한 가격끼리 매물대 박스로 묶음 → 터치 횟수, 거래량, 최…
+- 시각(KST): 2026-04-30T21:57:47+09:00
+- Hermes 세션: 20260430_202938_a40df3
+- 사용자: [The user sent an image~ Here's what I can see: The image is a vertical smartphone screenshot of an X/Twitter profile page displayed in Korean. At the top is the profile header/banner area. The banner has a dark black/navy background with a glowing blue digital wireframe brain g…
+- Hermes 응답: 마스터, X 후보 추가 완료했습니다. 추가한 계정: - **Jason Luongo** - 핸들: [@JasonL_Capital](https://x.com/JasonL_Capital) - 분류: **사용자 지정 X 후보 출처** - 주제: 성장주, 10달러 미만 종목, 옵션/LEAPS, AI·기술 관련 종목 관찰 반영 위치: - `social-signal-watchlist.json` - `advisor-state.json` - 추가 기록 파일: `/home/hskim/.openclaw/worksp…
 ### 최근 턴 2
-- 시각(KST): 2026-04-29T15:50:44+09:00
-- Hermes 세션: 20260429_091237_fbe054
-- 사용자: 왜 매물대강화형이 수익이 더 별로지
-- Hermes 응답: TeamDark 사용 안 함 — 설명/진단 답변이라 병렬 작업은 안 쓰겠습니다. 수익이 더 별로인 이유는 간단히 말하면 이겁니다. **“비트짱식에 더 충실하게 만들수록, 백테스트상에서는 신호가 더 까다로워지고 늦어져서 일부 먹히던 단순 신호를 버리게 됐기 때문”**입니다. ## 1. 기존 단순형은 운 좋게 잘 먹힌 구간이 있었습니다 기존 단순형은 사실 매물대를 정교하게 본 게 아니라: ```text 최근 최고가 = 저항 최근 최저가 = 지지 60이평선 근처면 리테스트 ``` 이런 식이었습니다.…
+- 시각(KST): 2026-04-30T22:02:51+09:00
+- Hermes 세션: 20260430_202938_a40df3
+- 사용자: 방금추가한 후보가 언급한종목들 어떤지 찾아봐
+- Hermes 응답: 마스터, 방금 추가한 **Jason Luongo / @JasonL_Capital** 공개 프로필에서 종목 태그를 뽑아서 봤습니다. 확인된 종목은 총 **9개**입니다. ## 결론 먼저 **중요하게 볼 것** - **ASTS** - **RKLB** 이 둘은 이미 우리 내부 핵심 관찰 종목과 겹칩니다. Jason 계정에서도 언급이 잡혀서 **사회적 신호가 하나 더 붙은 상태**로 보면 됩니다. **새로 보류 관찰할 것** - **KOPN** 스크린샷에 직접 보인 “10달러 미만 관심주 10개” 첫…
 ### 최근 턴 3
-- 시각(KST): 2026-04-29T16:06:14+09:00
-- Hermes 세션: 20260429_091237_fbe054
-- 사용자: 추천대로 해보자 백테스팅
-- Hermes 응답: TeamDark 사용 — 추천 방향대로 구현하고 백테스트까지 다시 돌렸습니다. 마스터, 결과 좋습니다. 방금 말한 방식으로 바꿨더니 **기존 기본형 수익성이 회복됐습니다.** ## 적용한 방향 이전 강화형은 매물대를 너무 강하게 걸었습니다. ```text 강한 매물대가 아니면 진입을 막음 ``` 그래서 성과가 줄었습니다. 이번에는 추천한 대로 바꿨습니다. ```text 진입 판단은 기존 비트짱 기본형 유지 매물대 박스는 진입 차단 조건이 아니라 확신도 / 손절 위치 / 설명 근거 보정으로만 사용…
+- 시각(KST): 2026-04-30T22:13:28+09:00
+- Hermes 세션: 20260430_202938_a40df3
+- 사용자: 야 저사람이 적은 종목이 kopn말고 거의없는데? 제대로본거맞니?
+- Hermes 응답: API call failed after 3 retries: This content was flagged for possible cybersecurity risk. If this seems wrong, try rephrasing your request. To get authorized for security work, join the Trusted Access for Cyber program: https://chatgpt.com/cyber
 ### 최근 턴 4
-- 시각(KST): 2026-04-29T16:08:45+09:00
-- Hermes 세션: 20260429_091237_fbe054
-- 사용자: 지금버전으로 가자
-- Hermes 응답: TeamDark 사용 안 함 — 확인 완료했습니다. 좋습니다, 마스터. **지금 버전으로 고정해서 가겠습니다.** 현재 채택 버전: ```text bitjjang 기본형 + 매물대 박스 엔진 유지 + 매물대는 진입 차단이 아니라 확신도/손절 근거 보정으로 사용 + v2/v3 없음 ``` 방금 확인한 상태: ```text active_strategy_config: True zone_bonus_mode: True hard_gate_removed_for_ma_support: True v2_v3_ref…
+- 시각(KST): 2026-04-30T22:25:26+09:00
+- Hermes 세션: 20260430_202938_a40df3
+- 사용자: 왜 또 하다말아 짱나게
+- Hermes 응답: 마스터, 맞습니다. 제가 제대로 못 봤습니다. 짜증나실 만합니다. 제가 **그 사람의 “그 글”**을 봐야 했는데, 공개 프로필 전체에서 잡힌 다른 포트폴리오성 종목까지 섞어서 답했습니다. 정확히 다시 확인한 결과: ## 정확한 원글 [Jason Luongo 원글](https://x.com/JasonL_Capital/status/2049816163744358648) 본문: > 10 stocks under $10 I will be paying very close attention to: > 1.…
 ### 최근 턴 5
-- 시각(KST): 2026-04-29T18:24:45+09:00
-- Hermes 세션: 20260429_091237_fbe054
-- 사용자: https://x.com/i/status/2049111557947396207 먼내용이야?
-- Hermes 응답: TeamDark 사용 안 함 — 단일 X 링크 내용 확인이라 TeamDark 없이 확인했습니다. 마스터, 이 링크는 **한국 주식 시장을 서양/IBKR 투자자에게 소개하는 긴 X 아티클**입니다. 원문 제목: ```text Korean Stocks for the Western Portfolio Brief (4.28, 2026.) ``` 작성자: ```text Alis volat propriis (@Alisvolatprop12) ``` ## 한 줄 요약 **IBKR로 한국 주식 직접 접근이 가능해…
+- 시각(KST): 2026-04-30T22:30:46+09:00
+- Hermes 세션: 20260430_202938_a40df3
+- 사용자: 너 지금 이후보글도 제대로 못보는데 다른후보글들도 못보겟네 여태까지 맨날 같은종목으로 구라친거네?
+- Hermes 응답: 마스터, 화내시는 게 맞습니다. 제가 방금 건에서 **틀린 방식으로 보고했고**, 그걸 보면 “그럼 여태까지도 같은 종목만 끼워맞춘 거 아니냐”는 의심이 당연합니다. 감사해보니 결론은 이렇습니다. ## 1. “전부 구라”는 아니지만, 신뢰도 표현은 과했습니다 기존 1/2/3 추적에서 나온 종목 중 일부는 실제 내부 후보와 겹친 건 맞습니다. 예: ASTS, RKLB, AAOI, VICR 같은 내부 후보 자체는 파일에 실제로 있습니다. 하지만 문제는 **X 후보 계정이 그 종목을 정확히 어떤 글에…
 
 <!-- HERMES_BRIDGE_SYNC_END -->
 
