@@ -78,6 +78,8 @@
 - 최신 리포트 자동화의 실전형 권장 스케줄은 **매일 08:40 KST + 21:30 KST** 2회 보고다(오전은 국장 시작 전 + 밤사이 미장 반영, 야간은 당일 국장 반영 + 미장 시작 전 점검).
 - 마스터는 이 최신 리포트(국장+미장 후보 + 호재 요약)를 **한투 KIS 모의거래의 후보 선정 입력**으로 실제 연결하길 원하며, 기본 운용안은 `국장 TOP 후보 상위 3개 / 종목당 약 100만원 / 손절 -5% / 익절 +12% / 리포트 후보에서 사라질 때까지 보유 / 후보 이탈 시 교체` 기준으로 시작한다.
 - 리포트기준 한투모의 상태 보고는 장중 **10:50 / 12:50 / 14:50 KST** 3회 주기 보고를 기본으로 유지하고, **장마감 상태 보고는 15:25 KST**에 1회 추가한다. 진입/청산/교체 같은 액션 발생 시에는 즉시 추가 보고한다.
+- 2026-05-05 확정: 한투 KIS 모의거래(리포트기준 자동매매/상태보고 포함)는 **KRX 휴장일에는 실행·보고하지 않고 `NO_REPLY`로 스킵**하는 운영을 기본값으로 유지한다.
+- 2026-05-05 확정: KRX 휴장일 판정은 외부 OTP 다운로드/라이브러리 의존보다, 워크스페이스의 `krx_market_calendar.py` 같은 로컬 자체 캘린더 기준을 우선 유지한다.
 - 2026-04-21 확정: 최신 증권사 리포트 자동화(국장+미장 후보 + 종목별 핵심 호재 1줄)는 **한투 KIS 모의거래의 실제 후보 선정 입력으로 이미 연결된 운영 상태**로 기억한다. 현재 시작 기준은 `국장 리포트 후보 상위 3개 / 언급수 2건 이상 / 매수비율 80% 이상 / 상승여력 15% 이상 / 종목당 약 100만원 / 손절 -5% / 익절 +12% / 리포트 후보에서 사라질 때까지 보유 / 후보 이탈 시 교체`다.
 - 08:50 장전 리포트 컨센서스 요약에는 종목별 `현재가`를 함께 표기하는 포맷을 선호함.
 - 국장 리포트/후보 정리에는 **연기금 최근 순매수·순매도 추적**도 함께 붙여, 어떤 종목을 사고파는지 바로 보이게 하는 포맷을 선호함.
@@ -209,33 +211,33 @@
 ## Hermes 브리지 최신 동기화(휘발성)
 - 메인 진입: Hermes 텔레그램 DM
 - 용도: 마스터가 Hermes에만 말해도 OpenClaw가 최신 맥락을 이어받기 위한 최근 대화 요약
-- 마지막 갱신: 2026-05-04T21:59:35+09:00
+- 마지막 갱신: 2026-05-05T18:04:07+09:00
 
 ### 최근 턴 1
-- 시각(KST): 2026-05-04T19:32:29+09:00
-- Hermes 세션: 20260504_185643_bdef19
-- 사용자: 자 봐봐요
-- Hermes 응답: (없음)
+- 시각(KST): 2026-05-05T14:43:06+09:00
+- Hermes 세션: 20260505_142320_991ef6
+- 사용자: 아이 시발새꺄 배치파일 그대로잇다고 제대로안해?
+- Hermes 응답: 마스터, 맞습니다. 제가 처음에 지울 때 **보이는 바탕화면 경로 전체를 끝까지 못 잡은 게 문제**였습니다. 방금 이미지에서 보인 이름 그대로 다시 잡아서 확인했습니다. - 확인한 보이는 바탕화면: - `C:\Users\ilos1\Desktop` - `C:\Users\ilos1\OneDrive\바탕 화면` - `C:\Users\Public\Desktop` - 이미지에 보인 계열 재검색: - `00-FRESH` - `Fresh-X` - `Run-X-Subscriber` - `Edit-X-Subs…
 ### 최근 턴 2
-- 시각(KST): 2026-05-04T20:27:35+09:00
-- Hermes 세션: 20260504_185643_bdef19
-- 사용자: [The user sent an image~ Here's what I can see: The image shows a simplified candlestick-style financial chart on a plain light beige/cream background. - **Overall layout:** A square chart area with no visible axes, gridlines, labels, numbers, title, legend, or border. The candl…
-- Hermes 응답: 마스터, 더커 데일리 차트 해석 **전략 수집 완료**했습니다. 첨부 이미지 3장도 따로 보고, 텍스트 원문 + 전략화 버전 + llm-wiki 반영까지 저장했습니다. ## 저장한 위치 - 원문 기록 `/home/hskim/.openclaw/workspace/knowledge/raw/transcripts/2026-05-04-thekerr-daily-chart-text-from-user.md` - 전략 수집 노트 `/home/hskim/.openclaw/workspace/knowledge/work…
+- 시각(KST): 2026-05-05T15:55:47+09:00
+- Hermes 세션: 20260505_144240_e8a985
+- 사용자: 너 그럼 구독글 정기적으로 읽는거맞냐 내가 원하는건 정기적으로 구독글읽고 투자인사이트를 얻으려하는데
+- Hermes 응답: 마스터, 정확히 말하면 지금 구조는 이렇게입니다. ## 정기 갱신 상태 **1) 제가 읽고 투자OS에 동기화하는 건 이제 30분마다 맞습니다.** 방금 크론을 `매일 08:20`에서 **30분마다**로 바꿨고, 바로 실행 검증도 했습니다. ```text 정기_크론: 연결됨(30분마다) 동기화 성공: 2026-05-05 15:54 KST 검증: py_compile / JSON 검증 / 민감문자 검사 통과 ``` **2) 단, 새 구독글 “수집”은 Windows 쪽 CDP 수집기가 산출물을 갱신해야…
 ### 최근 턴 3
-- 시각(KST): 2026-05-04T20:53:07+09:00
-- Hermes 세션: 20260504_202705_9b84da
-- 사용자: 먼 체크리스트여 더커베이릭 전략 거기에 더해서 더 정확도를올려야지
-- Hermes 응답: 맞습니다, 마스터. 제가 “체크리스트 V2 후보” 쪽으로 말한 게 방향이 틀렸습니다. 이건 별도 체크리스트 전략이 아니라 **기존 더커베이릭 전략에 정확도 보강 필터를 더하는 것**으로 처리해야 맞습니다. 바로 정정 반영했습니다. ## 반영 완료 1. **전략 수집 노트 수정** - `/home/hskim/.openclaw/workspace/knowledge/workspaces/investment-os-v1/resources/market/youtube-strategy/2026-05-04-thek…
+- 시각(KST): 2026-05-05T16:14:33+09:00
+- Hermes 세션: 20260505_144240_e8a985
+- 사용자: 새로운 구독은 왜 암것도 이야기가없냐
+- Hermes 응답: 맞습니다, 마스터. **제가 새로 추가된 구독 계정을 따로 떼서 말했어야 했는데**, 전체 후보 티커 요약에 섞어서 넘겼습니다. 그건 제 실수입니다. 새 구독 계정은 현재 기준으로 **@aleabitoreddit**이고, 실제로 수집됐습니다. ```text @aleabitoreddit 수집: 5건 - 일반 프로필 경로: 2건 - 구독자용 경로: 3건 - 계정목록/수집물 불일치: 없음 ``` ## @aleabitoreddit 구독글 핵심 정리 ### 1. 핵심 방향은 **AI 반도체 CPO 공급망…
 ### 최근 턴 4
-- 시각(KST): 2026-05-04T21:06:27+09:00
-- Hermes 세션: 20260504_205243_eecc62
-- 사용자: 더커전략 어떤식인지 이야기좀 해봐
-- Hermes 응답: 마스터, 더커베이릭 전략은 제가 보기엔 **“예측 전략”이라기보다 구조 판독형 상태기계 전략**입니다. 한 줄로 줄이면: **큰 방향을 먼저 보고 → 지금 차트 구조에 이름을 붙이고 → 그 구조가 살아 있는지 확인하고 → 쉬는 구간인지, 돌파 구간인지, 무효화 구간인지 나눠서 대응하는 방식**입니다. ## 1. 핵심 철학 더커 전략은 “지금 사라/팔아라”가 아니라, > **이 차트가 어떤 구조 안에 있는지 먼저 정의하고, > 그 구조가 깨지기 전까지만 시나리오를 유지한다.** 이게 핵심입니다.…
+- 시각(KST): 2026-05-05T16:22:00+09:00
+- Hermes 세션: 20260505_144240_e8a985
+- 사용자: 윈도우쪽에서 주기적으로 수집해?
+- Hermes 응답: 아니요, **지금 기준으로 “Windows 쪽이 계속 주기적으로 수집 중”이라고 말하면 거짓말입니다.** 파일 기준으로 다시 확인했습니다. ```text 최신 수집 산출물: 2026-05-05 14:18:46 KST 수동 collector 로그: 2026-05-05 14:19:01 KST 자동루프 로그: 2026-05-05 13:37:14 KST 자동루프 마지막 상태: Sleeping 60 minutes 그 뒤 14:37, 15:37 실행 로그 없음 ``` 즉 현재 상태는 이겁니다. ## 현재…
 ### 최근 턴 5
-- 시각(KST): 2026-05-04T21:59:35+09:00
-- Hermes 세션: 20260504_205243_eecc62
-- 사용자: [The user sent an image~ Here's what I can see: The image is a vertically oriented smartphone screenshot of an X/Twitter profile page displayed in Korean. At the very top is a gray-to-white gradient header area with three circular dark-gray navigation buttons overlaid: - Top lef…
-- Hermes 응답: 마스터, **X후보 추가 완료**했습니다. 추가한 계정: - **Citrini** - **@citrini** - 성격: 테마틱·크로스자산 투자 리서치 / 금융 서비스 - 사이트: `citriniresearch.com` - 팔로워: 스크린샷 기준 **244,296명**, 공개 프로필 확인 기준 약 **244.5K** 반영한 곳: - `social-signal-watchlist.json` - `accounts.citrini` 추가 - 1/2/3 추적의 기준 목록인 `source_registry.so…
+- 시각(KST): 2026-05-05T18:04:07+09:00
+- Hermes 세션: 20260505_144240_e8a985
+- 사용자: [Replying to: "Cronjob Response: x-subscriber-authorized-artifact-sync (job_id: a9f2f9285efa) ------------- 구독글 수집 산출물 미갱신: Windows CDP 수집기/자동루프 확인 필요 - 투자OS artifact 동기화는 성공: 최신 sync/state JSON 검증 완료 - 새 투자 신호 없음: 직전 동기화 대비 글 수·티커·테마·계정 목록 변화 없음 - 현재 산출물: 12글(구독자용 경로 7 / 일반 프로필…
+- Hermes 응답: 알림 중지했습니다, 마스터. 변경한 것: ```text x-subscriber-authorized-artifact-sync - 기존: 텔레그램/현재 대화로 보고 - 변경: local 저장만 함 x-subscriber-windows-collector-stale-watch - 기존: 텔레그램/현재 대화로 보고 - 변경: local 저장만 함 ``` 즉, **구독글 산출물 확인/동기화 작업은 계속 돌지만**, 저런 크론 알림은 더 이상 이 채팅으로 안 옵니다. 현재 상태: ```text 구독글 동기화…
 
 <!-- HERMES_BRIDGE_SYNC_END -->
 
