@@ -109,6 +109,25 @@
 ### 보류
 - 외부 포크 자체를 실행 전제로 한 build/install 경로 채택
 
+## 9) addyosmani/agent-skills 에서 채택
+출처 성격: AI 코딩 에이전트용 production-grade engineering workflow skills pack
+
+### 즉시 채택
+- lifecycle를 `define → plan → build → verify → review → ship`로 끊어 보는 프레임
+- framework/version 의존 구현에서는 **공식 문서 확인 후 구현**하는 source-driven 원칙
+- 고위험/비가역 변경 전에 반대 검증을 거는 doubt-driven 관점
+- rules/spec/source/error를 계층적으로 싣는 context-engineering 관점
+
+### 보류
+- `.claude/commands`, `.gemini/commands`, `hooks`의 전면 도입
+- `agents/` 페르소나 카드 전체 직수입
+- OpenClaw 기본 스킬 라우팅을 대체하는 전량 설치
+
+### 로컬 적용 메모
+- 이 repo는 **참고용 clone + cherry-pick 이식** 대상이지, OpenClaw 런타임 직결 설치 대상은 아님
+- 실제 반영은 로컬 문서/스킬/운영 규칙으로 흡수하고 업스트림 구조에 종속되지 않게 유지
+- 상세 평가는 `docs/agent-skills-apply-eval-2026-05-09.md` 참고
+
 ## 로컬 적용 규칙
 - GitHub를 보며 판단하되, 실제 운영에는 **로컬 파일**만 반영한다.
 - 외부 repo 구조가 바뀌어도 우리 운영이 깨지지 않게 설계한다.
