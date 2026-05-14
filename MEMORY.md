@@ -261,3 +261,4 @@
 
 - 2026-05-13 확정: 모의투자 사용자 보고 기본값은 **소닉 관리 Minervini SEPA 국장 돌파매매 KIS 모의**(`MINERVINI_SEPA_KR_BREAKOUT_KIS`)만이다. OpenClaw/리포트기준 한투모의(`report_focus4_v1`)·메인 영상형 KIS·코인/기타 paper 모의 보고는 사용자가 따로 요청하지 않으면 텔레그램에 보고하지 않는다.
 - 2026-05-13 재확인: 하루 마감 점검에서는 당일 핵심을 `memory/YYYY-MM-DD.md`에 남기고, 장기 메모는 그날 확정된 운영 원칙만 최소 반영한 뒤, Git은 tracked 변경이 있을 때만 commit/push로 닫는 흐름을 유지한다.
+- 2026-05-14 재확인: 마감 점검 시 대규모 untracked 누적이 있어도 tracked 변경이 없으면 add/commit/push를 하지 않고, 일일 메모와 장기 메모 최소 갱신 + 결과 보고만으로 닫는다.
