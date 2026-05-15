@@ -260,5 +260,7 @@
 <!-- HERMES_BRIDGE_SYNC_END -->
 
 - 2026-05-13 확정: 모의투자 사용자 보고 기본값은 **소닉 관리 Minervini SEPA 국장 돌파매매 KIS 모의**(`MINERVINI_SEPA_KR_BREAKOUT_KIS`)만이다. OpenClaw/리포트기준 한투모의(`report_focus4_v1`)·메인 영상형 KIS·코인/기타 paper 모의 보고는 사용자가 따로 요청하지 않으면 텔레그램에 보고하지 않는다.
+- 2026-05-14 정정: 위 원칙을 `Hermes 보고만 유지하고 OpenClaw 보고는 끈다`로 확대 해석하면 안 된다. **Hermes와 OpenClaw의 주식/모의투자 보고는 서로 독립적으로 유지**하며, 사용자가 `따로따로 보고`를 지시하면 한쪽(SEPA KIS/Hermes)을 조정해도 다른 쪽(OpenClaw 리포트기준 한투모의 보고)을 임의로 비활성화하지 않는다.
 - 2026-05-13 재확인: 하루 마감 점검에서는 당일 핵심을 `memory/YYYY-MM-DD.md`에 남기고, 장기 메모는 그날 확정된 운영 원칙만 최소 반영한 뒤, Git은 tracked 변경이 있을 때만 commit/push로 닫는 흐름을 유지한다.
 - 2026-05-14 재확인: 마감 점검 시 대규모 untracked 누적이 있어도 tracked 변경이 없으면 add/commit/push를 하지 않고, 일일 메모와 장기 메모 최소 갱신 + 결과 보고만으로 닫는다.
+- 2026-05-15 재확인: 마감 점검에서는 기존 tracked 기록 변경이 이미 있으면, 당일 `memory/YYYY-MM-DD.md` 생성분과 함께 commit/push까지 같은 턴에서 닫고 대규모 untracked 작업물은 계속 분리 유지한다.
