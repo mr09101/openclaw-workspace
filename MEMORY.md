@@ -235,33 +235,33 @@
 ## Hermes 브리지 최신 동기화(휘발성)
 - 메인 진입: Hermes 텔레그램 DM
 - 용도: 마스터가 Hermes에만 말해도 OpenClaw가 최신 맥락을 이어받기 위한 최근 대화 요약
-- 마지막 갱신: 2026-05-27T14:58:59+09:00
+- 마지막 갱신: 2026-05-28T22:24:31+09:00
 
 ### 최근 턴 1
-- 시각(KST): 2026-05-27T11:01:55+09:00
-- Hermes 세션: 20260527_093635_ea06d6
-- 사용자: 현재 한투모의거래 포지션보고 어제 양식대로
-- Hermes 응답: 마스터, 재실행해서 최신 상태로 보고 갱신했습니다. 기준 시각: **2026-05-27 10:59:05 KST** **에르메스 기준 총계좌손익** - **KRW: +39,400원** - 실현: -22,600원 - 보유: +62,000원 - **USD: +$79.80** - 실현: $0.00 - 보유: +$79.80 범위: **에르메스 미너비니 성장주 돌파/정밀 변동성 축소 돌파 모의거래만** OpenClaw / KIS 계좌전체 손익은 제외했습니다. ## 현재 보유 포지션 ### 1) 국장 1차…
+- 시각(KST): 2026-05-28T22:01:18+09:00
+- Hermes 세션: 20260528_113433_be791b
+- 사용자: 그 우리 궁금한게 클로드.md 이걸 많이 어디서 가져와서 우리꺼로 만들엇잖아 클로드,md 이 파일있는건 없나?
+- Hermes 응답: 네, 마스터. 있습니다. 확인해보니 **두 종류**로 나뉩니다. ## 1. 우리 Claude Code 전역 파일 현재 Claude Code가 보는 전역 `CLAUDE.md`는 여기입니다. `/home/hskim/.claude/CLAUDE.md` 내용은 아주 짧습니다. ```md @RTK.md @KNOWLEDGE.md ``` 즉, 실제 지침 본문을 길게 넣은 파일이라기보다, `RTK.md`, `KNOWLEDGE.md`를 불러오는 **엔트리 파일**입니다. ## 2. 우리가 가져와서 우리 식으로 만…
 ### 최근 턴 2
-- 시각(KST): 2026-05-27T11:49:14+09:00
-- Hermes 세션: 20260527_110043_a2a45c
-- 사용자: 팀소닉 사용 — 네, 마스터. 지금 기준 현재포지션을 어제 양식대로 정리드리면 아래입니다. 지금 조회 기준: 2026-05-27 10:58 KST 현재포지션 범위: 한투모의 전체 조회 구분: 국내 / 해외, 에르메스 / OpenClaw·소닉 분리 [국내] 에르메스 관리 • 주성엔지니어링(036930) 4주 평단 221,500원 / 현재 235,500원 손익 +6.32% (+56,000원) OpenClaw·소닉 관리 • 삼성전자(005930) 4주 평단 298,500원 / 현재 318,500원 손…
-- Hermes 응답: 마스터, 맞습니다. 방금 전 제 보고는 **에르메스-only**로 좁혀져 있어서 마스터가 원한 “한투모의 전체 현재포지션 + 소닉/쉐도우 분리” 양식이 아니었습니다. 지금은 새 양식으로 **재조회 + 리포트 생성**까지 반영했습니다. 저장 위치: `/home/hskim/.openclaw/workspace/trading-automation/stocks/reports/kis_paper_combined_position_report_latest.md` ## 한투모의 현재포지션 — 2026-05-27 1…
+- 시각(KST): 2026-05-28T22:04:39+09:00
+- Hermes 세션: 20260528_113433_be791b
+- 사용자: 어 이걸 클로드코드에 전달하고싶은데 어떻게 전달하지? D:\AI PROJECT 일단 여기 경로에 있긴한데
+- Hermes 응답: 마스터, 확인해보니 **이미 전달되는 기본 구조는 잡혀 있습니다.** 현재 Windows 경로: `D:\AI PROJECT` WSL 기준: `/mnt/d/AI PROJECT` 여기에 이미 파일이 있습니다. - `/mnt/d/AI PROJECT/CLAUDE.md` - `/mnt/d/AI PROJECT/AGENTS.md` - `/mnt/d/AI PROJECT/.claude/settings.local.json` 현재 `CLAUDE.md` 내용은 이겁니다. ```md @AGENTS.md ``` 즉, C…
 ### 최근 턴 3
-- 시각(KST): 2026-05-27T13:15:53+09:00
-- Hermes 세션: 20260527_110043_a2a45c
-- 사용자: @aleabitoreddit 특히 이사람 엑스 추적해서 종목분석해서 리스크랑 이런것좀 알려줘
-- Hermes 응답: 네, 마스터. 확인해보니 **현재 Hermes 웹검색 도구는 Tavily API 키가 설정된 상태**입니다. 방금 제가 한 외부 호출은 대략 이 정도입니다. - `web_search`: **9회** - RKLB $3B ATM - AAOI $600M ATM - POET $400M 조달 - ONDS World View 재판매 - IREN Dell/Blackwell - VICR/KTOS Form 144 등 - `web_extract`: **3회** - SEC/StockTitan/회사 IR 원문 확인용…
+- 시각(KST): 2026-05-28T22:13:33+09:00
+- Hermes 세션: 20260528_113433_be791b
+- 사용자: 핵심은 **"내가 어느 폴더에서 열렸느냐"**에 따라 달라져요. Claude Code는 CLAUDE.md를 **계단식(cascade)**으로 읽어요. 내가 읽는 순서 (항상 이 조합) 작업 폴더를 열면 매번 이 둘(이상)을 합쳐서 읽어요: 1. 글로벌: C:\Users\ilos1\.claude\CLAUDE.md ← 항상, 모든 프로젝트에 적용 (12개 규칙) + 2. 프로젝트: <작업폴더>\CLAUDE.md ← 그 폴더에 있을 때만 글로벌은 무조건 읽고, 거기에 그 프로젝트의 CLAUDE.md가…
+- Hermes 응답: TeamDark: **이번 건은 사용 안 하겠습니다.** 이유는 코딩/전략 실행이 아니라 Claude Code 지침 구조 판단이라서, 제가 직접 정리해도 충분합니다. 마스터, Claude 말 **대체로 맞습니다.** 핵심은 정말로 **Claude Code를 어느 폴더에서 실행했느냐**입니다. 다만 제가 봤을 때 중요한 포인트가 하나 있습니다. ## 제 판단 ### 1. 글로벌 규칙은 무조건 유지 이건 여기에 두는 게 맞습니다. ```text C:\Users\ilos1\.claude\CLAUDE.…
 ### 최근 턴 4
-- 시각(KST): 2026-05-27T13:41:49+09:00
-- Hermes 세션: 20260527_125902_bf795d
-- 사용자: [Replying to: "⚠️ No response from provider for 300s (non-streaming, model: gpt-5.5). Aborting call."] 이거 300초좀 안나게해봐
-- Hermes 응답: (없음)
+- 시각(KST): 2026-05-28T22:18:14+09:00
+- Hermes 세션: 20260528_221207_004ede
+- 사용자: C:\Users\ilos1\.claude\CLAUDE.md 아니 여기엔 무슨내용있는데
+- Hermes 응답: 마스터, 실제로 읽어보니 `C:\Users\ilos1\.claude\CLAUDE.md` 안에는 **전역 12규칙 + KNOWLEDGE.md 참조**가 들어있습니다. 경로: ```text C:\Users\ilos1\.claude\CLAUDE.md ``` WSL 기준: ```text /mnt/c/Users/ilos1/.claude/CLAUDE.md ``` ## 현재 내용 요약 맨 위에 이게 있습니다. ```md @KNOWLEDGE.md ``` 즉 Claude Code가 글로벌 CLAUDE.md를 읽…
 ### 최근 턴 5
-- 시각(KST): 2026-05-27T14:58:59+09:00
-- Hermes 세션: 20260527_125902_bf795d
-- 사용자: 작업중이니?
-- Hermes 응답: (없음)
+- 시각(KST): 2026-05-28T22:24:31+09:00
+- Hermes 세션: 20260528_221207_004ede
+- 사용자: 오케이 알겠어 혹시 클로드 말고 코덱스쪽은 어떤식으로 되어있는지 아니?
+- Hermes 응답: 마스터, 확인해봤습니다. **Codex 쪽은 Claude랑 구조가 조금 다릅니다.** 핵심만 먼저 말하면: > Claude Code는 `CLAUDE.md` 중심이고, > Codex는 `AGENTS.md` 중심입니다. 그리고 마스터 PC에는 **Windows Codex용 설정**과 **WSL Codex용 설정**이 따로 있습니다. --- ## 1. Windows Codex 쪽 경로: ```text C:\Users\ilos1\.codex ``` WSL 기준: ```text /mnt/c/Users/i…
 
 <!-- HERMES_BRIDGE_SYNC_END -->
 
@@ -281,3 +281,4 @@
 - 2026-05-25 확정: Hermes Codex 인증 오류를 진단할 때는 일반 장애로 뭉뚱그리지 말고, 먼저 `401 token_expired` 여부와 OAuth 세션 만료 → credential pool eject 흐름을 로그로 확인한다. 주기적 재갱신 가능성은 별개로 분리 설명한다.
 - 2026-05-26 확정: Hermes 문맥에서 든 예시 문구나 표시명은 OpenClaw 투자 보고 라벨 변경 지시로 확대 해석하지 않는다. 한투 모의 현재포지션 보고는 국내/해외를 모두 포함하되, Hermes와 OpenClaw의 운용 문구는 각 문맥에서 분리 확인 후 반영한다.
 - 2026-05-27 재확인: 한투모의 현재포지션 표준 보고는 **한투모의 전체 조회 기준**에서 **국내/해외 → Hermes / OpenClaw·소닉 관리 분리** 양식으로 유지하고, 최신 통합 산출물 경로는 `trading-automation/stocks/reports/kis_paper_combined_position_report_latest.md`를 기준으로 본다.
+- 2026-05-28 확인: Claude Code 규칙은 글로벌 `~/.claude/CLAUDE.md` + 작업 폴더 `CLAUDE.md`를 계단식으로 읽는 구조로 보고, Codex 쪽은 `AGENTS.md` 중심이며 Windows/WSL 설정 문맥을 분리해서 확인한다.
