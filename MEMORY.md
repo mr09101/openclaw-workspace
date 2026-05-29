@@ -235,33 +235,33 @@
 ## Hermes 브리지 최신 동기화(휘발성)
 - 메인 진입: Hermes 텔레그램 DM
 - 용도: 마스터가 Hermes에만 말해도 OpenClaw가 최신 맥락을 이어받기 위한 최근 대화 요약
-- 마지막 갱신: 2026-05-28T22:24:31+09:00
+- 마지막 갱신: 2026-05-29T12:29:05+09:00
 
 ### 최근 턴 1
-- 시각(KST): 2026-05-28T22:01:18+09:00
-- Hermes 세션: 20260528_113433_be791b
-- 사용자: 그 우리 궁금한게 클로드.md 이걸 많이 어디서 가져와서 우리꺼로 만들엇잖아 클로드,md 이 파일있는건 없나?
-- Hermes 응답: 네, 마스터. 있습니다. 확인해보니 **두 종류**로 나뉩니다. ## 1. 우리 Claude Code 전역 파일 현재 Claude Code가 보는 전역 `CLAUDE.md`는 여기입니다. `/home/hskim/.claude/CLAUDE.md` 내용은 아주 짧습니다. ```md @RTK.md @KNOWLEDGE.md ``` 즉, 실제 지침 본문을 길게 넣은 파일이라기보다, `RTK.md`, `KNOWLEDGE.md`를 불러오는 **엔트리 파일**입니다. ## 2. 우리가 가져와서 우리 식으로 만…
-### 최근 턴 2
-- 시각(KST): 2026-05-28T22:04:39+09:00
-- Hermes 세션: 20260528_113433_be791b
-- 사용자: 어 이걸 클로드코드에 전달하고싶은데 어떻게 전달하지? D:\AI PROJECT 일단 여기 경로에 있긴한데
-- Hermes 응답: 마스터, 확인해보니 **이미 전달되는 기본 구조는 잡혀 있습니다.** 현재 Windows 경로: `D:\AI PROJECT` WSL 기준: `/mnt/d/AI PROJECT` 여기에 이미 파일이 있습니다. - `/mnt/d/AI PROJECT/CLAUDE.md` - `/mnt/d/AI PROJECT/AGENTS.md` - `/mnt/d/AI PROJECT/.claude/settings.local.json` 현재 `CLAUDE.md` 내용은 이겁니다. ```md @AGENTS.md ``` 즉, C…
-### 최근 턴 3
-- 시각(KST): 2026-05-28T22:13:33+09:00
-- Hermes 세션: 20260528_113433_be791b
-- 사용자: 핵심은 **"내가 어느 폴더에서 열렸느냐"**에 따라 달라져요. Claude Code는 CLAUDE.md를 **계단식(cascade)**으로 읽어요. 내가 읽는 순서 (항상 이 조합) 작업 폴더를 열면 매번 이 둘(이상)을 합쳐서 읽어요: 1. 글로벌: C:\Users\ilos1\.claude\CLAUDE.md ← 항상, 모든 프로젝트에 적용 (12개 규칙) + 2. 프로젝트: <작업폴더>\CLAUDE.md ← 그 폴더에 있을 때만 글로벌은 무조건 읽고, 거기에 그 프로젝트의 CLAUDE.md가…
-- Hermes 응답: TeamDark: **이번 건은 사용 안 하겠습니다.** 이유는 코딩/전략 실행이 아니라 Claude Code 지침 구조 판단이라서, 제가 직접 정리해도 충분합니다. 마스터, Claude 말 **대체로 맞습니다.** 핵심은 정말로 **Claude Code를 어느 폴더에서 실행했느냐**입니다. 다만 제가 봤을 때 중요한 포인트가 하나 있습니다. ## 제 판단 ### 1. 글로벌 규칙은 무조건 유지 이건 여기에 두는 게 맞습니다. ```text C:\Users\ilos1\.claude\CLAUDE.…
-### 최근 턴 4
-- 시각(KST): 2026-05-28T22:18:14+09:00
-- Hermes 세션: 20260528_221207_004ede
-- 사용자: C:\Users\ilos1\.claude\CLAUDE.md 아니 여기엔 무슨내용있는데
-- Hermes 응답: 마스터, 실제로 읽어보니 `C:\Users\ilos1\.claude\CLAUDE.md` 안에는 **전역 12규칙 + KNOWLEDGE.md 참조**가 들어있습니다. 경로: ```text C:\Users\ilos1\.claude\CLAUDE.md ``` WSL 기준: ```text /mnt/c/Users/ilos1/.claude/CLAUDE.md ``` ## 현재 내용 요약 맨 위에 이게 있습니다. ```md @KNOWLEDGE.md ``` 즉 Claude Code가 글로벌 CLAUDE.md를 읽…
-### 최근 턴 5
 - 시각(KST): 2026-05-28T22:24:31+09:00
 - Hermes 세션: 20260528_221207_004ede
 - 사용자: 오케이 알겠어 혹시 클로드 말고 코덱스쪽은 어떤식으로 되어있는지 아니?
 - Hermes 응답: 마스터, 확인해봤습니다. **Codex 쪽은 Claude랑 구조가 조금 다릅니다.** 핵심만 먼저 말하면: > Claude Code는 `CLAUDE.md` 중심이고, > Codex는 `AGENTS.md` 중심입니다. 그리고 마스터 PC에는 **Windows Codex용 설정**과 **WSL Codex용 설정**이 따로 있습니다. --- ## 1. Windows Codex 쪽 경로: ```text C:\Users\ilos1\.codex ``` WSL 기준: ```text /mnt/c/Users/i…
+### 최근 턴 2
+- 시각(KST): 2026-05-28T22:51:48+09:00
+- Hermes 세션: 20260528_221207_004ede
+- 사용자: 다시시도해 해외모의투자
+- Hermes 응답: 마스터, 로켓랩(RKLB)은 이렇게 정리됩니다. - **주문 로그:** 5/26 `13:42:57Z`에 RKLB **6주 매수주문 성공** - 기준가: `142.791` - 주문가: `143.08` - 응답: `모의투자 매수주문이 완료 되었습니다.` - **그런데 현재 KIS 해외 모의 잔고 직접 조회 결과:** RKLB **없음** - NASD 잔고: `AXTI, CRM, INTC, LITE, MRVL, MU, NVDA, UBER` - NYSE 잔고: `CRM, UBER` - AMEX 잔고:…
+### 최근 턴 3
+- 시각(KST): 2026-05-29T03:08:54+09:00
+- Hermes 세션: 20260528_224850_7af83a
+- 사용자: 해외모의 매도 앱에선 잘되는데?
+- Hermes 응답: 맞습니다, 마스터. **한투 해외모의 앱에서 매도가 되는 것**과 **OpenAPI 모의 해외매도 `VTTT1006U`가 되는 것**은 별개로 봐야 합니다. 방금 제가 추가로 확인한 건 이겁니다. - 현재 로컬에 설정된 KIS 모의 계좌/키는 3곳이 모두 같은 값으로 잡혀 있습니다. - `/home/hskim/.openclaw/workspace/trading-automation/.env` - `/home/hskim/.openclaw/.env` - `/home/hskim/.openclaw/gate…
+### 최근 턴 4
+- 시각(KST): 2026-05-29T09:41:55+09:00
+- Hermes 세션: 20260529_093921_19c88dd7
+- 사용자: 현재포지션
+- Hermes 응답: TeamDark 사용 안 함 — 단건 조회로 처리했습니다. ## 한투모의 현재포지션 기준: **2026-05-29 09:40:38 KST** 잔고 조회: 국내/해외 모두 성공, 토큰: cache **전체 보유손익** - 국내: **-25,120원** - 해외: **-$46.03** ## 국내 **에르메스 관리** - 국장 1차 미너비니 성장주 돌파 `MINERVINI_SEPA_KR_BREAKOUT_KIS` - 보유: **없음** - 후보: `009150`, `011070` **OpenClaw·팀…
+### 최근 턴 5
+- 시각(KST): 2026-05-29T12:29:05+09:00
+- Hermes 세션: 20260529_093921_19c88dd7
+- 사용자: 구독글 가져오는거있잖아 하루동안 수집한 종목들을 분석해서 투자전략을 짜고싶은데 리스크와 투자해도 되는지 리스크관리를 위해 손절은 언제해야할지 만들고싶어
+- Hermes 응답: 마스터, 방향 맞습니다. 제가 바로 **1차 MVP를 만들어뒀습니다.** ## 처리한 것 **새 전략 리포트 lane 생성** - 전략 ID: `X_SUBSCRIBER_DAILY_RISK_REVIEW` - 한글명: **X구독글 일일 리스크 투자검토** - 성격: **읽기 전용 리스크 검토 / 주문 없음** - 구독글 전문은 저장·출력하지 않고, 승인수집 요약의 **티커·테마·집계 필드만** 사용하도록 했습니다. 생성 파일: - 계획서: `docs/plans/2026-05-29-x-subscrib…
 
 <!-- HERMES_BRIDGE_SYNC_END -->
 
@@ -282,3 +282,4 @@
 - 2026-05-26 확정: Hermes 문맥에서 든 예시 문구나 표시명은 OpenClaw 투자 보고 라벨 변경 지시로 확대 해석하지 않는다. 한투 모의 현재포지션 보고는 국내/해외를 모두 포함하되, Hermes와 OpenClaw의 운용 문구는 각 문맥에서 분리 확인 후 반영한다.
 - 2026-05-27 재확인: 한투모의 현재포지션 표준 보고는 **한투모의 전체 조회 기준**에서 **국내/해외 → Hermes / OpenClaw·소닉 관리 분리** 양식으로 유지하고, 최신 통합 산출물 경로는 `trading-automation/stocks/reports/kis_paper_combined_position_report_latest.md`를 기준으로 본다.
 - 2026-05-28 확인: Claude Code 규칙은 글로벌 `~/.claude/CLAUDE.md` + 작업 폴더 `CLAUDE.md`를 계단식으로 읽는 구조로 보고, Codex 쪽은 `AGENTS.md` 중심이며 Windows/WSL 설정 문맥을 분리해서 확인한다.
+- 2026-05-29 확인: X 구독글 하루 수집 종목을 바탕으로 한 읽기 전용 리스크 검토 lane `X_SUBSCRIBER_DAILY_RISK_REVIEW`를 운영 문맥에 추가했다. 구독글 전문 저장/출력 대신 승인수집 요약의 티커·테마·집계 필드만 사용하고, 주문 없이 투자 가능 여부·리스크·손절 기준을 검토하는 용도로 유지한다.
