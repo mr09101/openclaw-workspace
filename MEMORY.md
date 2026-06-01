@@ -283,3 +283,4 @@
 - 2026-05-27 재확인: 한투모의 현재포지션 표준 보고는 **한투모의 전체 조회 기준**에서 **국내/해외 → Hermes / OpenClaw·소닉 관리 분리** 양식으로 유지하고, 최신 통합 산출물 경로는 `trading-automation/stocks/reports/kis_paper_combined_position_report_latest.md`를 기준으로 본다.
 - 2026-05-28 확인: Claude Code 규칙은 글로벌 `~/.claude/CLAUDE.md` + 작업 폴더 `CLAUDE.md`를 계단식으로 읽는 구조로 보고, Codex 쪽은 `AGENTS.md` 중심이며 Windows/WSL 설정 문맥을 분리해서 확인한다.
 - 2026-05-29 확인: X 구독글 하루 수집 종목을 바탕으로 한 읽기 전용 리스크 검토 lane `X_SUBSCRIBER_DAILY_RISK_REVIEW`를 운영 문맥에 추가했다. 구독글 전문 저장/출력 대신 승인수집 요약의 티커·테마·집계 필드만 사용하고, 주문 없이 투자 가능 여부·리스크·손절 기준을 검토하는 용도로 유지한다.
+- 2026-06-01 재확인: 하루 마감 점검에서 Git이 untracked-only 상태면, 당일 `memory/YYYY-MM-DD.md` 생성과 `MEMORY.md` 최소 갱신만 수행하고 commit/push는 생략한다.
