@@ -243,33 +243,33 @@
 ## Hermes 브리지 최신 동기화(휘발성)
 - 메인 진입: Hermes 텔레그램 DM
 - 용도: 마스터가 Hermes에만 말해도 OpenClaw가 최신 맥락을 이어받기 위한 최근 대화 요약
-- 마지막 갱신: 2026-06-18T22:38:23+09:00
+- 마지막 갱신: 2026-06-19T17:26:14+09:00
 
 ### 최근 턴 1
-- 시각(KST): 2026-06-18T20:16:25+09:00
-- Hermes 세션: 20260618_183532_6367b0ae
-- 사용자: 거시경제는 언제보고하게되어잇어?
-- Hermes 응답: 마스터, 확인 결과 **거시경제 체온표 데일리**는 이렇게 잡혀 있습니다. - 작업명: `거시경제 체온표 데일리` - 스케줄: `20 8 * * 1-5` - 의미: **월~금 오전 8시 20분 KST** - 다음 실행: **2026-06-19 08:20 KST** - 마지막 실행: **2026-06-18 18:16:52 KST** - 상태: **활성화됨 / scheduled** - 마지막 상태: **ok** - 전달 위치: `telegram:-1004254082974:34` - 텔레그램 그룹의…
+- 시각(KST): 2026-06-19T11:51:08+09:00
+- Hermes 세션: 20260619_112850_2873d6
+- 사용자: 투자대가쪽 보기가 너무힘들어
+- Hermes 응답: TeamDark 사용 안 함 — 단일 포맷/크론 수정이라 바로 고쳤습니다. 사용 스킬: `teamdark-decision-hook`, `investment-intelligence-and-trading-ops`, `agent-platform-and-automation-operations` 사용 플러그인: cronjob, send_message, 파일 수정 도구 마스터 말이 맞습니다. 투자대가 쪽은 내가 너무 원천데이터 덤프처럼 보냈습니다. **모바일에서 보기 힘든 구조라 바로 카드형으로 바꿨습니다…
 ### 최근 턴 2
-- 시각(KST): 2026-06-18T20:52:55+09:00
-- Hermes 세션: 20260618_183532_6367b0ae
-- 사용자: 그 아티클 내용처럼 한쪽만보는게아닌 자세히 검증해서 보고해야한다
-- Hermes 응답: 마스터 말이 맞습니다. **거시경제 보고가 기사 한쪽 논리만 따라가면 쓸모가 없습니다.** 그래서 방금 기준을 실제 크론 프롬프트와 스킬 문서에 반영했습니다. ## 반영 완료 - 크론 작업: `거시경제 체온표 데일리` - 작업 ID: `602000080bd2` - 기존 시간: **평일 08:20 KST 유지** - 전달 토픽: `telegram:-1004254082974:34` 유지 - 상태: **enabled / scheduled 유지** 추가한 핵심 규칙: 1. **기사 하나나 한쪽 관점만…
+- 시각(KST): 2026-06-19T12:02:31+09:00
+- Hermes 세션: 20260619_114618_4c8b2a
+- 사용자: 3번 그리고 형식테스트
+- Hermes 응답: TeamDark 사용 안 함 — 펠로시 포맷 한 파일 수정 + 토픽 테스트라 단일 처리했습니다. 사용 스킬: `teamdark-decision-hook`, `investment-intelligence-and-trading-ops`, `agent-platform-and-automation-operations` 사용 플러그인: cronjob, send_message, 파일 수정 도구 마스터, **3번 적용했고 형식테스트까지 보냈습니다.** ## 적용 내용 낸시 펠로시 PTR 보고를 이제 이렇게 구분…
 ### 최근 턴 3
-- 시각(KST): 2026-06-18T21:05:56+09:00
-- Hermes 세션: 20260618_205052_d31eaf
-- 사용자: 아티클에잇던 박사님? 그글도 찾아봐 먼내용인지
-- Hermes 응답: 마스터, 찾아보니 “아티클에 있던 박사님”은 **Dr. Ed Yardeni, 에드 야데니 박사**로 보입니다. Yardeni QuickTakes / Yardeni Research 쪽 인물이고, author 페이지에 **“Yardeni Research 대표, 글로벌 투자전략·자산배분 분석 제공자”**로 소개되어 있습니다. 관련 글은 이쪽입니다. - [Inflation & Employment Indicators Are Mixed As Fed Meets](https://www.yardeniquickt…
+- 시각(KST): 2026-06-19T14:20:37+09:00
+- Hermes 세션: 20260619_114618_4c8b2a
+- 사용자: 야 아까 이력서에 라이나생명서 인텔리j안썻어 나 vscode git 이클립스 일케썻지
+- Hermes 응답: TeamDark 사용 안 함 — 이력서/프로필 파일 직접 수정 작업이라 단일 처리했습니다. 사용 스킬: `teamdark-decision-hook`, `developer-career-positioning`, `ocr-and-documents` 사용 플러그인: 직접 사용 없음 마스터, 맞습니다. 제가 아까 라이나생명 KDP 도구를 잘못 잡았습니다. 바로 수정했습니다. ## 수정 완료 수정한 파일: - `/mnt/c/Users/ilos1/OneDrive/내 이력서 등 문서들/01_최신_지원서류/프로…
 ### 최근 턴 4
-- 시각(KST): 2026-06-18T22:32:20+09:00
-- Hermes 세션: 20260618_210502_af4674
-- 사용자: 야데니는 누구야? 안희주 이사람이 아티클ㅇ니ㅣ잇는데
-- Hermes 응답: 맞습니다, 마스터. 제가 방금 **“박사님” 단서만 보고 야데니로 잘못 짚었습니다.** 마스터가 말한 아티클의 인물은 **야데니가 아니라 안희주 박사(Hie Joo Ahn)** 입니다. ## 야데니는 누구냐? **Ed Yardeni / 에드 야데니**는 미국 시장전략가입니다. - Yardeni Research 대표 - 주식시장, 금리, 경기 사이클을 자주 해석하는 월가 쪽 이코노미스트/전략가 - “Roaring 2020s”, “bond vigilantes” 같은 시장 서사를 자주 쓰는 인물 -…
+- 시각(KST): 2026-06-19T14:28:02+09:00
+- Hermes 세션: 20260619_141831_1a8249
+- 사용자: 3번
+- Hermes 응답: TeamDark 사용 안 함 — 이력서 파일 2개 직접 검수/수정 작업이라 단일 처리했습니다. 사용 스킬: `teamdark-decision-hook`, `developer-career-positioning`, `ocr-and-documents` 사용 플러그인: 직접 사용 없음 마스터, 3번 전체 검수까지 끝냈습니다. 이번엔 Word/Excel 둘 다 실제로 열어서 프로젝트별 `언어/프레임워크 · DB · 도구`를 대조했습니다. ## 수정한 파일 - `/mnt/c/Users/ilos1/OneDr…
 ### 최근 턴 5
-- 시각(KST): 2026-06-18T22:38:23+09:00
-- Hermes 세션: 20260618_210502_af4674
-- 사용자: 3번 하라고 아티클준거잖아 야데니가 이 아티클에 있는내용이야?
-- Hermes 응답: 아니요, 마스터. **야데니가 이 아티클에 있는 내용이 아닙니다.** 제가 앞에서 **야데니로 연결한 게 잘못**이었습니다. 정확히는: - **아티클 핵심 인물:** 안희주 / Hie Joo Ahn - **소속:** Federal Reserve Board, 연준 - **아티클 주제:** 고용·물가 관계를 실업률 하나로 보지 말고, 베버리지 곡선/필립스 곡선과 노동시장 내부 구조로 쪼개서 보자는 내용 - **야데니:** 이 아티클의 주인공 아님. Yardeni는 별도의 월가 시장전략가입니다. ##…
+- 시각(KST): 2026-06-19T17:26:14+09:00
+- Hermes 세션: 20260619_085312_8e4a1f90
+- 사용자: [작스 김] arm dram tsm 1년전 기준으로 보면안되지 ai때문에 수요폭발햇는데 앞으로 더 가냐 안가냐 문제인데
+- Hermes 응답: TeamDark 사용 안 함 — 단일 투자판단 답변이라 병렬 리서치는 생략했습니다. 사용 스킬: `teamdark-decision-hook`, `investment-intelligence-and-trading-ops` 사용 플러그인: Google News RSS/터미널 조회 맞습니다. 작스님 말이 맞아요. **1년 전 기준으로 “많이 올랐다”만 보면 핵심을 놓칩니다.** AI 때문에 수요 구조가 바뀌었으면 봐야 할 건 **“과거 대비 비쌈”이 아니라 “앞으로 실적 추정이 또 올라가느냐”**입니다…
 
 <!-- HERMES_BRIDGE_SYNC_END -->
 
@@ -291,6 +291,7 @@
 - 2026-05-27 재확인: 한투모의 현재포지션 표준 보고는 **한투모의 전체 조회 기준**에서 **국내/해외 → Hermes / OpenClaw·소닉 관리 분리** 양식으로 유지하고, 최신 통합 산출물 경로는 `trading-automation/stocks/reports/kis_paper_combined_position_report_latest.md`를 기준으로 본다.
 - 2026-05-28 확인: Claude Code 규칙은 글로벌 `~/.claude/CLAUDE.md` + 작업 폴더 `CLAUDE.md`를 계단식으로 읽는 구조로 보고, Codex 쪽은 `AGENTS.md` 중심이며 Windows/WSL 설정 문맥을 분리해서 확인한다.
 - 2026-06-18 확정: 공용 스킬의 단일 원천은 `C:\Users\ilos1\Documents\HermesKnowledgeVault\skills\<name>\SKILL.md` 이다. 스킬 수정은 반드시 vault 원본에서만 하고, `~/.claude/skills`, `~/.codex/skills`, `~/.openclaw/workspace/skills` 등 도구별 배포 폴더는 직접 수정하지 않는다(다음 sync 때 덮어써짐). 동기화 기준 스크립트는 Windows `bash ~/.claude/scripts/sync-skills-from-vault.sh`, WSL `bash ~/bin/sync-skills-from-vault-wsl.sh`, 검증은 `verify-skill-sync.sh` 이다. `sync_knowledge_to_windows_obsidian.sh` 는 `skills/` 제외라 스킬 폴더는 안전하지만, wiki는 WSL→Windows `rsync --delete` 특성상 수동 실행 시 유실 위험이 있고, WSL 스크립트는 LF 줄바꿈을 유지해야 한다(CRLF면 `exit 127`). 같은 날 추가 선호로, OpenClaw 소닉 답변의 시작 훅에는 `팀소닉 사용/미사용` 아래 실제 사용 `스킬`·`플러그인` 표기도 함께 넣는다.
+- 2026-06-19 확인: X 구독글/리서치 산출물은 라이브 재수집과 기존 Windows 산출물 동기화를 구분해서 기록해야 하며, 요약 보고에서 둘을 혼동하지 않는 기준을 유지한다.
 - 2026-05-29 확인: X 구독글 하루 수집 종목을 바탕으로 한 읽기 전용 리스크 검토 lane `X_SUBSCRIBER_DAILY_RISK_REVIEW`를 운영 문맥에 추가했다. 구독글 전문 저장/출력 대신 승인수집 요약의 티커·테마·집계 필드만 사용하고, 주문 없이 투자 가능 여부·리스크·손절 기준을 검토하는 용도로 유지한다.
 - 2026-06-01 재확인: 하루 마감 점검에서 Git이 untracked-only 상태면, 당일 `memory/YYYY-MM-DD.md` 생성과 `MEMORY.md` 최소 갱신만 수행하고 commit/push는 생략한다.
 - 2026-06-01 야간 재확인: 마감 점검 재실행 시 대량 untracked가 있어도, tracked 변경이 메모성 기록(`memory/*`, `MEMORY.md`)에 한정되면 그 기록 변경만 분리 커밋해 `origin/master`까지 닫는 원칙을 유지한다.
