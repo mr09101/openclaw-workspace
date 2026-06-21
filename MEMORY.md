@@ -243,33 +243,33 @@
 ## Hermes 브리지 최신 동기화(휘발성)
 - 메인 진입: Hermes 텔레그램 DM
 - 용도: 마스터가 Hermes에만 말해도 OpenClaw가 최신 맥락을 이어받기 위한 최근 대화 요약
-- 마지막 갱신: 2026-06-20T09:23:15+09:00
+- 마지막 갱신: 2026-06-21T12:51:27+09:00
 
 ### 최근 턴 1
-- 시각(KST): 2026-06-20T01:19:10+09:00
-- Hermes 세션: 20260620_005043_1dc1e7
-- 사용자: 2번은 우리스킬이랑 겹치는게없어?
-- Hermes 응답: TeamDark 사용 안 함 — gstack 겹침 여부 판단만 하는 단일 비교 답변이라 병렬 역할 분리는 과합니다. 사용 스킬: `teamdark-decision-hook`, `hermes-agent`, `github-repo-management` 사용 플러그인: 직접 사용 없음 마스터, **정확히 gstack 기준으로 다시 확인했습니다. 결론부터 말하면 “안 겹치는 게 아니라 꽤 겹칩니다.”** 다만 **통째로 가져올 필요는 없고**, gstack의 장점은 “새 기능 스킬”보다 **역할 기반…
+- 시각(KST): 2026-06-21T10:09:09+09:00
+- Hermes 세션: 20260621_100400_699a4cb6
+- 사용자: https://x.com/i/status/2068298144123961787 이글에 대해 분석하고 대표유망주 찾아보자
+- Hermes 응답: TeamDark 사용 안 함 — 단일 X글 분석 + 1차 후보 선별이라 단일 에이전트로 처리했습니다. 사용 스킬: `read-x-twitter`, `investment-intelligence-and-trading-ops`, `teamdark-decision-hook` 사용 플러그인: X 공개 미러 API, 이미지 OCR/비전, yfinance 시세 확인 ## 결론부터 마스터, 이 글의 핵심은 **“반도체가 끝났다”가 아니라 “AI 투자 사이클의 다음 병목은 전력·에너지다”** 입니다. 제가 보기…
 ### 최근 턴 2
-- 시각(KST): 2026-06-20T01:24:30+09:00
-- Hermes 세션: 20260620_011533_7a1962
-- 사용자: 그래서 어찌해야하는데
-- Hermes 응답: TeamDark 사용 안 함 — 지금은 의사결정 정리 답변입니다. 사용 스킬: `teamdark-decision-hook`, `hermes-agent`, `github-repo-management` 사용 플러그인: 직접 사용 없음 마스터, **해야 할 방향은 딱 이겁니다.** ## 결론 **gstack 54개를 우리 vault에 넣지 말고, `gstack-role-review` 1개 통합 스킬로 흡수**해야 합니다. 통째 포팅하면 우리 기존 스킬이랑 겹치고 지시가 중복됩니다. 특히 `codex`…
+- 시각(KST): 2026-06-21T12:26:26+09:00
+- Hermes 세션: 20260621_100400_699a4cb6
+- 사용자: https://x.com/i/status/2068483072459469265 이글읽고 이것도 토픽중에 추가하면좋을거같은데 근데 그냥 추가하는게아니고 뭐가 더 좋은유망주일지 찾으면서
+- Hermes 응답: 마스터, 이건 **토픽에 추가할 가치 있습니다.** 다만 말씀하신 대로 “ITFIND 좋다 → 관련주 아무거나 추가”가 아니라, **국책 리포트에서 반복 등장하는 기술 키워드로 유망주를 발굴하는 레이더**로 넣는 게 맞습니다. 초안은 로컬에도 저장해뒀습니다. `stocks/reports/itfind_ai_ict_theme_watchlist_2026-06-21.md` ## X글 핵심 원문: [루시퍼 X글](https://x.com/lucifer5670/status/206848307245946926…
 ### 최근 턴 3
-- 시각(KST): 2026-06-20T01:37:46+09:00
-- Hermes 세션: 20260620_011533_7a1962
-- 사용자: 1번 3번 진행하고 1번진행하면 나머지 ai한테 어케적용되는겨
-- Hermes 응답: 마스터, **1번 + 3번 진행 완료**했습니다. ## 완료한 것 - `gstack-role-review` 스킬 신규 생성 - 위치: `/mnt/c/Users/ilos1/Documents/HermesKnowledgeVault/skills/gstack-role-review/` - gstack 54개를 그대로 넣지 않고, **CEO / Eng / Design / DevEx / QA / Release 리뷰 관점만 1개 공통 스킬로 흡수**했습니다. - 원본 출처/라이선스도 보존: - `LICENSE.…
+- 시각(KST): 2026-06-21T12:35:20+09:00
+- Hermes 세션: 20260621_100400_699a4cb6
+- 사용자: 3번 해주고 제무제표 참조하면서 유망주 찾는건가?
+- Hermes 응답: TeamDark 사용 안 함 — 반복 리서치/후보 선별 크론 설정이라 단일 에이전트로 처리했습니다. 사용 스킬: `investment-intelligence-and-trading-ops`, `hermes-agent`, `teamdark-decision-hook` 사용 플러그인: `cronjob` 마스터, **3번 자동 주간 체크 설정 완료했습니다.** ## 설정 결과 - 작업명: **ITFIND AI·ICT 국책리포트 레이더 주간 점검** - Job ID: `800ede7725b4` - 주기:…
 ### 최근 턴 4
-- 시각(KST): 2026-06-20T01:39:56+09:00
-- Hermes 세션: 20260620_013659_19d3e6
-- 사용자: 근데 ai들이 스킬사용을 어떤기준으로하는거야
-- Hermes 응답: 마스터, 기준은 한 줄로 말하면 이겁니다. **AI가 스킬을 쓰는 기준은 “스킬의 `description`/이름/태그가 지금 작업과 맞는가”입니다.** 근데 우리 환경은 거기에 **시스템 규칙**까지 걸어놔서, 관련 있으면 그냥 참고가 아니라 **반드시 로드**하는 쪽에 가깝습니다. ## 실제 판단 순서 ### 1. 사용자 요청을 먼저 분류함 예를 들면: - “Hermes 설정 왜 안 먹어?” → `hermes-agent` - “스킬 하나 만들어줘” → `hermes-agent-skill-aut…
+- 시각(KST): 2026-06-21T12:43:36+09:00
+- Hermes 세션: 20260621_123334_d8c00a
+- 사용자: 토픽방으로 변경해 여기에 쓰면 지저분해서 보기힘들어
+- Hermes 응답: TeamDark 사용 안 함 — 단일 크론 전달 채널 변경이라 바로 처리했습니다. 사용 스킬: 기존 설정 유지 사용 플러그인: `cronjob` 변경 완료했습니다, 마스터. - 작업명: **ITFIND AI·ICT 국책리포트 레이더 주간 점검** - Job ID: `800ede7725b4` - 기존 전달: 현재 DM - 변경 전달: `telegram:-1004254082974:11` - 다음 실행: **2026-06-22 07:50 KST** 이제 이 DM 말고 **AI/리서치 토픽방 쪽**으로…
 ### 최근 턴 5
-- 시각(KST): 2026-06-20T09:23:15+09:00
-- Hermes 세션: 20260620_092244_e2d9ddbb
-- 사용자: [작스 김] 네오클라우드가 머야
-- Hermes 응답: TeamDark 사용 안 함 — 짧은 개념 설명이라 단일 답변으로 충분합니다. 사용 스킬: `teamdark-decision-hook`, `investment-intelligence-and-trading-ops` 사용 플러그인: 직접 사용 없음 **네오클라우드(NeoCloud)**는 쉽게 말하면 **AI 전용 GPU 클라우드 회사**입니다. 기존 클라우드가: - AWS - MS Azure - Google Cloud 같은 “종합 클라우드 마트”라면, 네오클라우드는: - 엔비디아 GPU 대량 확보…
+- 시각(KST): 2026-06-21T12:51:27+09:00
+- Hermes 세션: 20260621_123334_d8c00a
+- 사용자: 어디토픽방이야 토픽제목
+- Hermes 응답: TeamDark 사용 안 함 — 토픽 대상 확인만 하는 짧은 운영 점검이라 단일 에이전트로 확인했습니다. 사용 스킬: `hermes-agent`, `teamdark-decision-hook` 사용 플러그인: `send_message`, `file search`, `memory` 마스터, 제가 방금 바꾼 곳은 정확히는: - 방: **쉐도우알림방** - 토픽 ID: **11** - 전달값: `telegram:-1004254082974:11` 그런데 **토픽 제목은 현재 Hermes 대상 목록에서 안…
 
 <!-- HERMES_BRIDGE_SYNC_END -->
 
@@ -293,6 +293,7 @@
 - 2026-06-18 확정: 공용 스킬의 단일 원천은 `C:\Users\ilos1\Documents\HermesKnowledgeVault\skills\<name>\SKILL.md` 이다. 스킬 수정은 반드시 vault 원본에서만 하고, `~/.claude/skills`, `~/.codex/skills`, `~/.openclaw/workspace/skills` 등 도구별 배포 폴더는 직접 수정하지 않는다(다음 sync 때 덮어써짐). 동기화 기준 스크립트는 Windows `bash ~/.claude/scripts/sync-skills-from-vault.sh`, WSL `bash ~/bin/sync-skills-from-vault-wsl.sh`, 검증은 `verify-skill-sync.sh` 이다. `sync_knowledge_to_windows_obsidian.sh` 는 `skills/` 제외라 스킬 폴더는 안전하지만, wiki는 WSL→Windows `rsync --delete` 특성상 수동 실행 시 유실 위험이 있고, WSL 스크립트는 LF 줄바꿈을 유지해야 한다(CRLF면 `exit 127`). 같은 날 추가 선호로, OpenClaw 소닉 답변의 시작 훅에는 `팀소닉 사용/미사용` 아래 실제 사용 `스킬`·`플러그인` 표기도 함께 넣는다.
 - 2026-06-19 확인: X 구독글/리서치 산출물은 라이브 재수집과 기존 Windows 산출물 동기화를 구분해서 기록해야 하며, 요약 보고에서 둘을 혼동하지 않는 기준을 유지한다.
 - 2026-06-20 확인: Tavily 계열 검색/추출이 막히면 AI 공급망·시장 리서치는 중단하지 않고, Google/Bing News RSS와 직접 기사 fetch 폴백으로 마무리하는 경로를 기본 운영으로 유지한다.
+- 2026-06-21 확인: ITFIND AI·ICT 국책리포트 기반 유망주 발굴 레이더를 주간 점검 자동화로 유지하며, 전달 채널은 DM이 아니라 텔레그램 `쉐도우알림방` 토픽 11(`telegram:-1004254082974:11`)을 기준선으로 사용한다.
 - 2026-05-29 확인: X 구독글 하루 수집 종목을 바탕으로 한 읽기 전용 리스크 검토 lane `X_SUBSCRIBER_DAILY_RISK_REVIEW`를 운영 문맥에 추가했다. 구독글 전문 저장/출력 대신 승인수집 요약의 티커·테마·집계 필드만 사용하고, 주문 없이 투자 가능 여부·리스크·손절 기준을 검토하는 용도로 유지한다.
 - 2026-06-01 재확인: 하루 마감 점검에서 Git이 untracked-only 상태면, 당일 `memory/YYYY-MM-DD.md` 생성과 `MEMORY.md` 최소 갱신만 수행하고 commit/push는 생략한다.
 - 2026-06-01 야간 재확인: 마감 점검 재실행 시 대량 untracked가 있어도, tracked 변경이 메모성 기록(`memory/*`, `MEMORY.md`)에 한정되면 그 기록 변경만 분리 커밋해 `origin/master`까지 닫는 원칙을 유지한다.
