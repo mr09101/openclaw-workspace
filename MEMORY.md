@@ -243,33 +243,33 @@
 ## Hermes 브리지 최신 동기화(휘발성)
 - 메인 진입: Hermes 텔레그램 DM
 - 용도: 마스터가 Hermes에만 말해도 OpenClaw가 최신 맥락을 이어받기 위한 최근 대화 요약
-- 마지막 갱신: 2026-07-09T22:33:16+09:00
+- 마지막 갱신: 2026-07-10T17:54:10+09:00
 
 ### 최근 턴 1
-- 시각(KST): 2026-07-09T20:10:10+09:00
-- Hermes 세션: 20260709_194302_cb891d
-- 사용자: 됫냐? 몇개 나오는지 확인하기도전에 꺼지네
-- Hermes 응답: 됐습니다, 마스터. **이번엔 제가 직접 파일 + DB까지 확인했습니다.** 결과: - Windows에서 뽑힌 북마크 JSON: - `C:\Users\ilos1\AppData\Local\Temp\birdclaw_bookmarks.json` - 크기: `670,796 bytes` - 생성/수정: `2026-07-09 20:07:21 KST` - 추출 개수: **304개** Birdclaw DB 반영 결과: - 반영 전 북마크: **289개** - 반영 후 북마크: **304개** - 증가분: **…
+- 시각(KST): 2026-07-10T16:39:05+09:00
+- Hermes 세션: 20260710_140543_94a79a4c
+- 사용자: 1번2번 진행후 전부다 보고
+- Hermes 응답: 마스터, **설정 변경 승인 창이 시간 초과되어 작업이 중단됐습니다.** - **변경 여부:** 실행 전 차단되어 **4개 프로필은 아직 GPT‑5.4 그대로**입니다. - **영향:** 기본 Hermes·Telegram gateway에는 변경이 없습니다. - **현재 상태:** `p1` 토픽/라우팅 확인 완료, `p2~p5` 승인 대기 - **필요 조치:** 이 메시지에 **`계속`**이라고 답해주시면, 다음 승인 요청을 확인할 수 있도록 단계별로 다시 진행하겠습니다. ### 예상 꼬리질문 3…
 ### 최근 턴 2
-- 시각(KST): 2026-07-09T21:31:34+09:00
-- Hermes 세션: 20260709_194302_cb891d
-- 사용자: 북마크에서 클로드 fable 에 codex묶는거 찾아줘
-- Hermes 응답: 찾았습니다, 마스터. **정확히 이 북마크입니다.** **글쓴이:** CJ Zafir `@cjzafir` **링크:** [https://x.com/cjzafir/status/2074875092090470469](https://x.com/cjzafir/status/2074875092090470469) **작성일:** 2026-07-08 15:15 UTC **북마크 DB 갱신:** 2026-07-09 20:09 KST **요지:** Claude Code 안에 Codex 플러그인을 설치해서, Fabl…
+- 시각(KST): 2026-07-10T16:51:30+09:00
+- Hermes 세션: 20260710_140543_94a79a4c
+- 사용자: 다시 해줘
+- Hermes 응답: **마스터, 모두 완료했습니다. 토픽방 응답 11개와 TeamDark 프로필 4개가 전부 GPT‑5.6 실제 호출 기준으로 통과했습니다.** ## 완료 결과 - **Telegram 토픽:** `11/11` 통과 - **TeamDark 프로필:** `4/4` 통과 - **기본 모델:** `gpt-5.6-sol` - **Provider:** `openai-codex` - **일반 위임:** `gpt-5.6-luna` - **품질 승격:** Luna → `gpt-5.6-terra` - **공개 테스트…
 ### 최근 턴 3
-- 시각(KST): 2026-07-09T21:40:51+09:00
-- Hermes 세션: 20260709_194302_cb891d
-- 사용자: 이거 정확히 어떻게 내가 해야되는지 다시 알려주고 질분1번 3번에 대답해줘
-- Hermes 응답: 마스터, 먼저 **GST/OI 알림은 중지 처리했습니다.** - 원래 답장하신 `07baf04b672e / 작스김 GST/OI intraday trigger monitor`는 현재 크론 목록에서 **이미 안 보입니다**. - 대신 살아 있던 관련 작업: - `a894c1af183b` - `작스김 GST/OI market close summary` - 매주 평일 15:45 발송 - 이 작업을 **paused**로 바꿨습니다. 즉, GST/OI 관련 정기 알림은 더 안 옵니다. 삭제가 아니라 일시중…
+- 시각(KST): 2026-07-10T17:02:57+09:00
+- Hermes 세션: 20260710_140543_94a79a4c
+- 사용자: sol에서 어느단계로 되어잇는지도 보고해야지
+- Hermes 응답: 맞습니다, 마스터. **GPT‑5.6 Sol의 추론 단계는 `High(고)`로 설정·실행되고 있습니다.** 이전 보고에서 추론 단계를 빠뜨렸습니다. ## 최종 정정 보고 ### 기본 텔레그램 DM - **모델:** `gpt-5.6-sol` - **추론 단계:** **High(고)** - **Provider:** `openai-codex` - **실제 세션:** `20260710_140543_94a79a4c` ### 텔레그램 토픽 11개 - **모델:** `gpt-5.6-sol` - **추론 단계…
 ### 최근 턴 4
-- 시각(KST): 2026-07-09T21:50:48+09:00
-- Hermes 세션: 20260709_213744_905a3a
-- 사용자: Set up Codex inside this Claude Code environment. Use the official OpenAI Codex plugin that was just installed. Run /codex:setup. If Codex CLI is missing, install it. If Codex is installed but not authenticated, ask me to authenticate with my ChatGPT account. After auth is compl…
-- Hermes 응답: 마스터, 지금 에러 원인은 **Codex 문제가 아니라 Claude Code 로그인이 안 된 상태**입니다. 제가 방금 확인했습니다. - Claude Code: **Not logged in** - Codex: **Logged in using ChatGPT** 즉 지금 해야 할 건 `/codex:setup`이 아니라 **Claude Code 자체 로그인**입니다. ## 지금 Claude Code 화면에서 바로 할 일 Claude Code 안에 이렇게 입력하세요: ```text /login ```…
+- 시각(KST): 2026-07-10T17:48:20+09:00
+- Hermes 세션: 20260710_140543_94a79a4c
+- 사용자: 메인은 xhigh로
+- Hermes 응답: **메인 Hermes를 `GPT‑5.6 Sol + xHigh`로 변경했습니다, 마스터.** ## 적용 결과 - **메인 모델:** `gpt-5.6-sol` - **메인 추론 단계:** `xhigh` - **Provider:** `openai-codex` - **실제 호출:** 통과 - **검증 응답:** `MAIN_SOL_XHIGH_OK` - **검증 세션:** `20260710_174629_741782` - **API 호출:** 1회 실제 세션 DB 기록: ```json { "model": "…
 ### 최근 턴 5
-- 시각(KST): 2026-07-09T22:33:16+09:00
-- Hermes 세션: 20260709_213744_905a3a
-- 사용자: 잘되는거같긴하네
-- Hermes 응답: 좋습니다, 마스터. 지금 흐름이면 **Claude 로그인 → Codex setup 연결**까지는 정상으로 간 것 같습니다. 다음 확인만 해보면 됩니다. ## Claude Code 안에서 확인할 것 Claude Code 화면에 아래 중 하나가 보이면 거의 성공입니다. - `/codex:setup` 완료 메시지 - Codex authenticated / Codex ready 류 메시지 - `codex-rescue` 또는 `codex:codex-rescue` 사용 가능하다는 메시지 - `/codex:…
+- 시각(KST): 2026-07-10T17:54:10+09:00
+- Hermes 세션: 20260710_140543_94a79a4c
+- 사용자: 팀다크까지 xhigh로
+- Hermes 응답: **TeamDark 4개 프로필까지 모두 `GPT‑5.6 Sol + xHigh`로 변경·실제 호출 검증을 완료했습니다, 마스터.** ## 최종 구성 ### 메인 - **모델:** `gpt-5.6-sol` - **추론 단계:** `xhigh` - **상태:** 실행 중 ### TeamDark - **rouge:** Sol + `xhigh` ✅ - **omega:** Sol + `xhigh` ✅ - **metal:** Sol + `xhigh` ✅ - **infinite:** Sol + `xhigh`…
 
 <!-- HERMES_BRIDGE_SYNC_END -->
 
@@ -303,6 +303,7 @@
 - 2026-07-07 재확인: 하루 마감 점검에서 시작 시점 tracked 변경이 없더라도, 그 턴에 생성한 `memory/YYYY-MM-DD.md`와 `MEMORY.md` 최소 갱신은 수행하고, 결과 보고는 기존 `[SILENT]`/`NO_REPLY` 규칙을 해치지 않는 짧은 세로형 카드로만 전달한다.
 - 2026-07-08 재확인: 하루 마감 점검에서 시작 시점 tracked 변경이 없어도 오늘 일일 메모 생성과 `MEMORY.md` 최소 갱신은 즉시 수행하고, 이후 메모 갱신으로 tracked 변경이 생기면 그 기록 변경만 커밋·`origin/master` 푸시까지 같은 턴에 닫는다.
 - 2026-07-09 재확인: 하루 마감 점검에서 시작 시점 tracked 변경이 보이면, 당일 메모 갱신을 마친 뒤 메모 관련 기록 변경을 같은 턴에 커밋·`origin/master` 푸시까지 닫고 결과만 짧게 보고한다.
+- 2026-07-11 확인: Hermes 브리지 최신 동기화 기준, 메인 Hermes와 TeamDark 4개 프로필의 최신 검증 상태는 모두 `gpt-5.6-sol + xhigh` 운용이다.
 - 2026-06-24 확인: Hermes 브리지 기준 `multibagger-radar`는 MVP 생성·검수·커밋이 끝난 뒤 프리뷰 서버(`127.0.0.1:4173`)까지 복구된 상태로 공유됐고, 같은 날 GST·오이솔루션 수동 매수 건은 Hermes 측 추적 대상으로 등록됐다.
 - 2026-06-25 확인: Hermes 브리지 기준 SK하이닉스 장중 대응에서는 `기관 알고리즘 직접 식별`보다 **VWAP/체결 흐름 기반 풋프린트 역추정** 접근을 사용했고, 당일 생성한 장중 감시(5분 눌림/알고리즘 풋프린트)는 장 종료 후 제거 완료된 상태를 기준으로 기억한다.
 - 2026-06-26 확인: Hermes 브리지 기준 `작스김 SK하이닉스 오늘 계속추적` 알림 작업은 **장마감엔 끄고 장시작 때만 켜는 스케줄**로 변경된 상태를 기준선으로 기억한다.
